@@ -1,4 +1,5 @@
-﻿namespace GenerateDataObject
+﻿using FastColoredTextBoxNS;
+namespace GenerateDataObject
 {
     partial class frmExecute
     {
@@ -47,14 +48,18 @@
             this.btnGenerate = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtPreview = new System.Windows.Forms.TextBox();
+            this.txtPreview = new FastColoredTextBoxNS.FastColoredTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtMappingPreview = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtMappingPreview = new FastColoredTextBoxNS.FastColoredTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPreview)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMappingPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,10 +70,13 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtNamespace);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.groupBox1.Location = new System.Drawing.Point(23, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(423, 133);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(590, 147);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SP Details";
@@ -76,72 +84,82 @@
             // lbSpName
             // 
             this.lbSpName.AutoSize = true;
-            this.lbSpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lbSpName.Location = new System.Drawing.Point(112, 29);
+            this.lbSpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpName.Location = new System.Drawing.Point(149, 36);
+            this.lbSpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSpName.Name = "lbSpName";
-            this.lbSpName.Size = new System.Drawing.Size(52, 13);
+            this.lbSpName.Size = new System.Drawing.Size(73, 16);
             this.lbSpName.TabIndex = 5;
             this.lbSpName.Text = "SP Name";
             // 
             // txtClassName
             // 
-            this.txtClassName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtClassName.Location = new System.Drawing.Point(115, 94);
+            this.txtClassName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClassName.Location = new System.Drawing.Point(153, 116);
+            this.txtClassName.Margin = new System.Windows.Forms.Padding(4);
             this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new System.Drawing.Size(287, 20);
+            this.txtClassName.Size = new System.Drawing.Size(381, 22);
             this.txtClassName.TabIndex = 4;
             this.txtClassName.TextChanged += new System.EventHandler(this.txtClassName_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label3.Location = new System.Drawing.Point(17, 100);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 123);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(92, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Class Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label1.Location = new System.Drawing.Point(13, 29);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 36);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(73, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "SP Name";
             // 
             // txtNamespace
             // 
-            this.txtNamespace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtNamespace.Location = new System.Drawing.Point(115, 59);
+            this.txtNamespace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNamespace.Location = new System.Drawing.Point(153, 73);
+            this.txtNamespace.Margin = new System.Windows.Forms.Padding(4);
             this.txtNamespace.Name = "txtNamespace";
-            this.txtNamespace.Size = new System.Drawing.Size(287, 20);
+            this.txtNamespace.Size = new System.Drawing.Size(381, 22);
             this.txtNamespace.TabIndex = 4;
             this.txtNamespace.TextChanged += new System.EventHandler(this.txtNamespace_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label2.Location = new System.Drawing.Point(17, 65);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Namespace";
             // 
             // gvParameter
             // 
+            this.gvParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column5});
-            this.gvParameter.Location = new System.Drawing.Point(23, 155);
+            this.gvParameter.Location = new System.Drawing.Point(4, 159);
+            this.gvParameter.Margin = new System.Windows.Forms.Padding(4);
             this.gvParameter.Name = "gvParameter";
-            this.gvParameter.Size = new System.Drawing.Size(423, 197);
+            this.gvParameter.Size = new System.Drawing.Size(590, 244);
             this.gvParameter.TabIndex = 3;
             // 
             // Column1
@@ -161,25 +179,33 @@
             // 
             // btnExecute
             // 
-            this.btnExecute.Location = new System.Drawing.Point(23, 363);
+            this.btnExecute.BackColor = System.Drawing.Color.White;
+            this.btnExecute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExecute.Location = new System.Drawing.Point(4, 411);
+            this.btnExecute.Margin = new System.Windows.Forms.Padding(4);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(167, 27);
+            this.btnExecute.Size = new System.Drawing.Size(223, 39);
             this.btnExecute.TabIndex = 4;
             this.btnExecute.Text = "Get Column Information";
-            this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.UseVisualStyleBackColor = false;
             this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
             // 
             // gvColumnInfo
             // 
+            this.gvColumnInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvColumnInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvColumnInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvColumnInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column3,
             this.dataGridViewTextBoxColumn2});
-            this.gvColumnInfo.Location = new System.Drawing.Point(23, 397);
+            this.gvColumnInfo.Location = new System.Drawing.Point(4, 458);
+            this.gvColumnInfo.Margin = new System.Windows.Forms.Padding(4);
             this.gvColumnInfo.Name = "gvColumnInfo";
-            this.gvColumnInfo.Size = new System.Drawing.Size(423, 197);
+            this.gvColumnInfo.Size = new System.Drawing.Size(590, 273);
             this.gvColumnInfo.TabIndex = 5;
             this.gvColumnInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvColumnInfo_CellValueChanged);
             // 
@@ -200,87 +226,138 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(23, 605);
+            this.btnGenerate.BackColor = System.Drawing.Color.White;
+            this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerate.Location = new System.Drawing.Point(4, 739);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(167, 27);
+            this.btnGenerate.Size = new System.Drawing.Size(223, 41);
             this.btnGenerate.TabIndex = 6;
             this.btnGenerate.Text = "Generate";
-            this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.UseVisualStyleBackColor = false;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtPreview);
-            this.groupBox2.Location = new System.Drawing.Point(474, 12);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(602, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(411, 414);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.SetRowSpan(this.groupBox2, 3);
+            this.groupBox2.Size = new System.Drawing.Size(590, 446);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview DTO";
             // 
             // txtPreview
             // 
-            this.txtPreview.BackColor = System.Drawing.SystemColors.Info;
+            this.txtPreview.AutoScrollMinSize = new System.Drawing.Size(179, 14);
+            this.txtPreview.BackBrush = null;
+            this.txtPreview.CharHeight = 14;
+            this.txtPreview.CharWidth = 8;
+            this.txtPreview.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPreview.Location = new System.Drawing.Point(3, 16);
-            this.txtPreview.Multiline = true;
+            this.txtPreview.IsReplaceMode = false;
+            this.txtPreview.Location = new System.Drawing.Point(4, 19);
             this.txtPreview.Name = "txtPreview";
-            this.txtPreview.ReadOnly = true;
-            this.txtPreview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPreview.Size = new System.Drawing.Size(405, 395);
-            this.txtPreview.TabIndex = 0;
+            this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtPreview.Size = new System.Drawing.Size(582, 423);
+            this.txtPreview.TabIndex = 1;
+            this.txtPreview.Text = "fastColoredTextBox1";
+            this.txtPreview.Zoom = 100;
+            this.txtPreview.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.txtPreview_TextChanging);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtMappingPreview);
-            this.groupBox3.Location = new System.Drawing.Point(477, 447);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(602, 458);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(405, 147);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.SetRowSpan(this.groupBox3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(590, 324);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preview Mapping";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnGenerate, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExecute, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.gvParameter, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gvColumnInfo, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 1, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.06646F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.93354F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1196, 786);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
             // txtMappingPreview
             // 
-            this.txtMappingPreview.BackColor = System.Drawing.SystemColors.Info;
+            this.txtMappingPreview.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtMappingPreview.BackBrush = null;
+            this.txtMappingPreview.CharHeight = 14;
+            this.txtMappingPreview.CharWidth = 8;
+            this.txtMappingPreview.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMappingPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtMappingPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMappingPreview.Location = new System.Drawing.Point(3, 16);
-            this.txtMappingPreview.Multiline = true;
+            this.txtMappingPreview.IsReplaceMode = false;
+            this.txtMappingPreview.Location = new System.Drawing.Point(4, 19);
             this.txtMappingPreview.Name = "txtMappingPreview";
-            this.txtMappingPreview.ReadOnly = true;
-            this.txtMappingPreview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMappingPreview.Size = new System.Drawing.Size(399, 128);
-            this.txtMappingPreview.TabIndex = 0;
+            this.txtMappingPreview.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtMappingPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtMappingPreview.Size = new System.Drawing.Size(582, 301);
+            this.txtMappingPreview.TabIndex = 1;
+            this.txtMappingPreview.Zoom = 100;
             // 
             // frmExecute
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 639);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnGenerate);
-            this.Controls.Add(this.gvColumnInfo);
-            this.Controls.Add(this.btnExecute);
-            this.Controls.Add(this.gvParameter);
-            this.Controls.Add(this.groupBox1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1196, 786);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmExecute";
-            this.Text = "frmExecute";
+            this.Text = "Generate DTO";
             this.Load += new System.EventHandler(this.frmExecute_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPreview)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtMappingPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbSpName;
         private System.Windows.Forms.TextBox txtClassName;
@@ -300,8 +377,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtPreview;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtMappingPreview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private FastColoredTextBox txtPreview;
+        private FastColoredTextBox txtMappingPreview;
     }
 }

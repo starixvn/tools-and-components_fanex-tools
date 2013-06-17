@@ -36,3 +36,6 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateDataObject.Properties.Resources.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Debug\FastColoredTextBox.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Debug\FastColoredTextBox.pdb
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Debug\FastColoredTextBox.xml

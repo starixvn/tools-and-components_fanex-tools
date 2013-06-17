@@ -49,6 +49,9 @@
     <Reference Include="Fanex.Common">
       <HintPath>..\_Dependency\Fanex\Release\Fanex.Common.dll</HintPath>
     </Reference>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\..\Dependency\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Database">
       <HintPath>..\_Dependency\Entlib\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll</HintPath>
     </Reference>

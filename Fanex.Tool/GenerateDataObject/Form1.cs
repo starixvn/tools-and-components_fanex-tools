@@ -310,5 +310,21 @@ namespace GenerateDataObject
                 btnLoadSpName.Enabled = true;
             }
         }
+
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            // update to cache                   
+            var list = _cache.Get<Dictionary<string, DbSetting>>(DbSettingCacheKeyName);
+
+            gvSpName.Rows.Clear();
+
+            foreach (var item in list)
+            {
+                if (item.Key.ToLower().Contains(txtKey.Text.Trim().ToLower()))
+                {
+                    gvSpName.Rows.Add(item.Key, item.Value.SpName);
+                }
+            }
+        }
     }
 }
