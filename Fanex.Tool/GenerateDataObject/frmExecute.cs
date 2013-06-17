@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Fanex.Caching;
-using System.Data.Common;
-using System.Data.SqlClient;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-using System.IO;
-using FastColoredTextBoxNS;
-using System.Text.RegularExpressions;
+﻿// --------------------------------------------------------------------------
+// <copyright file="frmExecute.cs" company="Nexcel Solutions Vietnam">
+// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------
+// <history>
+//   <change who="Edward.Nguyen" date="2013.6.17">Created</change>
+// </history>
 
 namespace GenerateDataObject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Common;
+    using System.Data.SqlClient;
+    using System.Drawing;
+    using System.IO;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
+    using Fanex.Caching;
+    using FastColoredTextBoxNS;
+    using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+
     public partial class frmExecute : Form
     {
         protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
@@ -199,19 +206,59 @@ namespace GenerateDataObject
             }
         }
 
+        /// <summary>
+        /// Uppercase the first letter of a word
+        /// </summary>
+        /// <returns></returns>
+        private string UpperCaseFirstCharacter(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return string.Empty;
+            }
+
+            return char.ToUpper(s[0]).ToString() + s.Substring(1).ToLower();
+        }
+
+        private string GetUserName()
+        {
+            string userName = Environment.UserName;
+            if (userName.IndexOf('.') > 0)
+            {
+                string[] s = userName.Split('.');
+                return UpperCaseFirstCharacter(s[0]) + "." + UpperCaseFirstCharacter(s[1]);
+            }
+
+            return UpperCaseFirstCharacter(userName);
+        }
+
         private string GenerateClass(string nameSpace, string className)
         {
             try
             {
                 StringBuilder strSource = new StringBuilder();
-                strSource.Append("using System;" + Environment.NewLine);
+                strSource.Append("// --------------------------------------------------------------------------\n");
+                strSource.Append("// <copyright file=\"" + className + ".cs\" company=\"Nexcel Solutions Vietnam\">\n");
+                strSource.Append("// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.\n");
+                strSource.Append("// </copyright>\n");
+                strSource.Append("// --------------------------------------------------------------------------\n");
+                strSource.Append("// <history>\n");
+                strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
+                strSource.Append("// </history>\n\n");
+
+                strSource.Append("using System;\n\n");
                 if (nameSpace != string.Empty)
                 {
-                    strSource.Append("namespace " + nameSpace + " { " + Environment.NewLine);
+                    strSource.Append("namespace " + nameSpace + " {\n\n");
                 }
-                strSource.Append("\tpublic class " + className + "{" + Environment.NewLine);
+                strSource.Append("\tpublic class " + className + "{\n\n");
+
+                int count = 0;
+
                 foreach (DataGridViewRow item in gvColumnInfo.Rows)
                 {
+                    count++;
+
                     if (item.Cells[0].Value != null)
                     {
                         string type = item.Cells[2].Value.ToString();
@@ -221,10 +268,17 @@ namespace GenerateDataObject
 
                         properties = string.IsNullOrWhiteSpace(mapping) ? properties : mapping;
 
-                        strSource.Append("\t\t public " + type + " " + properties + "{ get; set;}" + Environment.NewLine + Environment.NewLine);
+                        if (count == gvColumnInfo.Rows.Count - 1)
+                        {
+                            strSource.Append("\t\t public " + type + " " + properties + " { get; set; }");
+                        }
+                        else
+                        {
+                            strSource.Append("\t\t public " + type + " " + properties + " { get; set; }\n\n");
+                        }
                     }
                 }
-                strSource.Append("\t}" + Environment.NewLine);
+                strSource.Append("\n\t}\n");
                 if (nameSpace != string.Empty)
                 {
                     strSource.Append("}");
@@ -298,6 +352,11 @@ namespace GenerateDataObject
         private void txtPreview_TextChanging(object sender, TextChangedEventArgs e)
         {
             CSharpSyntaxHighlight(e);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPreview.Text);
         }
     }
 }

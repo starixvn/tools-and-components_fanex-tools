@@ -50,16 +50,19 @@ namespace GenerateDataObject
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new FastColoredTextBoxNS.FastColoredTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtMappingPreview = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPreview)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMappingPreview)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -241,6 +244,7 @@ namespace GenerateDataObject
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtPreview);
+            this.groupBox2.Controls.Add(this.menuStrip1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(602, 4);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -262,11 +266,11 @@ namespace GenerateDataObject
             this.txtPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPreview.IsReplaceMode = false;
-            this.txtPreview.Location = new System.Drawing.Point(4, 19);
+            this.txtPreview.Location = new System.Drawing.Point(4, 43);
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtPreview.Size = new System.Drawing.Size(582, 423);
+            this.txtPreview.Size = new System.Drawing.Size(582, 399);
             this.txtPreview.TabIndex = 1;
             this.txtPreview.Text = "fastColoredTextBox1";
             this.txtPreview.Zoom = 100;
@@ -285,6 +289,24 @@ namespace GenerateDataObject
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preview Mapping";
+            // 
+            // txtMappingPreview
+            // 
+            this.txtMappingPreview.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtMappingPreview.BackBrush = null;
+            this.txtMappingPreview.CharHeight = 14;
+            this.txtMappingPreview.CharWidth = 8;
+            this.txtMappingPreview.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMappingPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtMappingPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMappingPreview.IsReplaceMode = false;
+            this.txtMappingPreview.Location = new System.Drawing.Point(4, 19);
+            this.txtMappingPreview.Name = "txtMappingPreview";
+            this.txtMappingPreview.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtMappingPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtMappingPreview.Size = new System.Drawing.Size(582, 301);
+            this.txtMappingPreview.TabIndex = 1;
+            this.txtMappingPreview.Zoom = 100;
             // 
             // tableLayoutPanel1
             // 
@@ -313,23 +335,22 @@ namespace GenerateDataObject
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1196, 786);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // txtMappingPreview
+            // menuStrip1
             // 
-            this.txtMappingPreview.AutoScrollMinSize = new System.Drawing.Size(27, 14);
-            this.txtMappingPreview.BackBrush = null;
-            this.txtMappingPreview.CharHeight = 14;
-            this.txtMappingPreview.CharWidth = 8;
-            this.txtMappingPreview.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMappingPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtMappingPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMappingPreview.IsReplaceMode = false;
-            this.txtMappingPreview.Location = new System.Drawing.Point(4, 19);
-            this.txtMappingPreview.Name = "txtMappingPreview";
-            this.txtMappingPreview.Paddings = new System.Windows.Forms.Padding(0);
-            this.txtMappingPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtMappingPreview.Size = new System.Drawing.Size(582, 301);
-            this.txtMappingPreview.TabIndex = 1;
-            this.txtMappingPreview.Zoom = 100;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 19);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(582, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.copyToolStripMenuItem.Text = "Copy All To Clipboard";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // frmExecute
             // 
@@ -339,6 +360,7 @@ namespace GenerateDataObject
             this.ClientSize = new System.Drawing.Size(1196, 786);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmExecute";
             this.Text = "Generate DTO";
@@ -348,10 +370,13 @@ namespace GenerateDataObject
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPreview)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtMappingPreview)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -381,5 +406,7 @@ namespace GenerateDataObject
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FastColoredTextBox txtPreview;
         private FastColoredTextBox txtMappingPreview;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
     }
 }
