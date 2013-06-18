@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -130,7 +128,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.02086F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.97914F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.tableLayoutPanel1.Controls.Add(this.btnSpBrowser, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -156,10 +154,10 @@
             this.btnSpBrowser.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSpBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSpBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpBrowser.Location = new System.Drawing.Point(867, 4);
+            this.btnSpBrowser.Location = new System.Drawing.Point(862, 4);
             this.btnSpBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.btnSpBrowser.Name = "btnSpBrowser";
-            this.btnSpBrowser.Size = new System.Drawing.Size(142, 28);
+            this.btnSpBrowser.Size = new System.Drawing.Size(147, 28);
             this.btnSpBrowser.TabIndex = 11;
             this.btnSpBrowser.Text = "Browser";
             this.btnSpBrowser.UseVisualStyleBackColor = false;
@@ -193,10 +191,10 @@
             this.btnCofigBrowser.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCofigBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCofigBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCofigBrowser.Location = new System.Drawing.Point(867, 50);
+            this.btnCofigBrowser.Location = new System.Drawing.Point(862, 50);
             this.btnCofigBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.btnCofigBrowser.Name = "btnCofigBrowser";
-            this.btnCofigBrowser.Size = new System.Drawing.Size(142, 28);
+            this.btnCofigBrowser.Size = new System.Drawing.Size(147, 28);
             this.btnCofigBrowser.TabIndex = 12;
             this.btnCofigBrowser.Text = "Browser";
             this.btnCofigBrowser.UseVisualStyleBackColor = false;
@@ -205,10 +203,10 @@
             // txtSpNamePath
             // 
             this.txtSpNamePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSpNamePath.Location = new System.Drawing.Point(125, 4);
+            this.txtSpNamePath.Location = new System.Drawing.Point(124, 4);
             this.txtSpNamePath.Margin = new System.Windows.Forms.Padding(4);
             this.txtSpNamePath.Name = "txtSpNamePath";
-            this.txtSpNamePath.Size = new System.Drawing.Size(734, 22);
+            this.txtSpNamePath.Size = new System.Drawing.Size(730, 22);
             this.txtSpNamePath.TabIndex = 1;
             this.txtSpNamePath.Text = "D:\\GitScm\\apollo\\apollo-agent\\Website\\SpNames.xml";
             this.txtSpNamePath.TextChanged += new System.EventHandler(this.txtSpNamePath_TextChanged);
@@ -216,10 +214,10 @@
             // txtConnectionStringPath
             // 
             this.txtConnectionStringPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtConnectionStringPath.Location = new System.Drawing.Point(125, 50);
+            this.txtConnectionStringPath.Location = new System.Drawing.Point(124, 50);
             this.txtConnectionStringPath.Margin = new System.Windows.Forms.Padding(4);
             this.txtConnectionStringPath.Name = "txtConnectionStringPath";
-            this.txtConnectionStringPath.Size = new System.Drawing.Size(734, 22);
+            this.txtConnectionStringPath.Size = new System.Drawing.Size(730, 22);
             this.txtConnectionStringPath.TabIndex = 3;
             this.txtConnectionStringPath.Text = "D:\\GitScm\\apollo\\apollo-agent\\Website\\Web.ConnectionString.config";
             this.txtConnectionStringPath.TextChanged += new System.EventHandler(this.txtConnectionStringPath_TextChanged);
@@ -229,7 +227,7 @@
             this.btnLoadSpName.BackColor = System.Drawing.Color.White;
             this.btnLoadSpName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadSpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadSpName.Location = new System.Drawing.Point(125, 97);
+            this.btnLoadSpName.Location = new System.Drawing.Point(124, 97);
             this.btnLoadSpName.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadSpName.Name = "btnLoadSpName";
             this.btnLoadSpName.Size = new System.Drawing.Size(189, 29);
@@ -301,26 +299,10 @@
             // 
             this.gvSpName.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvSpName.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvSpName.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gvSpName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvSpName.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvSpName.DefaultCellStyle = dataGridViewCellStyle4;
             this.gvSpName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvSpName.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.gvSpName.Location = new System.Drawing.Point(4, 19);
