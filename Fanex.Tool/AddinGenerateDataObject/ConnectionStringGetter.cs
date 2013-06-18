@@ -59,6 +59,7 @@ namespace AddinGenerateDataObject
                     foreach (var functionItem in functions)
                     {
                         var settingList = functionItem.Descendants("connectionStrings");
+
                         foreach (var setting in settingList)
                         {
                             var itemAdd = setting.Descendants("add");

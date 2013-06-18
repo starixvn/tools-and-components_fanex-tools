@@ -143,7 +143,7 @@ namespace AddinGenerateDataObject
 
                     for (int i = 0; i < resourceLength; i++)
                     {
-                        var document = XDocument.Load(listOfResouces[i]);
+                        var document = XDocument.Load(GetResourcePath(listOfResouces[i]));
                         var functions = document.Descendants("Function");
 
                         foreach (var functionItem in functions)
@@ -246,6 +246,39 @@ namespace AddinGenerateDataObject
             this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
             Form from = new frmExecute();
             from.Show();
+        }
+
+        /// <summary>
+        /// get resource path point to external config data source
+        /// </summary>
+        /// <param name="config">NameValueCollection config</param>
+        /// <returns>return absolute resource path</returns>
+        private string GetResourcePath(string resourcePath)
+        {
+            if (string.IsNullOrWhiteSpace(resourcePath))
+            {
+                throw new NoNullAllowedException();
+            }
+
+            // check root path http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k%28SYSTEM.IO.PATH.ISPATHROOTED%29;k%28SOLUTIONITEMSPROJECT%29;k%28TargetFrameworkMoniker-%22.NETFRAMEWORK%2cVERSION%3dV4.0%22%29;k%28DevLang-CSHARP%29&rd=true
+            if (!Path.IsPathRooted(resourcePath))
+            {
+                if (resourcePath.StartsWith("~"))
+                {
+                    if (System.Web.HttpContext.Current != null)
+                    {
+                        resourcePath = System.Web.HttpContext.Current.Server.MapPath(resourcePath);
+                    }
+                }
+                else
+                {
+                    // if got the problem with window service
+                    // see http://haacked.com/archive/2004/06/29/706.aspx
+                    resourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, resourcePath);
+                }
+            }
+
+            return resourcePath;
         }
     }
 }

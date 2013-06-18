@@ -168,9 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddinGenerateDataObject.AddIn" />
-    <Content Include="C:\Users\edward.nguyen\Documents\Visual Studio 2010\Addins\AddinGenerateDataObject - For Testing.AddIn">
-      <Link>AddinGenerateDataObject - For Testing.AddIn</Link>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmExecute.resx">
