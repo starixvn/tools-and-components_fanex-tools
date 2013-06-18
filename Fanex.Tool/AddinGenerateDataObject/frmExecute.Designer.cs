@@ -79,7 +79,7 @@ namespace AddinGenerateDataObject
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(541, 156);
+            this.groupBox1.Size = new System.Drawing.Size(427, 156);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SP Details";
@@ -101,7 +101,7 @@ namespace AddinGenerateDataObject
             this.txtClassName.Location = new System.Drawing.Point(153, 116);
             this.txtClassName.Margin = new System.Windows.Forms.Padding(4);
             this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new System.Drawing.Size(381, 22);
+            this.txtClassName.Size = new System.Drawing.Size(266, 22);
             this.txtClassName.TabIndex = 4;
             this.txtClassName.TextChanged += new System.EventHandler(this.txtClassName_TextChanged);
             // 
@@ -133,7 +133,7 @@ namespace AddinGenerateDataObject
             this.txtNamespace.Location = new System.Drawing.Point(153, 73);
             this.txtNamespace.Margin = new System.Windows.Forms.Padding(4);
             this.txtNamespace.Name = "txtNamespace";
-            this.txtNamespace.Size = new System.Drawing.Size(381, 22);
+            this.txtNamespace.Size = new System.Drawing.Size(266, 22);
             this.txtNamespace.TabIndex = 4;
             this.txtNamespace.TextChanged += new System.EventHandler(this.txtNamespace_TextChanged);
             // 
@@ -162,7 +162,7 @@ namespace AddinGenerateDataObject
             this.gvParameter.Location = new System.Drawing.Point(4, 168);
             this.gvParameter.Margin = new System.Windows.Forms.Padding(4);
             this.gvParameter.Name = "gvParameter";
-            this.gvParameter.Size = new System.Drawing.Size(541, 258);
+            this.gvParameter.Size = new System.Drawing.Size(427, 258);
             this.gvParameter.TabIndex = 3;
             // 
             // Column1
@@ -208,7 +208,7 @@ namespace AddinGenerateDataObject
             this.gvColumnInfo.Location = new System.Drawing.Point(4, 481);
             this.gvColumnInfo.Margin = new System.Windows.Forms.Padding(4);
             this.gvColumnInfo.Name = "gvColumnInfo";
-            this.gvColumnInfo.Size = new System.Drawing.Size(541, 273);
+            this.gvColumnInfo.Size = new System.Drawing.Size(427, 273);
             this.gvColumnInfo.TabIndex = 5;
             this.gvColumnInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvColumnInfo_CellValueChanged);
             // 
@@ -246,12 +246,12 @@ namespace AddinGenerateDataObject
             this.groupBox2.Controls.Add(this.txtPreview);
             this.groupBox2.Controls.Add(this.menuStrip1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(553, 4);
+            this.groupBox2.Location = new System.Drawing.Point(439, 4);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.groupBox2, 3);
-            this.groupBox2.Size = new System.Drawing.Size(541, 469);
+            this.groupBox2.Size = new System.Drawing.Size(566, 469);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview DTO";
@@ -270,7 +270,7 @@ namespace AddinGenerateDataObject
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtPreview.Size = new System.Drawing.Size(533, 422);
+            this.txtPreview.Size = new System.Drawing.Size(558, 422);
             this.txtPreview.TabIndex = 1;
             this.txtPreview.Text = "fastColoredTextBox1";
             this.txtPreview.Zoom = 100;
@@ -282,7 +282,7 @@ namespace AddinGenerateDataObject
             this.copyToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(4, 19);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(533, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(558, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -297,12 +297,12 @@ namespace AddinGenerateDataObject
             // 
             this.groupBox3.Controls.Add(this.txtMappingPreview);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(553, 481);
+            this.groupBox3.Location = new System.Drawing.Point(439, 481);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.groupBox3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(541, 324);
+            this.groupBox3.Size = new System.Drawing.Size(566, 324);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preview Mapping";
@@ -321,7 +321,7 @@ namespace AddinGenerateDataObject
             this.txtMappingPreview.Name = "txtMappingPreview";
             this.txtMappingPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtMappingPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtMappingPreview.Size = new System.Drawing.Size(533, 301);
+            this.txtMappingPreview.Size = new System.Drawing.Size(558, 301);
             this.txtMappingPreview.TabIndex = 1;
             this.txtMappingPreview.Zoom = 100;
             // 
@@ -331,8 +331,8 @@ namespace AddinGenerateDataObject
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.1694F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.8306F));
             this.tableLayoutPanel1.Controls.Add(this.btnGenerate, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnExecute, 0, 2);
@@ -349,7 +349,7 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 281F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1098, 809);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1009, 809);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // frmExecute
@@ -357,7 +357,7 @@ namespace AddinGenerateDataObject
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1098, 809);
+            this.ClientSize = new System.Drawing.Size(1009, 809);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;

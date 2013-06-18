@@ -29,6 +29,7 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Deb
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Debug\FastColoredTextBox.pdb
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\bin\Debug\FastColoredTextBox.xml
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateDataObject.frmCriteria.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateDataObject.Form1.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateDataObject.frmExecute.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\GenerateDataObject\obj\x86\Debug\GenerateDataObject.Properties.Resources.resources

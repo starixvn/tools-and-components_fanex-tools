@@ -245,7 +245,7 @@ namespace GenerateDataObject
             //var settingDataSource = this.CacheManager.Get(DbSettingCacheKeyName) as Dictionary<string, DbSetting>;
             _cache.Set<string>("DataMainForm", settingKey, DateTime.MaxValue);
 
-            var form = new frmExecute();
+            var form = new frmCriteria();
             form.ShowDialog();
         }
 

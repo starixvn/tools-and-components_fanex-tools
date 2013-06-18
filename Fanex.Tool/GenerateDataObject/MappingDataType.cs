@@ -58,6 +58,9 @@ namespace GenerateDataObject
                 case "String":
                     alias = "string";
                     break;
+                case "AnsiString":
+                    alias = "string";
+                    break;
                 default:
                     alias = systemType;
                     break;

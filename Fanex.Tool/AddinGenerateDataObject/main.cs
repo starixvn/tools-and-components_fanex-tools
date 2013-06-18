@@ -280,5 +280,24 @@ namespace AddinGenerateDataObject
 
             return resourcePath;
         }
+
+        private void gvSpName_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                gvSpName_CellDoubleClick(sender, e);
+            }
+
+            if (e.ColumnIndex == 3)
+            {
+                string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
+
+                //var settingDataSource = this.CacheManager.Get(DbSettingCacheKeyName) as Dictionary<string, DbSetting>;
+                this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
+                Form from = new frmCriteria();
+                from.Show();
+            }
+        }
+
     }
 }

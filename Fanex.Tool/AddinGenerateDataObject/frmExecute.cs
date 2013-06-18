@@ -75,6 +75,7 @@ namespace AddinGenerateDataObject
         private void frmExecute_Load(object sender, EventArgs e)
         {
             string settingKey = (string)this.CacheManager.Get(Constant.NameKey);
+            string projectName = (string)this.CacheManager.Get(Constant.ProjectNameKey);
 
             var settingDataSource = (Dictionary<string, DbSetting>)this.CacheManager.Get(DbSettingCacheKeyName);
 
@@ -85,7 +86,7 @@ namespace AddinGenerateDataObject
 
             //default
             txtClassName.Text = dbSetting.SpName;
-            txtNamespace.Text = dbSetting.SpName;
+            txtNamespace.Text = projectName;
 
             BindParameterToGridView(dbSetting);
 

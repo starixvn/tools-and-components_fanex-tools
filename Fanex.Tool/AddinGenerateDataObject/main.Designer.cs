@@ -30,14 +30,16 @@
         {
             this.grbLoadSP = new System.Windows.Forms.GroupBox();
             this.gvSpName = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtKey = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.cmboDatabase = new System.Windows.Forms.ToolStripComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grbLoadSP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvSpName)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -67,7 +69,9 @@
             this.gvSpName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvSpName.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2});
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.gvSpName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvSpName.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.gvSpName.Location = new System.Drawing.Point(4, 19);
@@ -77,22 +81,10 @@
             this.gvSpName.ReadOnly = true;
             this.gvSpName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gvSpName.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.gvSpName.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvSpName.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gvSpName.Size = new System.Drawing.Size(896, 305);
             this.gvSpName.TabIndex = 8;
-            this.gvSpName.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Key";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "SP Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.gvSpName.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellClick);
             // 
             // toolStrip1
             // 
@@ -157,6 +149,38 @@
             this.splitContainer1.SplitterDistance = 40;
             this.splitContainer1.TabIndex = 12;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Key";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "SP Name";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column3.HeaderText = "Generate DTO";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Text = "DTO";
+            this.Column3.UseColumnTextForButtonValue = true;
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column4.HeaderText = "Generate Criteria";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Text = "Criteria";
+            this.Column4.UseColumnTextForButtonValue = true;
+            this.Column4.Width = 150;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,9 +211,11 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripComboBox cmboDatabase;
         private System.Windows.Forms.DataGridView gvSpName;
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridViewButtonColumn Column3;
+        private System.Windows.Forms.DataGridViewButtonColumn Column4;
 
     }
 }
