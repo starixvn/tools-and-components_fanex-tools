@@ -16,15 +16,21 @@ namespace AddinGenerateDataObject
     using System.Data.SqlClient;
     using System.Drawing;
     using System.IO;
+    using System.Runtime.Caching;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using FastColoredTextBoxNS;
     using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-    using System.Runtime.Caching;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class frmExecute : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
 
         //styles
@@ -41,7 +47,12 @@ namespace AddinGenerateDataObject
         /// cache manager
         /// </summary>
         private static volatile ObjectCache cacheManager;
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected static object syncRoot = new object();
+
         /// <summary>
         /// Gets the memory cache instance
         /// </summary>
@@ -67,6 +78,9 @@ namespace AddinGenerateDataObject
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public frmExecute()
         {
             InitializeComponent();

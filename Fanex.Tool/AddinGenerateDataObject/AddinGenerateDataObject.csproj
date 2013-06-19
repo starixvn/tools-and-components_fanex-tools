@@ -40,38 +40,14 @@
     <Reference Include="Extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Fanex.Caching">
-      <HintPath>..\GenerateDataObject\bin\Debug\Fanex.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Common">
-      <HintPath>..\GenerateDataObject\bin\Debug\Fanex.Common.dll</HintPath>
-    </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\Dependency\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Database">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\..\..\..\latest-dependencies\Entlib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
       <HintPath>..\..\..\..\latest-dependencies\Entlib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
-      <HintPath>..\GenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -95,6 +71,7 @@
     </Compile>
     <Compile Include="ConnectionStringGetter.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Fanex\Cryptography.cs" />
     <Compile Include="DbSetting.cs" />
     <Compile Include="frmCriteria.cs">
       <SubType>Form</SubType>
@@ -115,6 +92,7 @@
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
     <Compile Include="MappingDataType.cs" />
+    <Compile Include="ProjectModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE">

@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Configuration;
-using System.IO;
-using System.Xml.Linq;
-using System.Collections;
-using System.Runtime.Caching;
+﻿// --------------------------------------------------------------------------
+// <copyright file="main.cs" company="Nexcel Solutions Vietnam">
+// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------
+// <history>
+//   <change who="Edward.Nguyen" date="2013.6.19">Created</change>
+// </history>
 
 namespace AddinGenerateDataObject
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+    using System.Runtime.Caching;
+    using System.Windows.Forms;
+    using System.Xml.Linq;
+
     public partial class main : UserControl
     {
         /// <summary>
@@ -21,6 +26,9 @@ namespace AddinGenerateDataObject
         /// </summary>
         protected static object syncRoot = new object();
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
 
         /// <summary>
@@ -53,6 +61,9 @@ namespace AddinGenerateDataObject
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public main()
         {
             InitializeComponent();
@@ -198,9 +209,9 @@ namespace AddinGenerateDataObject
                     this.CacheManager.Set(DbSettingCacheKeyName, settingDataSource, new CacheItemPolicy());
                     //_cache.Set<Dictionary<string, DbSetting>>(DbSettingCacheKeyName, settingDataSource, DateTime.MaxValue);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
             }
         }

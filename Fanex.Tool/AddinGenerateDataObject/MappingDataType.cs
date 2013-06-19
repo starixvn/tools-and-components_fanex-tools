@@ -6,8 +6,16 @@ using System.Data;
 
 namespace AddinGenerateDataObject
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MappingDataType
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="systemType"></param>
+        /// <returns></returns>
         public static string GetTypeAlias(string systemType)
         {
             string alias = "";

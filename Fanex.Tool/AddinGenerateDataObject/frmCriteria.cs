@@ -16,17 +16,22 @@ namespace AddinGenerateDataObject
     using System.Data.SqlClient;
     using System.Drawing;
     using System.IO;
+    using System.Runtime.Caching;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
-    using Fanex.Caching;
     using FastColoredTextBoxNS;
     using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-    using System.Runtime.Caching;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class frmCriteria : Form
     {
-        protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";        
+        /// <summary>
+        /// 
+        /// </summary>
+        protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
 
         //styles
         TextStyle BlueStyle = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
@@ -42,7 +47,12 @@ namespace AddinGenerateDataObject
         /// cache manager
         /// </summary>
         private static volatile ObjectCache cacheManager;
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected static object syncRoot = new object();
+        
         /// <summary>
         /// Gets the memory cache instance
         /// </summary>
@@ -68,6 +78,9 @@ namespace AddinGenerateDataObject
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public frmCriteria()
         {
             InitializeComponent();

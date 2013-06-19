@@ -4,6 +4,16 @@
         <name>AddinGenerateDataObject</name>
     </assembly>
     <members>
+        <member name="T:AddinGenerateDataObject.main">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.main.DbSettingCacheKeyName">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:AddinGenerateDataObject.main.components">
             <summary> 
             Required designer variable.
@@ -29,6 +39,11 @@
         <member name="F:AddinGenerateDataObject.main.cacheManager">
             <summary>
             cache manager
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:AddinGenerateDataObject.main.IsEncryptedConnection(System.Xml.Linq.XElement)">
@@ -136,9 +151,29 @@
             <param name="isEncryptedConnection">if set to <c>true</c> [is encrypted connection].</param>
             <returns>plain connection string</returns>
         </member>
+        <member name="T:AddinGenerateDataObject.frmExecute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmExecute.DbSettingCacheKeyName">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:AddinGenerateDataObject.frmExecute.cacheManager">
             <summary>
             cache manager
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmExecute.syncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:AddinGenerateDataObject.frmExecute.UpperCaseFirstCharacter(System.String)">
@@ -236,9 +271,29 @@
             Gets the memory cache instance
             </summary>
         </member>
+        <member name="T:AddinGenerateDataObject.frmCriteria">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmCriteria.DbSettingCacheKeyName">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:AddinGenerateDataObject.frmCriteria.cacheManager">
             <summary>
             cache manager
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmCriteria.syncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmCriteria.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:AddinGenerateDataObject.frmCriteria.UpperCaseFirstCharacter(System.String)">
@@ -269,9 +324,96 @@
             Gets the memory cache instance
             </summary>
         </member>
+        <member name="T:AddinGenerateDataObject.MappingDataType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeAlias(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="systemType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Fanex.Common.Cryptography">
+            <summary>
+            test
+            </summary>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.CfsEnCode(System.String)">
+            <summary>
+            One-way encryption password
+            </summary>
+            <param name="codeStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.CfsDeCrypt(System.String)">
+            <summary>
+            Decrypt a non-empty encrypted string
+            </summary>
+            <param name="encryptedText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.CreateMemoryStream(System.Byte[])">
+            <summary>
+            use using keyword to dispose object asap
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.RandomString(System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="length"></param>
+            <param name="noZeroO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.RandomStringNumber(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="length"></param>
+            <returns>a string of a sequence number</returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.CreateSalt">
+            <summary>
+            Create salt with lengh = 10
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fanex.Common.Cryptography.CreateHash(System.String)">
+            <summary>
+            Create hash string with default salt length = 13
+            Hash medthod SHA1
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
         <member name="T:AddinGenerateDataObject.Constant">
             <summary>
             TODO: Update summary.
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Constant.SpNamePathKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Constant.ConfigPathKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Constant.ProjectNameKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Constant.NameKey">
+            <summary>
+            
             </summary>
         </member>
     </members>
