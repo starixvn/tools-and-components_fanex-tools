@@ -82,6 +82,8 @@ namespace AddinGenerateDataObject
                      || string.IsNullOrWhiteSpace(project.ResourcePath))
                     {
                         MessageBox.Show("Can not find Application config or SP name file !");
+                        cmboDatabase.Items.Clear();
+                        gvSpName.Rows.Clear();
                     }
                     else
                     {
@@ -257,6 +259,8 @@ namespace AddinGenerateDataObject
                  || string.IsNullOrWhiteSpace(project.ResourcePath))
                 {
                     MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
                 }
                 else
                 {
@@ -279,6 +283,8 @@ namespace AddinGenerateDataObject
                  || string.IsNullOrWhiteSpace(project.ResourcePath))
                 {
                     MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
                 }
                 else
                 {
@@ -377,6 +383,8 @@ namespace AddinGenerateDataObject
                  || string.IsNullOrWhiteSpace(project.ResourcePath))
                 {
                     MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
                 }
                 else
                 {

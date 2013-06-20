@@ -257,6 +257,7 @@ namespace AddinGenerateDataObject
                 else
                 {
                     MessageBox.Show("Can not find Application config or SP name file !");
+                    txtSettingKey.Clear();
                 }
 
                 if (!_settingDataSource.ContainsKey(txtSettingKey.Text.Trim()))
@@ -271,6 +272,7 @@ namespace AddinGenerateDataObject
             else
             {
                 MessageBox.Show("Can not find Application config or SP name file !");
+                txtSettingKey.Clear();
             }
         }
 
@@ -511,7 +513,7 @@ namespace AddinGenerateDataObject
                     && !string.IsNullOrWhiteSpace(item.Cells[0].Value.ToString()))
                 {
                     string strKey = item.Cells[0].Value.ToString().TrimStart('@');
-                    str.Append("\t\t" + strKey + " = _" + strKey.ToLower() + ",\n");
+                    str.Append("\t" + strKey + " = _" + strKey.ToLower() + ",\n");
                 }
             }
             str.Append("};");
