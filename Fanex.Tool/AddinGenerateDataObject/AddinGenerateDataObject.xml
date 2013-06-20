@@ -4,12 +4,28 @@
         <name>AddinGenerateDataObject</name>
     </assembly>
     <members>
-        <member name="T:AddinGenerateDataObject.main">
+        <member name="T:AddinGenerateDataObject.ProjectModel">
             <summary>
-            
+            TODO: Update summary.
             </summary>
         </member>
-        <member name="F:AddinGenerateDataObject.main.DbSettingCacheKeyName">
+        <member name="T:AddinGenerateDataObject.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.main">
             <summary>
             
             </summary>
@@ -57,21 +73,28 @@
             <summary>
             Returns true if the given file path is a folder.
             </summary>
-            <param name="Path">File path</param>
+            <param name="path">File path</param>
             <returns>True if a folder</returns>
         </member>
-        <member name="M:AddinGenerateDataObject.main.AddDataSourceToCache(System.String,System.String)">
+        <member name="M:AddinGenerateDataObject.main.AddDataSourceToCache(System.String,System.String,System.String,System.String,System.Boolean)">
             <summary>
             Get all db setting configuration from the data source and than add to cache
             </summary>
             <param name="resourcePath">path to resource file for folder</param>        
+            <param name="connectionPath">path to connection string</param>   
         </member>
         <member name="M:AddinGenerateDataObject.main.GetResourcePath(System.String)">
             <summary>
             get resource path point to external config data source
             </summary>
-            <param name="config">NameValueCollection config</param>
+            <param name="resourcePath">NameValueCollection config</param>
             <returns>return absolute resource path</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
+            <summary>
+            Load data from list project to combobox
+            </summary>
+            <param name="listProject"></param>
         </member>
         <member name="P:AddinGenerateDataObject.main.CacheManager">
             <summary>
@@ -156,11 +179,6 @@
             
             </summary>
         </member>
-        <member name="F:AddinGenerateDataObject.frmExecute.DbSettingCacheKeyName">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="F:AddinGenerateDataObject.frmExecute.cacheManager">
             <summary>
             cache manager
@@ -176,11 +194,45 @@
             
             </summary>
         </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
+            <summary>
+            Load data from list project to combobox
+            </summary>
+            <param name="listProject"></param>
+        </member>
         <member name="M:AddinGenerateDataObject.frmExecute.UpperCaseFirstCharacter(System.String)">
             <summary>
             Uppercase the first letter of a word
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.IsFolder(System.String)">
+            <summary>
+            Returns true if the given file path is a folder.
+            </summary>
+            <param name="path">File path</param>
+            <returns>True if a folder</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.AddDataSourceToCache(System.String,System.String)">
+            <summary>
+            Get all db setting configuration from the data source and than add to cache
+            </summary>
+            <param name="resourcePath">path to resource file for folder</param>        
+            <param name="connectionPath">path to connection string</param>   
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.GetResourcePath(System.String)">
+            <summary>
+            get resource path point to external config data source
+            </summary>
+            <param name="resourcePath">NameValueCollection config</param>
+            <returns>return absolute resource path</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.IsEncryptedConnection(System.Xml.Linq.XElement)">
+            <summary>
+            check whether connection was encrypted or not
+            </summary>
+            <param name="element">XElement element</param>
+            <returns>bool value, true if connection requires encrypted</returns>
         </member>
         <member name="F:AddinGenerateDataObject.frmExecute.components">
             <summary>
@@ -264,6 +316,24 @@
         <member name="F:AddinGenerateDataObject.Connect.cacheManager">
             <summary>
             cache manager
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.CreateToolWindow">
+            <summary>
+            Create tool window for generate DTO
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.GetConfigurationPath(EnvDTE.Project,System.String@,System.String@)">
+            <summary>
+            Get Application Config and Resource path from Project
+            </summary>
+            <param name="project"></param>
+            <param name="fileConfigPath"></param>
+            <param name="spNamePath"></param>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.GetProjectConfiguration">
+            <summary>
+            Get all project configuration of current solution
             </summary>
         </member>
         <member name="P:AddinGenerateDataObject.Connect.CacheManager">
@@ -406,12 +476,22 @@
             
             </summary>
         </member>
+        <member name="F:AddinGenerateDataObject.Constant.ProjectKey">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:AddinGenerateDataObject.Constant.ProjectNameKey">
             <summary>
             
             </summary>
         </member>
         <member name="F:AddinGenerateDataObject.Constant.NameKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Constant.DbSettingCacheKeyName">
             <summary>
             
             </summary>

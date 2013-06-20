@@ -18,3 +18,4 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\ob
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\GenerateResource.write.1.tlog
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.pdb
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.Properties.Resources.resources

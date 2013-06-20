@@ -27,11 +27,21 @@ namespace AddinGenerateDataObject
         /// <summary>
         /// 
         /// </summary>
+        public const string ProjectKey = "Addin:GenerateDTO:Project";
+
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ProjectNameKey = "Addin:GenerateDTO:ProjectName";
 
         /// <summary>
         /// 
         /// </summary>
         public const string NameKey = "Addin:GenerateDTO:NameKey";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
     }
 }

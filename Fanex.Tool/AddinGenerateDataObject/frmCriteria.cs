@@ -22,6 +22,7 @@ namespace AddinGenerateDataObject
     using System.Windows.Forms;
     using FastColoredTextBoxNS;
     using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+    using System.Collections;
 
     /// <summary>
     /// 
@@ -52,7 +53,7 @@ namespace AddinGenerateDataObject
         /// 
         /// </summary>
         protected static object syncRoot = new object();
-        
+
         /// <summary>
         /// Gets the memory cache instance
         /// </summary>
@@ -86,12 +87,15 @@ namespace AddinGenerateDataObject
             InitializeComponent();
         }
 
+        string settingKey;
+        Dictionary<string, DbSetting> settingDataSource = new Dictionary<string, DbSetting>();
+
         private void frmCriteria_Load(object sender, EventArgs e)
         {
-            string settingKey = (string)this.CacheManager.Get(Constant.NameKey);
+            settingKey = (string)this.CacheManager.Get(Constant.NameKey);
             string projectName = (string)this.CacheManager.Get(Constant.ProjectNameKey);
 
-            var settingDataSource = (Dictionary<string, DbSetting>)this.CacheManager.Get(DbSettingCacheKeyName);
+            settingDataSource = (Dictionary<string, DbSetting>)this.CacheManager.Get(DbSettingCacheKeyName);
 
             var dbSetting = settingDataSource[settingKey];
 
@@ -105,7 +109,7 @@ namespace AddinGenerateDataObject
 
             BindParameterToGridView(dbSetting);
 
-            txtPreview.Text = GenerateClass(txtNamespace.Text, txtClassName.Text);
+            txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
         }
 
         private void BindParameterToGridView(DbSetting dbSetting)
@@ -130,38 +134,6 @@ namespace AddinGenerateDataObject
                 {
                     gvParameter.Rows.Add(sql.ParameterName, sql.DbType.ToString());
                 }
-            }
-        }
-
-        private void btnGenerate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtClassName.Text != string.Empty)
-                {
-                    DialogResult dr = folderBrowserDialog1.ShowDialog();
-
-                    if (dr == DialogResult.OK)
-                    {
-                        string className = txtClassName.Text.Trim();
-                        string nameSpace = txtNamespace.Text.Trim();
-
-                        string strClassGenerate = GenerateClass(nameSpace, className);
-
-                        SaveClassFile(strClassGenerate, className, folderBrowserDialog1.SelectedPath);
-
-                        MessageBox.Show("OK");
-                        this.Close();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Clas name invalid");
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
             }
         }
 
@@ -191,7 +163,7 @@ namespace AddinGenerateDataObject
             return UpperCaseFirstCharacter(userName);
         }
 
-        private string GenerateClass(string nameSpace, string className)
+        private string GenerateCriteriaClass(string nameSpace, string className)
         {
             try
             {
@@ -224,7 +196,7 @@ namespace AddinGenerateDataObject
 
                         if (!string.IsNullOrWhiteSpace(mapping))
                         {
-                            strSource.Append("\t\t[SpParam(SqlParamName=" + properties + ")]\n");
+                            strSource.Append("\t\t[SpParam(SqlParamName=\"" + properties + "\")]\n");
                             strSource.Append("\t\t public " + type + " " + mapping + " { get; set; }\n\n");
                         }
                         else
@@ -266,12 +238,18 @@ namespace AddinGenerateDataObject
 
         private void txtNamespace_TextChanged(object sender, EventArgs e)
         {
-            txtPreview.Text = GenerateClass(txtNamespace.Text, txtClassName.Text);
+            if (criteriaClassToolStripMenuItem.Checked)
+            {
+                txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
+            }
         }
 
         private void txtClassName_TextChanged(object sender, EventArgs e)
         {
-            txtPreview.Text = GenerateClass(txtNamespace.Text, txtClassName.Text);
+            if (criteriaClassToolStripMenuItem.Checked)
+            {
+                txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
+            }
         }
 
         private void CSharpSyntaxHighlight(TextChangedEventArgs e)
@@ -319,8 +297,140 @@ namespace AddinGenerateDataObject
 
         private void gvParameter_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            txtPreview.Text = GenerateClass(txtNamespace.Text, txtClassName.Text);
+            txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
         }
 
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtClassName.Text != string.Empty)
+                {
+                    DialogResult dr = folderBrowserDialog1.ShowDialog();
+
+                    if (dr == DialogResult.OK)
+                    {
+                        string className = txtClassName.Text.Trim();
+                        string nameSpace = txtNamespace.Text.Trim();
+
+                        string strClassGenerate = GenerateCriteriaClass(nameSpace, className);
+
+                        SaveClassFile(strClassGenerate, className, folderBrowserDialog1.SelectedPath);
+
+                        MessageBox.Show("OK");
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Clas name invalid");
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void hashTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetUnCheckMenuItem();
+            hashTableToolStripMenuItem.Checked = true;
+
+            StringBuilder str = new StringBuilder();
+            str.Append("var param = new Hashtable();\n");
+            foreach (DataGridViewRow item in gvParameter.Rows)
+            {
+                if (item.Cells[0].Value != null
+                    && !string.IsNullOrWhiteSpace(item.Cells[0].Value.ToString()))
+                {
+                    string strKey = item.Cells[0].Value.ToString().TrimStart('@').ToLower();
+                    str.Append("param.Add(\"" + strKey + "\", _" + strKey + ");\n");
+                }
+            }
+
+            txtPreview.Text = str.ToString();
+        }
+
+        private void dynamicObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetUnCheckMenuItem();
+            dynamicObjectToolStripMenuItem.Checked = true;
+
+            StringBuilder str = new StringBuilder();
+            str.Append("var param = new\n");
+            str.Append("{\n");
+            foreach (DataGridViewRow item in gvParameter.Rows)
+            {
+                if (item.Cells[0].Value != null
+                    && !string.IsNullOrWhiteSpace(item.Cells[0].Value.ToString()))
+                {
+                    string strKey = item.Cells[0].Value.ToString().TrimStart('@');
+                    str.Append("\t\t" + strKey + " = _" + strKey.ToLower() + ",\n");
+                }
+            }
+            str.Append("};");
+
+            txtPreview.Text = str.ToString();
+        }
+
+        private void addParameterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetUnCheckMenuItem();
+            addParameterToolStripMenuItem.Checked = true;
+
+            StringBuilder str = new StringBuilder();
+            str.Append("using (ObjectDb db = new ObjectDb(\"" + settingKey + "\"))\n");
+            str.Append("{\n");
+
+            var dbSetting = settingDataSource[settingKey];
+
+            string spName = dbSetting.SpName;
+            SqlDatabase sqlDataBase = new SqlDatabase(dbSetting.ConnectionString);
+
+            DataTable resultField = new DataTable();
+            resultField.Columns.Add("Properties");
+            resultField.Columns.Add("SpField");
+            resultField.Columns.Add("Type");
+            DataTable table = new DataTable();
+            DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(spName);
+            sqlDataBase.DiscoverParameters(dbCommand);
+            int countParam = dbCommand.Parameters.Count;
+            List<SqlParameter> listSqlParameter = new List<SqlParameter>();
+            for (int i = 0; i < countParam; i++)
+            {
+                SqlParameter sql = (SqlParameter)dbCommand.Parameters[i];
+                bool isNotReturnValue = !sql.ParameterName.Equals("@RETURN_VALUE");
+                if (isNotReturnValue)
+                {
+                    if (sql.Direction == ParameterDirection.Input)
+                    {
+                        str.Append("\tdb.AddInParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
+                    }
+                    else
+                    {
+                        str.Append("\tdb.AddOutParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
+                    }
+                }
+            }
+            str.Append("}");
+
+            txtPreview.Text = str.ToString();
+        }
+
+        private void criteriaClassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetUnCheckMenuItem();
+            criteriaClassToolStripMenuItem.Checked = true;
+            txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
+        }
+
+        private void SetUnCheckMenuItem()
+        {
+            criteriaClassToolStripMenuItem.Checked = false;
+            hashTableToolStripMenuItem.Checked = false;
+            dynamicObjectToolStripMenuItem.Checked = false;
+            addParameterToolStripMenuItem.Checked = false;
+        }
     }
 }
