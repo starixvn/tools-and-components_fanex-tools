@@ -278,13 +278,16 @@ namespace AddinGenerateDataObject
         {
             var settingKey = txtSettingKey.Text.Trim();
 
-            if (_settingDataSource.ContainsKey(settingKey))
+           if (_settingDataSource.ContainsKey(settingKey))
             {
                 gvParameter.Rows.Clear();
 
                 var dbSetting = _settingDataSource[settingKey];
 
-                txtSettingKey.Text = dbSetting.SpName;
+                groupBoxParameter.Text = "Parameters of SP : " + dbSetting.SpName;
+                groupColumInfo.Text = "Columns of SP : " + dbSetting.SpName;
+
+                txtSettingKey.Text = settingKey;
                 txtSettingKey.Tag = settingKey;
 
                 //default
@@ -306,7 +309,7 @@ namespace AddinGenerateDataObject
             SetUnCheckMenuItem();
             hashTableToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            groupPreview.Text = "Preview : " + hashTableToolStripMenuItem.Text;
+            modeToolStripMenuItem.Text = "Mode : " + hashTableToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateHashParameter();
         }
@@ -316,7 +319,7 @@ namespace AddinGenerateDataObject
             SetUnCheckMenuItem();
             dynamicObjectToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            groupPreview.Text = "Preview : " + dynamicObjectToolStripMenuItem.Text;
+            modeToolStripMenuItem.Text = "Mode : " + dynamicObjectToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateDynamicParameter();
         }
@@ -326,7 +329,7 @@ namespace AddinGenerateDataObject
             SetUnCheckMenuItem();
             addParameterToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            groupPreview.Text = "Preview : " + addParameterToolStripMenuItem.Text;
+            modeToolStripMenuItem.Text = "Mode : " + addParameterToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateAddParameter();
         }
@@ -336,7 +339,7 @@ namespace AddinGenerateDataObject
             SetUnCheckMenuItem();
             criteriaClassToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            groupPreview.Text = "Preview : " + criteriaClassToolStripMenuItem.Text;
+            modeToolStripMenuItem.Text = "Mode : " + criteriaClassToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
         }
@@ -346,7 +349,7 @@ namespace AddinGenerateDataObject
             SetUnCheckMenuItem();
             dTOClassToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(true);
-            groupPreview.Text = "Preview : " + dTOClassToolStripMenuItem.Text;
+            modeToolStripMenuItem.Text = "Mode : " + dTOClassToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
         }

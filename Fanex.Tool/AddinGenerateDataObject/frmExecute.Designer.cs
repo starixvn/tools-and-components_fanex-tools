@@ -29,14 +29,14 @@ namespace AddinGenerateDataObject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExecute));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboProject = new System.Windows.Forms.ComboBox();
@@ -73,6 +73,7 @@ namespace AddinGenerateDataObject
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.copyAllToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxParameter = new System.Windows.Forms.GroupBox();
             this.groupColumInfo = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
@@ -84,6 +85,7 @@ namespace AddinGenerateDataObject
             ((System.ComponentModel.ISupportInitialize)(this.txtMappingPreview)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.groupBoxParameter.SuspendLayout();
             this.groupColumInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -202,29 +204,27 @@ namespace AddinGenerateDataObject
             // 
             this.gvParameter.AllowUserToAddRows = false;
             this.gvParameter.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Menu;
-            this.gvParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
-            this.gvParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Menu;
+            this.gvParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.gvParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column5});
-            this.gvParameter.Location = new System.Drawing.Point(4, 163);
+            this.gvParameter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvParameter.Location = new System.Drawing.Point(3, 21);
             this.gvParameter.Margin = new System.Windows.Forms.Padding(4);
             this.gvParameter.Name = "gvParameter";
             this.gvParameter.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvParameter.Size = new System.Drawing.Size(427, 337);
+            this.gvParameter.Size = new System.Drawing.Size(423, 315);
             this.gvParameter.TabIndex = 3;
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle10;
             this.Column1.FillWeight = 73.85786F;
             this.Column1.HeaderText = "Parameter";
             this.Column1.Name = "Column1";
@@ -232,8 +232,8 @@ namespace AddinGenerateDataObject
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column2.FillWeight = 152.2843F;
             this.Column2.HeaderText = "Data Type";
             this.Column2.Name = "Column2";
@@ -242,8 +242,8 @@ namespace AddinGenerateDataObject
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle12;
             this.Column5.FillWeight = 73.85786F;
             this.Column5.HeaderText = "Value";
             this.Column5.Name = "Column5";
@@ -266,8 +266,8 @@ namespace AddinGenerateDataObject
             // 
             this.gvColumnInfo.AllowUserToAddRows = false;
             this.gvColumnInfo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Menu;
-            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Menu;
+            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.gvColumnInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvColumnInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvColumnInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -286,24 +286,24 @@ namespace AddinGenerateDataObject
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn1.HeaderText = "Column Name";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle15;
             this.Column3.HeaderText = "Mapping Column";
             this.Column3.Name = "Column3";
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn2.HeaderText = "Data Type";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
@@ -321,7 +321,6 @@ namespace AddinGenerateDataObject
             this.groupPreview.Size = new System.Drawing.Size(575, 541);
             this.groupPreview.TabIndex = 7;
             this.groupPreview.TabStop = false;
-            this.groupPreview.Text = "Preview : DTO Class";
             // 
             // txtPreview
             // 
@@ -345,6 +344,7 @@ namespace AddinGenerateDataObject
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modeToolStripMenuItem,
             this.copyToolStripMenuItem,
@@ -358,6 +358,7 @@ namespace AddinGenerateDataObject
             // 
             // modeToolStripMenuItem
             // 
+            this.modeToolStripMenuItem.AutoSize = false;
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dTOClassToolStripMenuItem,
             this.criteriaClassToolStripMenuItem,
@@ -366,8 +367,8 @@ namespace AddinGenerateDataObject
             this.addParameterToolStripMenuItem});
             this.modeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modeToolStripMenuItem.Image")));
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.modeToolStripMenuItem.Text = "Mode";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(150, 20);
+            this.modeToolStripMenuItem.Text = "Mode : DTO Class";
             // 
             // dTOClassToolStripMenuItem
             // 
@@ -479,9 +480,9 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.82907F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.17093F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBoxParameter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupColumInfo, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gvParameter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupPreview, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.previewMappingGroup, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnExecute, 0, 2);
@@ -497,6 +498,17 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 854);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
+            // groupBoxParameter
+            // 
+            this.groupBoxParameter.Controls.Add(this.gvParameter);
+            this.groupBoxParameter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxParameter.Location = new System.Drawing.Point(3, 162);
+            this.groupBoxParameter.Name = "groupBoxParameter";
+            this.groupBoxParameter.Size = new System.Drawing.Size(429, 339);
+            this.groupBoxParameter.TabIndex = 7;
+            this.groupBoxParameter.TabStop = false;
+            this.groupBoxParameter.Text = "Parameter Infomation";
+            // 
             // groupColumInfo
             // 
             this.groupColumInfo.Controls.Add(this.gvColumnInfo);
@@ -506,12 +518,13 @@ namespace AddinGenerateDataObject
             this.groupColumInfo.Size = new System.Drawing.Size(429, 299);
             this.groupColumInfo.TabIndex = 7;
             this.groupColumInfo.TabStop = false;
+            this.groupColumInfo.Text = "Column Information";
             // 
             // frmExecute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(199)))), ((int)(((byte)(216)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(225)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1018, 854);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -537,6 +550,7 @@ namespace AddinGenerateDataObject
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBoxParameter.ResumeLayout(false);
             this.groupColumInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -580,5 +594,6 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.ToolStripMenuItem addParameterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dTOClassToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupColumInfo;
+        private System.Windows.Forms.GroupBox groupBoxParameter;
     }
 }
