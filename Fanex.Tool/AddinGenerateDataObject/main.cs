@@ -341,15 +341,14 @@ namespace AddinGenerateDataObject
             {
                 gvSpName_CellDoubleClick(sender, e);
             }
-
-            if (e.ColumnIndex == 3)
-            {
-                string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
-                this.CacheManager.Set(Constant.ProjectNameKey, cmboProject.SelectedItem.ToString(), new CacheItemPolicy());
-                this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
-                Form from = new frmCriteria();
-                from.Show();
-            }
+            //if (e.ColumnIndex == 3)
+            //{
+            //    string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
+            //    this.CacheManager.Set(Constant.ProjectNameKey, cmboProject.SelectedItem.ToString(), new CacheItemPolicy());
+            //    this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
+            //    Form from = new frmCriteria();
+            //    from.Show();
+            //}
         }
 
         /// <summary>

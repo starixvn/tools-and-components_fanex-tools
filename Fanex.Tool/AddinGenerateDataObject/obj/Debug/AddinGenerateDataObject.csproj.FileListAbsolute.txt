@@ -11,7 +11,6 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bi
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.xml
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\ResolveAssemblyReference.cache
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.ResolveComReference.cache
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.frmCriteria.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.frmExecute.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.main.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\GenerateResource.read.1.tlog

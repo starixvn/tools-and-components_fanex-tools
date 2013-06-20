@@ -194,31 +194,11 @@
             
             </summary>
         </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
-            <summary>
-            Load data from list project to combobox
-            </summary>
-            <param name="listProject"></param>
-        </member>
         <member name="M:AddinGenerateDataObject.frmExecute.UpperCaseFirstCharacter(System.String)">
             <summary>
             Uppercase the first letter of a word
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.IsFolder(System.String)">
-            <summary>
-            Returns true if the given file path is a folder.
-            </summary>
-            <param name="path">File path</param>
-            <returns>True if a folder</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.AddDataSourceToCache(System.String,System.String)">
-            <summary>
-            Get all db setting configuration from the data source and than add to cache
-            </summary>
-            <param name="resourcePath">path to resource file for folder</param>        
-            <param name="connectionPath">path to connection string</param>   
         </member>
         <member name="M:AddinGenerateDataObject.frmExecute.GetResourcePath(System.String)">
             <summary>
@@ -227,12 +207,25 @@
             <param name="resourcePath">NameValueCollection config</param>
             <returns>return absolute resource path</returns>
         </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.IsFolder(System.String)">
+            <summary>
+            Returns true if the given file path is a folder.
+            </summary>
+            <param name="path">File path</param>
+            <returns>True if a folder</returns>
+        </member>
         <member name="M:AddinGenerateDataObject.frmExecute.IsEncryptedConnection(System.Xml.Linq.XElement)">
             <summary>
             check whether connection was encrypted or not
             </summary>
             <param name="element">XElement element</param>
             <returns>bool value, true if connection requires encrypted</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel},System.String)">
+            <summary>
+            Load data from list project to combobox
+            </summary>
+            <param name="listProject"></param>
         </member>
         <member name="F:AddinGenerateDataObject.frmExecute.components">
             <summary>
@@ -337,59 +330,6 @@
             </summary>
         </member>
         <member name="P:AddinGenerateDataObject.Connect.CacheManager">
-            <summary>
-            Gets the memory cache instance
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.frmCriteria">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmCriteria.DbSettingCacheKeyName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmCriteria.cacheManager">
-            <summary>
-            cache manager
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmCriteria.syncRoot">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmCriteria.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmCriteria.UpperCaseFirstCharacter(System.String)">
-            <summary>
-            Uppercase the first letter of a word
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmCriteria.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmCriteria.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmCriteria.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:AddinGenerateDataObject.frmCriteria.CacheManager">
             <summary>
             Gets the memory cache instance
             </summary>

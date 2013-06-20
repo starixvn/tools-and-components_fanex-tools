@@ -73,12 +73,6 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Fanex\Cryptography.cs" />
     <Compile Include="DbSetting.cs" />
-    <Compile Include="frmCriteria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCriteria.Designer.cs">
-      <DependentUpon>frmCriteria.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmExecute.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,9 +153,6 @@
     <Content Include="AddinGenerateDataObject.AddIn" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmCriteria.resx">
-      <DependentUpon>frmCriteria.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmExecute.resx">
       <DependentUpon>frmExecute.cs</DependentUpon>
     </EmbeddedResource>
