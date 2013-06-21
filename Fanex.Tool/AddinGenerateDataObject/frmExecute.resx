@@ -170,17 +170,6 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>186, 17</value>
   </metadata>
-  <data name="modeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAA+0lEQVQ4T6XRT0sCQRjH8dmj
-        b0J9BWrUSTp26wXoUeolGL4FoYt3IYRugpfUsjbsDyuVuQSdPInQNd/D+n1iB6ZlVtzdgc8yM+zz22dm
-        leM4Wh4DFIy9OBOUgiBQ5mYNHTSMPTHEGLe4gxRfw40GtHGKrrEX5xFlM0DabiGHGxRhFliZAXVIobQ7
-        wjn+vRzxjIoZcAn5usxP0AvnwoW0PMUTXtCHpwPOcAUplHUT97gI1zYzHEQvMbEsAR841AHyXx9gO+sr
-        PEjLb3jHHHLhfpYOvpRSR6kD9EgUEBlrVHXArrMu4OObgiVW+MEnfvfuwDI2OP4LkEd6gdoCu9+UfiRx
-        YIEAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="copyToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -257,6 +246,9 @@
         yMi59Ecjv0RQ0ZSYUlPxv/w8l1CTKZoB+QEseEkexmrKDwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>301, 17</value>
+  </metadata>
   <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>301, 17</value>
   </metadata>

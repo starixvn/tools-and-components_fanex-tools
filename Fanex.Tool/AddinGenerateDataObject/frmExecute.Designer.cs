@@ -29,15 +29,15 @@ namespace AddinGenerateDataObject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExecute));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboProject = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,12 +60,7 @@ namespace AddinGenerateDataObject
             this.groupPreview = new System.Windows.Forms.GroupBox();
             this.txtPreview = new FastColoredTextBoxNS.FastColoredTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dTOClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.criteriaClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hashTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dynamicObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmboMode = new System.Windows.Forms.ToolStripComboBox();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewMappingGroup = new System.Windows.Forms.GroupBox();
@@ -204,8 +199,8 @@ namespace AddinGenerateDataObject
             // 
             this.gvParameter.AllowUserToAddRows = false;
             this.gvParameter.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Menu;
-            this.gvParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Menu;
+            this.gvParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.gvParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -223,8 +218,8 @@ namespace AddinGenerateDataObject
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle18;
             this.Column1.FillWeight = 73.85786F;
             this.Column1.HeaderText = "Parameter";
             this.Column1.Name = "Column1";
@@ -232,8 +227,8 @@ namespace AddinGenerateDataObject
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle19;
             this.Column2.FillWeight = 152.2843F;
             this.Column2.HeaderText = "Data Type";
             this.Column2.Name = "Column2";
@@ -242,8 +237,8 @@ namespace AddinGenerateDataObject
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle20;
             this.Column5.FillWeight = 73.85786F;
             this.Column5.HeaderText = "Value";
             this.Column5.Name = "Column5";
@@ -269,8 +264,8 @@ namespace AddinGenerateDataObject
             // 
             this.gvColumnInfo.AllowUserToAddRows = false;
             this.gvColumnInfo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Menu;
-            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Menu;
+            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.gvColumnInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvColumnInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvColumnInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -289,24 +284,24 @@ namespace AddinGenerateDataObject
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewTextBoxColumn1.HeaderText = "Column Name";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle23;
             this.Column3.HeaderText = "Mapping Column";
             this.Column3.Name = "Column3";
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewTextBoxColumn2.HeaderText = "Data Type";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
@@ -335,11 +330,11 @@ namespace AddinGenerateDataObject
             this.txtPreview.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPreview.IsReplaceMode = false;
-            this.txtPreview.Location = new System.Drawing.Point(4, 46);
+            this.txtPreview.Location = new System.Drawing.Point(4, 49);
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtPreview.Size = new System.Drawing.Size(567, 491);
+            this.txtPreview.Size = new System.Drawing.Size(567, 488);
             this.txtPreview.TabIndex = 6;
             this.txtPreview.Text = "fastColoredTextBox1";
             this.txtPreview.Zoom = 100;
@@ -349,77 +344,34 @@ namespace AddinGenerateDataObject
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modeToolStripMenuItem,
+            this.cmboMode,
             this.copyToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(4, 22);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(567, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(567, 27);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // modeToolStripMenuItem
+            // cmboMode
             // 
-            this.modeToolStripMenuItem.AutoSize = false;
-            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dTOClassToolStripMenuItem,
-            this.criteriaClassToolStripMenuItem,
-            this.hashTableToolStripMenuItem,
-            this.dynamicObjectToolStripMenuItem,
-            this.addParameterToolStripMenuItem});
-            this.modeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modeToolStripMenuItem.Image")));
-            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(150, 20);
-            this.modeToolStripMenuItem.Text = "Mode : DTO Class";
-            // 
-            // dTOClassToolStripMenuItem
-            // 
-            this.dTOClassToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
-            this.dTOClassToolStripMenuItem.Checked = true;
-            this.dTOClassToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.dTOClassToolStripMenuItem.Name = "dTOClassToolStripMenuItem";
-            this.dTOClassToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.dTOClassToolStripMenuItem.Text = "DTO Class";
-            this.dTOClassToolStripMenuItem.Click += new System.EventHandler(this.dTOClassToolStripMenuItem_Click);
-            // 
-            // criteriaClassToolStripMenuItem
-            // 
-            this.criteriaClassToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
-            this.criteriaClassToolStripMenuItem.Name = "criteriaClassToolStripMenuItem";
-            this.criteriaClassToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.criteriaClassToolStripMenuItem.Text = "Criteria Class";
-            this.criteriaClassToolStripMenuItem.Click += new System.EventHandler(this.criteriaClassToolStripMenuItem_Click);
-            // 
-            // hashTableToolStripMenuItem
-            // 
-            this.hashTableToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
-            this.hashTableToolStripMenuItem.Name = "hashTableToolStripMenuItem";
-            this.hashTableToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.hashTableToolStripMenuItem.Text = "HashTable";
-            this.hashTableToolStripMenuItem.Click += new System.EventHandler(this.hashTableToolStripMenuItem_Click);
-            // 
-            // dynamicObjectToolStripMenuItem
-            // 
-            this.dynamicObjectToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
-            this.dynamicObjectToolStripMenuItem.Name = "dynamicObjectToolStripMenuItem";
-            this.dynamicObjectToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.dynamicObjectToolStripMenuItem.Text = "Dynamic Object";
-            this.dynamicObjectToolStripMenuItem.Click += new System.EventHandler(this.dynamicObjectToolStripMenuItem_Click);
-            // 
-            // addParameterToolStripMenuItem
-            // 
-            this.addParameterToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(170)))), ((int)(((byte)(193)))));
-            this.addParameterToolStripMenuItem.Name = "addParameterToolStripMenuItem";
-            this.addParameterToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.addParameterToolStripMenuItem.Text = "Add Parameter";
-            this.addParameterToolStripMenuItem.Click += new System.EventHandler(this.addParameterToolStripMenuItem_Click);
+            this.cmboMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboMode.Items.AddRange(new object[] {
+            "DTO Class",
+            "Creteria Class",
+            "Hash Table",
+            "Dynamic Object",
+            "Add Parameter"});
+            this.cmboMode.Name = "cmboMode";
+            this.cmboMode.Size = new System.Drawing.Size(121, 23);
+            this.cmboMode.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(135, 23);
             this.copyToolStripMenuItem.Text = "Copy To Clipboard";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -427,7 +379,7 @@ namespace AddinGenerateDataObject
             // 
             this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(80, 23);
             this.saveToolStripMenuItem.Text = "Save File";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -595,13 +547,8 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.TextBox txtSettingKey;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmboProject;
-        private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem criteriaClassToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hashTableToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dynamicObjectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addParameterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dTOClassToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupColumInfo;
         private System.Windows.Forms.GroupBox groupBoxParameter;
+        private System.Windows.Forms.ToolStripComboBox cmboMode;
     }
 }

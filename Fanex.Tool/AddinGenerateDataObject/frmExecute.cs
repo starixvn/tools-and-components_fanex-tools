@@ -129,6 +129,8 @@ namespace AddinGenerateDataObject
             gvColumnInfo.Enabled = false;
 
             txtMappingPreview.Language = Language.HTML;
+
+            cmboMode.SelectedIndex = 0;
         }
 
         private void btnExecute_Click(object sender, EventArgs e)
@@ -280,7 +282,7 @@ namespace AddinGenerateDataObject
         {
             var settingKey = txtSettingKey.Text.Trim();
 
-           if (_settingDataSource.ContainsKey(settingKey))
+            if (_settingDataSource.ContainsKey(settingKey))
             {
                 gvParameter.Rows.Clear();
 
@@ -306,52 +308,52 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private void hashTableToolStripMenuItem_Click(object sender, EventArgs e)
+        private void hashTableToolStripMenuItem_Click()
         {
             SetUnCheckMenuItem();
-            hashTableToolStripMenuItem.Checked = true;
+            //hashTableToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            modeToolStripMenuItem.Text = "Mode : " + hashTableToolStripMenuItem.Text;
+            //modeToolStripMenuItem.Text = "Mode : " + hashTableToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateHashParameter();
         }
 
-        private void dynamicObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dynamicObjectToolStripMenuItem_Click()
         {
             SetUnCheckMenuItem();
-            dynamicObjectToolStripMenuItem.Checked = true;
+            //dynamicObjectToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            modeToolStripMenuItem.Text = "Mode : " + dynamicObjectToolStripMenuItem.Text;
+            //modeToolStripMenuItem.Text = "Mode : " + dynamicObjectToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateDynamicParameter();
         }
 
-        private void addParameterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addParameterToolStripMenuItem_Click()
         {
             SetUnCheckMenuItem();
-            addParameterToolStripMenuItem.Checked = true;
+            //addParameterToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            modeToolStripMenuItem.Text = "Mode : " + addParameterToolStripMenuItem.Text;
+            //modeToolStripMenuItem.Text = "Mode : " + addParameterToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateAddParameter();
         }
 
-        private void criteriaClassToolStripMenuItem_Click(object sender, EventArgs e)
+        private void criteriaClassToolStripMenuItem_Click()
         {
             SetUnCheckMenuItem();
-            criteriaClassToolStripMenuItem.Checked = true;
+            //criteriaClassToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(false);
-            modeToolStripMenuItem.Text = "Mode : " + criteriaClassToolStripMenuItem.Text;
+            //modeToolStripMenuItem.Text = "Mode : " + criteriaClassToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
         }
 
-        private void dTOClassToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dTOClassToolStripMenuItem_Click()
         {
             SetUnCheckMenuItem();
-            dTOClassToolStripMenuItem.Checked = true;
+            //dTOClassToolStripMenuItem.Checked = true;
             EnableGenerateDTOControl(true);
-            modeToolStripMenuItem.Text = "Mode : " + dTOClassToolStripMenuItem.Text;
+            //modeToolStripMenuItem.Text = "Mode : " + dTOClassToolStripMenuItem.Text;
 
             txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
         }
@@ -870,11 +872,11 @@ namespace AddinGenerateDataObject
 
         private void SetUnCheckMenuItem()
         {
-            criteriaClassToolStripMenuItem.Checked = false;
-            hashTableToolStripMenuItem.Checked = false;
-            dynamicObjectToolStripMenuItem.Checked = false;
-            addParameterToolStripMenuItem.Checked = false;
-            dTOClassToolStripMenuItem.Checked = false;
+            //criteriaClassToolStripMenuItem.Checked = false;
+            //hashTableToolStripMenuItem.Checked = false;
+            //dynamicObjectToolStripMenuItem.Checked = false;
+            //addParameterToolStripMenuItem.Checked = false;
+            //dTOClassToolStripMenuItem.Checked = false;
         }
 
         private void EnableGenerateDTOControl(bool enable)
@@ -896,5 +898,29 @@ namespace AddinGenerateDataObject
         }
 
         #endregion
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+            int index = cmboMode.SelectedIndex;
+
+            switch (index)
+            {
+                case 1:
+                    criteriaClassToolStripMenuItem_Click();
+                    break;
+                case 2:
+                    dynamicObjectToolStripMenuItem_Click();
+                    break;
+                case 3:
+                    hashTableToolStripMenuItem_Click();
+                    break;
+                case 4:
+                    addParameterToolStripMenuItem_Click();
+                    break;
+                default:
+                    dTOClassToolStripMenuItem_Click();
+                    break;
+            }
+        }
     }
 }

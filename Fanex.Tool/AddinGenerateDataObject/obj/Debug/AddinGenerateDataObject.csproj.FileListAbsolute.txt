@@ -1,6 +1,4 @@
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.dll
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.pdb
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
@@ -18,3 +16,5 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\ob
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\GenerateResource.write.1.tlog
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.pdb
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.pdb
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
