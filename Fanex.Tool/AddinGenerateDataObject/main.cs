@@ -371,6 +371,11 @@ namespace AddinGenerateDataObject
                     cmboProject.SelectedItem = item;
                 }
             }
+
+            if (cmboProject.Items.Count > 0 && cmboProject.SelectedIndex == -1)
+            {
+                cmboProject.SelectedIndex = 0;
+            }
         }
 
         private void cmboProject_SelectedIndexChanged(object sender, EventArgs e)

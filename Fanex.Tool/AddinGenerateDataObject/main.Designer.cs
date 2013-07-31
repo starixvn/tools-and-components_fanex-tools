@@ -104,6 +104,7 @@
             this.gvSpName.Size = new System.Drawing.Size(904, 303);
             this.gvSpName.TabIndex = 8;
             this.gvSpName.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellClick);
+            this.gvSpName.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellDoubleClick);
             // 
             // Column1
             // 
