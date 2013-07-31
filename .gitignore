@@ -27,8 +27,3 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 *.vssscc
 $tf*/
-Sunplus.Agent.Model.dll
-Dependencies/Fanex.Age.UI.Forecast.dll
-Dependencies/Fanex.Age.UI.TotalBets.dll
-
-/Website/Views/Reports/AgentOutstanding.cshtml

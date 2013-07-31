@@ -375,14 +375,15 @@ namespace AddinGenerateDataObject
                 strSource.Append("// <history>\n");
                 strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
                 strSource.Append("// </history>\n\n");
-
-                strSource.Append("using System;\n");
-                strSource.Append("using Fanex.NAP.Framework.Data;\n\n");
+                
+                //strSource.Append("using Fanex.NAP.Framework.Data;\n\n");
                 if (nameSpace != string.Empty)
                 {
                     strSource.Append("namespace " + nameSpace + "\n");
                 }
                 strSource.Append("{\n");
+                strSource.Append("\tusing System;\n");
+                strSource.Append("\tusing Fanex.NAP.Framework.Data;\n\n");
                 strSource.Append("\tpublic class " + className + " : CriteriaBase\n");
                 strSource.Append("\t{\n");
                 foreach (DataGridViewRow item in gvParameter.Rows)
@@ -441,12 +442,13 @@ namespace AddinGenerateDataObject
                 strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
                 strSource.Append("// </history>\n\n");
 
-                strSource.Append("using System;\n\n");
+                //strSource.Append("using System;\n\n");
                 if (nameSpace != string.Empty)
                 {
                     strSource.Append("namespace " + nameSpace + "\n");
                 }
                 strSource.Append("{\n");
+                strSource.Append("\tusing System;\n\n");
                 strSource.Append("\tpublic class " + className + "\n");
                 strSource.Append("\t{\n");
                 int count = 0;
