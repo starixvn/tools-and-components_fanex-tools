@@ -12,7 +12,7 @@ namespace AddinGenerateDataObject
     public class MappingDataType
     {
         /// <summary>
-        /// 
+        /// Mapping Sql Data Type to C# Data Type
         /// </summary>
         /// <param name="systemType"></param>
         /// <returns></returns>
@@ -108,6 +108,83 @@ namespace AddinGenerateDataObject
                     break;
             }
             return alias;
+        }
+
+        public static string GetConvert(string type)
+        {
+            string strConvert = "";
+
+            switch (type)
+            {
+                case "string":
+                    strConvert = "ToString";
+                    break;
+                case "byte[]":
+                    strConvert = "ToByteArray";
+                    break;
+                case "byte":
+                    strConvert = "ToByte";
+                    break;
+                case "bool":
+                    strConvert = "ToBool";
+                    break;
+                case "decimal":
+                    strConvert = "ToDecimal";
+                    break;
+                case "DateTime":
+                    strConvert = "ToDateTime";
+                    break;
+                case "double":
+                    strConvert = "ToDouble";
+                    break;
+                case "Guid":
+                    strConvert = "To<Guid>";
+                    break;
+                case "short":
+                    strConvert = "ToShort";
+                    break;
+                case "int":
+                    strConvert = "ToInt";
+                    break;
+                case "long":
+                    strConvert = "ToLong";
+                    break;
+                case "object":
+                    strConvert = "To<object>";
+                    break;
+                case "sbyte":
+                    strConvert = "To<sbyte>";
+                    break;
+                case "float":
+                    strConvert = "ToFloat";
+                    break;
+                case "ushort":
+                    strConvert = "To<ushort>";
+                    break;
+                case "uint":
+                    strConvert = "To<uint>";
+                    break;
+                case "ulong":
+                    strConvert = "To<ulong>";
+                    break;
+                case "char":
+                    strConvert = "ToChar";
+                    break;
+                case "Xml":
+                    strConvert = "To<Xml>";
+                    break;
+                case "DateTime2":
+                    strConvert = "ToDateTime2";
+                    break;
+                case "DateTimeOffset":
+                    strConvert = "To<DateTimeOffset>";
+                    break;
+                default:
+                    strConvert = type;
+                    break;
+            }
+
+            return strConvert;
         }
     }
 }

@@ -89,6 +89,8 @@ namespace AddinGenerateDataObject
 
         private Dictionary<string, DbSetting> _settingDataSource = new Dictionary<string, DbSetting>();
 
+        private DataSet dataSet = new DataSet();
+
         #endregion
 
         #region Ctor
@@ -156,25 +158,30 @@ namespace AddinGenerateDataObject
                     }
                 }
 
-                var table = sqlDataBase.ExecuteDataSet(dbCommand).Tables[0];
-
-                foreach (DataColumn item in table.Columns)
+                this.dataSet = sqlDataBase.ExecuteDataSet(dbCommand);
+                cmboIndexTable.Items.Clear();
+                for (int i = 0; i < this.dataSet.Tables.Count; i++)
                 {
-                    string mappingName = string.Empty;
-                    string columnName = item.ColumnName;
-                    if (dbSetting.CustomMappingColumns.Contains(columnName))
-                    {
-                        mappingName = dbSetting.CustomMappingColumns[columnName] as string;
-                    }
-
-                    gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name);
+                    cmboIndexTable.Items.Add(i);
+                }
+                if (dataSet.Tables.Count > 1)
+                {
+                    label5.Visible = true;
+                    cmboIndexTable.Visible = true;
+                    cmboIndexTable.SelectedIndex = 0;
+                }
+                else
+                {
+                    label5.Visible = false;
+                    cmboIndexTable.Visible = false;
                 }
 
-                txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
-                txtMappingPreview.Text = GenerateMappingPreview();
+                var table = dataSet.Tables[0];
+                BindingColumnInformation(table, dbSetting);
 
                 // enable
                 gvColumnInfo.Enabled = true;
+                cmboMode.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -182,20 +189,78 @@ namespace AddinGenerateDataObject
             }
         }
 
+        private void BindingColumnInformation(DataTable table, DbSetting dbSetting = null)
+        {
+            gvColumnInfo.Rows.Clear();
+
+            if (dbSetting == null)
+            {
+                string settingKey = txtSettingKey.Tag.ToString();
+                dbSetting = _settingDataSource[settingKey];
+            }
+
+            foreach (DataColumn item in table.Columns)
+            {
+                string mappingName = string.Empty;
+                string columnName = item.ColumnName;
+
+                //if (dbSetting.CustomMappingColumns.Contains(columnName))
+                //{
+                //    mappingName = dbSetting.CustomMappingColumns[columnName] as string;
+                //}
+
+                foreach (DictionaryEntry itemMapColumn in dbSetting.CustomMappingColumns)
+                {
+                    if (Equals(itemMapColumn.Key.ToString().Split(';')[0], columnName))
+                    {
+                        mappingName = itemMapColumn.Value as string;
+                    }
+                }
+
+                gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name);
+            }
+
+            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+            txtMappingPreview.Text = GenerateMappingPreview();
+        }
+
         private void txtNamespace_TextChanged(object sender, EventArgs e)
         {
             txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+            cmboMode.SelectedIndex = 0;
         }
 
         private void txtClassName_TextChanged(object sender, EventArgs e)
         {
-            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+            if (cmboMode.Items.Count > 5)
+            {
+                if (cmboMode.SelectedIndex != 5)
+                {
+                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+                    cmboMode.SelectedIndex = 0;
+                }
+                else
+                {
+                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+                }
+            }
         }
 
         private void gvColumnInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
-            txtMappingPreview.Text = GenerateMappingPreview();
+            if (cmboMode.Items.Count > 5)
+            {
+                if (cmboMode.SelectedIndex != 5)
+                {
+                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+                    cmboMode.SelectedIndex = 0;
+                }
+                else
+                {
+                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+                }
+                txtMappingPreview.Text = GenerateMappingPreview();
+            }
         }
 
         private void txtPreview_TextChanging(object sender, TextChangedEventArgs e)
@@ -358,6 +423,14 @@ namespace AddinGenerateDataObject
             txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
         }
 
+        private void readIDataReaderToolStripMenuItem_Click()
+        {
+            SetUnCheckMenuItem();
+            EnableGenerateDTOControl(true);
+
+            txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+        }
+
         #endregion
 
         #region Generate
@@ -375,7 +448,7 @@ namespace AddinGenerateDataObject
                 strSource.Append("// <history>\n");
                 strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
                 strSource.Append("// </history>\n\n");
-                
+
                 //strSource.Append("using Fanex.NAP.Framework.Data;\n\n");
                 if (nameSpace != string.Empty)
                 {
@@ -571,6 +644,8 @@ namespace AddinGenerateDataObject
             try
             {
                 string _format = "<Mapping DataField=\"{0}\" ObjectProperty=\"{1}\"/>";
+                string _formatMulti = "<Mapping DataField=\"{0}\" ObjectProperty=\"{1}\" Object=\"{2}\"/>";
+
                 StringBuilder strSource = new StringBuilder();
                 foreach (DataGridViewRow item in gvColumnInfo.Rows)
                 {
@@ -580,7 +655,14 @@ namespace AddinGenerateDataObject
                         string mapping = item.Cells[1].Value.ToString();
                         if (!string.IsNullOrWhiteSpace(mapping))
                         {
-                            strSource.Append(string.Format(_format, properties, mapping) + Environment.NewLine);
+                            if (dataSet.Tables.Count > 1)
+                            {
+                                strSource.Append(string.Format(_formatMulti, properties, mapping, cmboIndexTable.SelectedIndex) + Environment.NewLine);
+                            }
+                            else
+                            {
+                                strSource.Append(string.Format(_format, properties, mapping) + Environment.NewLine);
+                            }
                         }
                     }
                 }
@@ -591,6 +673,54 @@ namespace AddinGenerateDataObject
             {
                 return null;
             }
+        }
+
+        private string GenerateReadIDataReader(string className)
+        {
+            StringBuilder strSource = new StringBuilder();
+
+            int count = 0;
+            strSource.Append("using Fanex.Common;\n\n");
+            strSource.Append("public List<" + className + "> ReadObject(IDataReader reader)\n");
+            strSource.Append("{\n");
+            strSource.Append("\tvar list =  new List<" + className + ">();\n\n");
+            strSource.Append("\tusing (reader)\n");
+            strSource.Append("\t{\n");
+            strSource.Append("\t\twhile (reader.Read())\n");
+            strSource.Append("\t\t{\n");
+            strSource.Append("\t\t\tvar model = new " + className + "\n");
+            strSource.Append("\t\t\t{\n");
+            foreach (DataGridViewRow item in gvColumnInfo.Rows)
+            {
+                count++;
+
+                if (item.Cells[0].Value != null)
+                {
+                    string type = item.Cells[2].Value.ToString();
+                    type = MappingDataType.GetTypeAlias(type);
+                    string properties = item.Cells[0].Value.ToString();
+                    string mapping = item.Cells[1].Value.ToString();
+
+                    properties = string.IsNullOrWhiteSpace(mapping) ? properties : mapping;
+
+                    if (count == gvColumnInfo.Rows.Count)
+                    {
+                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\")\n", properties, MappingDataType.GetConvert(type), properties));
+                    }
+                    else
+                    {
+                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\"),\n", properties, MappingDataType.GetConvert(type), properties));
+                    }
+                }
+            }
+            strSource.Append("\t\t\t}\n\n");
+            strSource.Append("\t\t\tlist.Add(model);\n");
+            strSource.Append("\t\t}\n");
+            strSource.Append("\t}\n\n");
+            strSource.Append("\treturn list;\n");
+            strSource.Append("}\n");
+
+            return strSource.ToString();
         }
 
         #endregion
@@ -791,10 +921,14 @@ namespace AddinGenerateDataObject
             foreach (var item in listProject)
             {
                 cmboProject.Items.Add(item);
-                if (string.Compare(item.Name, selectedProject) == 0)
+                try
                 {
-                    cmboProject.SelectedItem = item;
+                    if (string.Compare(item.Name, selectedProject) == 0)
+                    {
+                        cmboProject.SelectedItem = item;
+                    }
                 }
+                catch (Exception ex) { }
             }
         }
 
@@ -919,10 +1053,18 @@ namespace AddinGenerateDataObject
                 case 4:
                     addParameterToolStripMenuItem_Click();
                     break;
+                case 5:
+                    readIDataReaderToolStripMenuItem_Click();
+                    break;
                 default:
                     dTOClassToolStripMenuItem_Click();
                     break;
             }
+        }
+
+        private void cmboIndexTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindingColumnInformation(dataSet.Tables[cmboIndexTable.SelectedIndex]);
         }
     }
 }

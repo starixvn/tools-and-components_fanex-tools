@@ -29,6 +29,7 @@ namespace AddinGenerateDataObject
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -70,6 +71,9 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxParameter = new System.Windows.Forms.GroupBox();
             this.groupColumInfo = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmboIndexTable = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).BeginInit();
@@ -82,6 +86,7 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxParameter.SuspendLayout();
             this.groupColumInfo.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -272,12 +277,13 @@ namespace AddinGenerateDataObject
             this.dataGridViewTextBoxColumn1,
             this.Column3,
             this.dataGridViewTextBoxColumn2});
+            this.tableLayoutPanel2.SetColumnSpan(this.gvColumnInfo, 2);
             this.gvColumnInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvColumnInfo.Location = new System.Drawing.Point(3, 21);
+            this.gvColumnInfo.Location = new System.Drawing.Point(4, 35);
             this.gvColumnInfo.Margin = new System.Windows.Forms.Padding(4);
             this.gvColumnInfo.Name = "gvColumnInfo";
             this.gvColumnInfo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvColumnInfo.Size = new System.Drawing.Size(423, 275);
+            this.gvColumnInfo.Size = new System.Drawing.Size(415, 236);
             this.gvColumnInfo.TabIndex = 5;
             this.gvColumnInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvColumnInfo_CellValueChanged);
             // 
@@ -362,7 +368,8 @@ namespace AddinGenerateDataObject
             "Creteria Class",
             "Dynamic Object",
             "Hash Table",
-            "Add Parameter"});
+            "Add Parameter",
+            "Read IDataReader"});
             this.cmboMode.Name = "cmboMode";
             this.cmboMode.Size = new System.Drawing.Size(121, 23);
             this.cmboMode.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_Click);
@@ -471,7 +478,7 @@ namespace AddinGenerateDataObject
             // 
             // groupColumInfo
             // 
-            this.groupColumInfo.Controls.Add(this.gvColumnInfo);
+            this.groupColumInfo.Controls.Add(this.tableLayoutPanel2);
             this.groupColumInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupColumInfo.Location = new System.Drawing.Point(3, 552);
             this.groupColumInfo.Name = "groupColumInfo";
@@ -479,6 +486,46 @@ namespace AddinGenerateDataObject
             this.groupColumInfo.TabIndex = 7;
             this.groupColumInfo.TabStop = false;
             this.groupColumInfo.Text = "Column Information";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
+            this.tableLayoutPanel2.Controls.Add(this.gvColumnInfo, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.cmboIndexTable, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 21);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.27273F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.72727F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(423, 275);
+            this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // cmboIndexTable
+            // 
+            this.cmboIndexTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmboIndexTable.FormattingEnabled = true;
+            this.cmboIndexTable.Location = new System.Drawing.Point(107, 3);
+            this.cmboIndexTable.Name = "cmboIndexTable";
+            this.cmboIndexTable.Size = new System.Drawing.Size(313, 25);
+            this.cmboIndexTable.TabIndex = 6;
+            this.cmboIndexTable.Visible = false;
+            this.cmboIndexTable.SelectedIndexChanged += new System.EventHandler(this.cmboIndexTable_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 31);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Object Index";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Visible = false;
             // 
             // frmExecute
             // 
@@ -512,6 +559,8 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBoxParameter.ResumeLayout(false);
             this.groupColumInfo.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -550,5 +599,8 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.GroupBox groupColumInfo;
         private System.Windows.Forms.GroupBox groupBoxParameter;
         private System.Windows.Forms.ToolStripComboBox cmboMode;
+        private System.Windows.Forms.ComboBox cmboIndexTable;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label5;
     }
 }

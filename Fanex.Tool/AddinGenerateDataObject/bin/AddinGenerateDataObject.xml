@@ -341,7 +341,7 @@
         </member>
         <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeAlias(System.String)">
             <summary>
-            
+            Mapping Sql Data Type to C# Data Type
             </summary>
             <param name="systemType"></param>
             <returns></returns>

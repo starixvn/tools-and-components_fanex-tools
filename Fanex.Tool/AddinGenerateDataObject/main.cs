@@ -191,7 +191,9 @@ namespace AddinGenerateDataObject
                                 {
                                     string dataField = item.Attribute("DataField").Value.Trim();
                                     string objectProperty = item.Attribute("ObjectProperty").Value.Trim();
-                                    customMapping.Add(dataField, objectProperty);
+                                    string obj = item.Attribute("Object") != null ? item.Attribute("Object").Value : string.Empty;
+                                    customMapping.Add(string.Format("{0};{1}", dataField, obj), objectProperty);
+                                    //customMapping.Add(dataField, objectProperty);
                                 }
 
                                 databaseSetting.CustomMappingColumns = customMapping;
