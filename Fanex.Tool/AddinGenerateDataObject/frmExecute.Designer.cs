@@ -33,12 +33,11 @@ namespace AddinGenerateDataObject
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExecute));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboProject = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,13 +49,11 @@ namespace AddinGenerateDataObject
             this.label2 = new System.Windows.Forms.Label();
             this.gvParameter = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExecute = new System.Windows.Forms.Button();
             this.gvColumnInfo = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupPreview = new System.Windows.Forms.GroupBox();
             this.txtPreview = new FastColoredTextBoxNS.FastColoredTextBox();
@@ -74,6 +71,10 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cmboIndexTable = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).BeginInit();
@@ -105,7 +106,7 @@ namespace AddinGenerateDataObject
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(427, 151);
+            this.groupBox1.Size = new System.Drawing.Size(429, 151);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -210,24 +211,32 @@ namespace AddinGenerateDataObject
             this.gvParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column5,
             this.Column2,
-            this.Column5});
+            this.Column4});
             this.gvParameter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvParameter.Location = new System.Drawing.Point(3, 21);
             this.gvParameter.Margin = new System.Windows.Forms.Padding(4);
             this.gvParameter.Name = "gvParameter";
             this.gvParameter.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvParameter.Size = new System.Drawing.Size(423, 315);
+            this.gvParameter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvParameter.Size = new System.Drawing.Size(425, 315);
             this.gvParameter.TabIndex = 3;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.FillWeight = 73.85786F;
             this.Column1.HeaderText = "Parameter";
             this.Column1.Name = "Column1";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Type";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
             // 
             // Column2
             // 
@@ -235,18 +244,13 @@ namespace AddinGenerateDataObject
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column2.FillWeight = 152.2843F;
-            this.Column2.HeaderText = "Data Type";
+            this.Column2.HeaderText = "Db Type";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 101;
             // 
-            // Column5
+            // Column4
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column5.FillWeight = 73.85786F;
-            this.Column5.HeaderText = "Value";
-            this.Column5.Name = "Column5";
+            this.Column4.HeaderText = "Output Parameter";
+            this.Column4.Name = "Column4";
             // 
             // btnExecute
             // 
@@ -269,47 +273,26 @@ namespace AddinGenerateDataObject
             // 
             this.gvColumnInfo.AllowUserToAddRows = false;
             this.gvColumnInfo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Menu;
-            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.gvColumnInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvColumnInfo.AllowUserToResizeColumns = false;
+            this.gvColumnInfo.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Menu;
+            this.gvColumnInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gvColumnInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvColumnInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column3,
-            this.dataGridViewTextBoxColumn2});
+            this.dataGridViewTextBoxColumn2,
+            this.Column6});
             this.tableLayoutPanel2.SetColumnSpan(this.gvColumnInfo, 2);
             this.gvColumnInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvColumnInfo.Location = new System.Drawing.Point(4, 35);
             this.gvColumnInfo.Margin = new System.Windows.Forms.Padding(4);
             this.gvColumnInfo.Name = "gvColumnInfo";
             this.gvColumnInfo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvColumnInfo.Size = new System.Drawing.Size(415, 236);
+            this.gvColumnInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvColumnInfo.Size = new System.Drawing.Size(417, 236);
             this.gvColumnInfo.TabIndex = 5;
             this.gvColumnInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvColumnInfo_CellValueChanged);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Column Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column3.HeaderText = "Mapping Column";
-            this.Column3.Name = "Column3";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Data Type";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // groupPreview
             // 
@@ -317,12 +300,12 @@ namespace AddinGenerateDataObject
             this.groupPreview.Controls.Add(this.menuStrip1);
             this.groupPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPreview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPreview.Location = new System.Drawing.Point(439, 4);
+            this.groupPreview.Location = new System.Drawing.Point(441, 4);
             this.groupPreview.Margin = new System.Windows.Forms.Padding(4);
             this.groupPreview.Name = "groupPreview";
             this.groupPreview.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.groupPreview, 3);
-            this.groupPreview.Size = new System.Drawing.Size(575, 541);
+            this.groupPreview.Size = new System.Drawing.Size(573, 541);
             this.groupPreview.TabIndex = 7;
             this.groupPreview.TabStop = false;
             // 
@@ -340,7 +323,7 @@ namespace AddinGenerateDataObject
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtPreview.Size = new System.Drawing.Size(567, 488);
+            this.txtPreview.Size = new System.Drawing.Size(565, 488);
             this.txtPreview.TabIndex = 6;
             this.txtPreview.Text = "fastColoredTextBox1";
             this.txtPreview.Zoom = 100;
@@ -356,7 +339,7 @@ namespace AddinGenerateDataObject
             this.menuStrip1.Location = new System.Drawing.Point(4, 22);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(567, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(565, 27);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -396,11 +379,11 @@ namespace AddinGenerateDataObject
             this.previewMappingGroup.Controls.Add(this.menuStrip2);
             this.previewMappingGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewMappingGroup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previewMappingGroup.Location = new System.Drawing.Point(439, 553);
+            this.previewMappingGroup.Location = new System.Drawing.Point(441, 553);
             this.previewMappingGroup.Margin = new System.Windows.Forms.Padding(4);
             this.previewMappingGroup.Name = "previewMappingGroup";
             this.previewMappingGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.previewMappingGroup.Size = new System.Drawing.Size(575, 297);
+            this.previewMappingGroup.Size = new System.Drawing.Size(573, 297);
             this.previewMappingGroup.TabIndex = 8;
             this.previewMappingGroup.TabStop = false;
             this.previewMappingGroup.Text = "Preview Mapping";
@@ -419,7 +402,7 @@ namespace AddinGenerateDataObject
             this.txtMappingPreview.Name = "txtMappingPreview";
             this.txtMappingPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtMappingPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtMappingPreview.Size = new System.Drawing.Size(567, 247);
+            this.txtMappingPreview.Size = new System.Drawing.Size(565, 247);
             this.txtMappingPreview.TabIndex = 7;
             this.txtMappingPreview.Zoom = 100;
             // 
@@ -430,7 +413,7 @@ namespace AddinGenerateDataObject
             this.menuStrip2.Location = new System.Drawing.Point(4, 22);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(567, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(565, 24);
             this.menuStrip2.TabIndex = 8;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -445,8 +428,8 @@ namespace AddinGenerateDataObject
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.82907F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.17093F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.02554F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.97446F));
             this.tableLayoutPanel1.Controls.Add(this.groupBoxParameter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupColumInfo, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
@@ -471,7 +454,7 @@ namespace AddinGenerateDataObject
             this.groupBoxParameter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxParameter.Location = new System.Drawing.Point(3, 162);
             this.groupBoxParameter.Name = "groupBoxParameter";
-            this.groupBoxParameter.Size = new System.Drawing.Size(429, 339);
+            this.groupBoxParameter.Size = new System.Drawing.Size(431, 339);
             this.groupBoxParameter.TabIndex = 7;
             this.groupBoxParameter.TabStop = false;
             this.groupBoxParameter.Text = "Parameter Infomation";
@@ -482,7 +465,7 @@ namespace AddinGenerateDataObject
             this.groupColumInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupColumInfo.Location = new System.Drawing.Point(3, 552);
             this.groupColumInfo.Name = "groupColumInfo";
-            this.groupColumInfo.Size = new System.Drawing.Size(429, 299);
+            this.groupColumInfo.Size = new System.Drawing.Size(431, 299);
             this.groupColumInfo.TabIndex = 7;
             this.groupColumInfo.TabStop = false;
             this.groupColumInfo.Text = "Column Information";
@@ -501,7 +484,7 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.27273F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.72727F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(423, 275);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(425, 275);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // cmboIndexTable
@@ -511,7 +494,7 @@ namespace AddinGenerateDataObject
             this.cmboIndexTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboIndexTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmboIndexTable.FormattingEnabled = true;
-            this.cmboIndexTable.Location = new System.Drawing.Point(107, 3);
+            this.cmboIndexTable.Location = new System.Drawing.Point(109, 3);
             this.cmboIndexTable.Name = "cmboIndexTable";
             this.cmboIndexTable.Size = new System.Drawing.Size(313, 25);
             this.cmboIndexTable.TabIndex = 6;
@@ -522,13 +505,47 @@ namespace AddinGenerateDataObject
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 0);
+            this.label5.Location = new System.Drawing.Point(12, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 31);
             this.label5.TabIndex = 7;
             this.label5.Text = "Object Index";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn1.FillWeight = 72.68041F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 115;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column3.FillWeight = 72.68041F;
+            this.Column3.HeaderText = "Mapping";
+            this.Column3.Name = "Column3";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 65;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "     Nullable";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 90;
             // 
             // frmExecute
             // 
@@ -590,12 +607,6 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem copyAllToClipboardToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.TextBox txtSettingKey;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmboProject;
@@ -605,5 +616,13 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.ComboBox cmboIndexTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
     }
 }

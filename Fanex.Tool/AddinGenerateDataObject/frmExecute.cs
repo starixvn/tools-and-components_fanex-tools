@@ -24,7 +24,6 @@ namespace AddinGenerateDataObject
     using System.Windows.Forms;
     using System.Xml.Linq;
     using FastColoredTextBoxNS;
-    using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
     /// <summary>
     /// 
@@ -131,6 +130,8 @@ namespace AddinGenerateDataObject
             gvColumnInfo.Enabled = false;
             txtMappingPreview.Language = Language.HTML;
             cmboMode.SelectedIndex = 0;
+
+            //show_chkBox();
         }
 
         private void btnExecute_Click(object sender, EventArgs e)
@@ -142,23 +143,19 @@ namespace AddinGenerateDataObject
                 string settingKey = txtSettingKey.Tag.ToString();
                 var dbSetting = _settingDataSource[settingKey];
 
-                SqlDatabase sqlDataBase = new SqlDatabase(dbSetting.ConnectionString);
-                DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(dbSetting.SpName);
-                sqlDataBase.DiscoverParameters(dbCommand);
+                this.dataSetColumnInfo.Tables.Clear();
 
-                // get parameter
-                foreach (DataGridViewRow itemRow in gvParameter.Rows)
+                using (SqlConnection conn = new SqlConnection(dbSetting.ConnectionString))
                 {
-                    if (itemRow.Cells[0].Value != null)
-                    {
-                        var parameter = itemRow.Cells[0].Value.ToString().Trim();
-                        var value = itemRow.Cells[2].Value != null ? itemRow.Cells[2].Value.ToString().Trim() : null;
+                    SqlCommand sqlCommand = new SqlCommand(dbSetting.SpName, conn);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    SqlCommandBuilder.DeriveParameters(sqlCommand);
 
-                        sqlDataBase.SetParameterValue(dbCommand, parameter, value);
-                    }
+                    SqlDataAdapter ad = new SqlDataAdapter(sqlCommand);
+
+                    ad.FillSchema(this.dataSetColumnInfo, SchemaType.Mapped);
                 }
-                
-                this.dataSetColumnInfo = sqlDataBase.ExecuteReader(dbCommand);
 
                 cmboIndexTable.Items.Clear();
                 for (int i = 0; i < this.dataSetColumnInfo.Tables.Count; i++)
@@ -178,8 +175,7 @@ namespace AddinGenerateDataObject
                     cmboIndexTable.Visible = false;
                 }
 
-                var table = dataSetColumnInfo.Tables[0];
-                BindingColumnInformation(table, dbSetting);
+                BindingColumnInformation(dataSetColumnInfo.Tables[0], dbSetting);
 
                 // enable
                 gvColumnInfo.Enabled = true;
@@ -479,16 +475,17 @@ namespace AddinGenerateDataObject
                         type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString();
                         string mapping = item.Cells[1].Value.ToString();
+                        string nullable = Convert.ToBoolean(item.Cells[3].Value) ? "? " : " ";
 
                         properties = string.IsNullOrWhiteSpace(mapping) ? properties : mapping;
 
                         if (count == gvColumnInfo.Rows.Count)
                         {
-                            strSource.Append("\t\t public " + type + " " + properties + " { get; set; }");
+                            strSource.Append("\t\t public " + type + nullable + properties + " { get; set; }");
                         }
                         else
                         {
-                            strSource.Append("\t\t public " + type + " " + properties + " { get; set; }\n\n");
+                            strSource.Append("\t\t public " + type + nullable + properties + " { get; set; }\n\n");
                         }
                     }
                 }
@@ -549,35 +546,38 @@ namespace AddinGenerateDataObject
             str.Append("using (ObjectDb db = new ObjectDb(\"" + txtSettingKey.Text + "\"))\n");
             str.Append("{\n");
 
-            string spName = dbSetting.SpName;
-            SqlDatabase sqlDataBase = new SqlDatabase(dbSetting.ConnectionString);
-
             DataTable resultField = new DataTable();
             resultField.Columns.Add("Properties");
             resultField.Columns.Add("SpField");
             resultField.Columns.Add("Type");
-            DataTable table = new DataTable();
-            DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(spName);
-            sqlDataBase.DiscoverParameters(dbCommand);
-            int countParam = dbCommand.Parameters.Count;
-            List<SqlParameter> listSqlParameter = new List<SqlParameter>();
-            for (int i = 0; i < countParam; i++)
+
+            using (SqlConnection conn = new SqlConnection(dbSetting.ConnectionString))
             {
-                SqlParameter sql = (SqlParameter)dbCommand.Parameters[i];
-                bool isNotReturnValue = !sql.ParameterName.Equals("@RETURN_VALUE");
-                if (isNotReturnValue)
+                SqlCommand sqlCommand = new SqlCommand(dbSetting.SpName, conn);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+                SqlCommandBuilder.DeriveParameters(sqlCommand);
+
+                int countParam = sqlCommand.Parameters.Count;
+                List<SqlParameter> listSqlParameter = new List<SqlParameter>();
+                for (int i = 0; i < countParam; i++)
                 {
-                    if (sql.Direction == ParameterDirection.Input)
+                    SqlParameter sql = (SqlParameter)sqlCommand.Parameters[i];
+                    bool isNotReturnValue = !sql.ParameterName.Equals("@RETURN_VALUE");
+                    if (isNotReturnValue)
                     {
-                        str.Append("\tdb.AddInParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
-                    }
-                    else
-                    {
-                        str.Append("\tdb.AddOutParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
+                        if (sql.Direction == ParameterDirection.Input)
+                        {
+                            str.Append("\tdb.AddInParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
+                        }
+                        else
+                        {
+                            str.Append("\tdb.AddOutParameter(\"" + sql.ParameterName.TrimStart('@') + "\", DbType." + sql.DbType.ToString() + ", _" + sql.ParameterName.TrimStart('@').ToLower() + ");\n");
+                        }
                     }
                 }
+                str.Append("}");
             }
-            str.Append("}");
 
             return str.ToString();
         }
@@ -879,25 +879,28 @@ namespace AddinGenerateDataObject
 
         private void BindParameterToGridView(DbSetting dbSetting)
         {
-            string spName = dbSetting.SpName;
-            SqlDatabase sqlDataBase = new SqlDatabase(dbSetting.ConnectionString);
-
             DataTable resultField = new DataTable();
             resultField.Columns.Add("Properties");
             resultField.Columns.Add("SpField");
             resultField.Columns.Add("Type");
-            DataTable table = new DataTable();
-            DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(spName);
-            sqlDataBase.DiscoverParameters(dbCommand);
-            int countParam = dbCommand.Parameters.Count;
-            List<SqlParameter> listSqlParameter = new List<SqlParameter>();
-            for (int i = 0; i < countParam; i++)
+
+            using (SqlConnection conn = new SqlConnection(dbSetting.ConnectionString))
             {
-                SqlParameter sql = (SqlParameter)dbCommand.Parameters[i];
-                bool isNotReturnValue = !sql.ParameterName.Equals("@RETURN_VALUE");
-                if (isNotReturnValue)
+                SqlCommand sqlCommand = new SqlCommand(dbSetting.SpName, conn);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+                SqlCommandBuilder.DeriveParameters(sqlCommand);
+
+                int countParam = sqlCommand.Parameters.Count;
+                List<SqlParameter> listSqlParameter = new List<SqlParameter>();
+                for (int i = 0; i < countParam; i++)
                 {
-                    gvParameter.Rows.Add(sql.ParameterName, sql.DbType.ToString());
+                    SqlParameter sql = (SqlParameter)sqlCommand.Parameters[i];
+                    bool isNotReturnValue = !sql.ParameterName.Equals("@RETURN_VALUE");
+                    if (isNotReturnValue)
+                    {
+                        gvParameter.Rows.Add(sql.ParameterName, sql.DbType, sql.SqlDbType.ToString().ToLower(), sql.Direction);
+                    }
                 }
             }
         }
@@ -926,7 +929,7 @@ namespace AddinGenerateDataObject
                     }
                 }
 
-                gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name);
+                gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name, item.AllowDBNull.ToString().ToLower());
             }
 
             txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
@@ -1000,6 +1003,31 @@ namespace AddinGenerateDataObject
             }
         }
 
+        private void show_chkBox()
+        {
+            Rectangle rect = gvColumnInfo.GetCellDisplayRectangle(3, -1, true);
+            // set checkbox header to center of header cell. +1 pixel to position 
+            rect.Y = 3;
+            rect.X = rect.Location.X + (rect.Width / 4);
+            CheckBox checkboxHeader = new CheckBox();
+            checkboxHeader.Name = "checkboxHeader";
+            //datagridview[0, 0].ToolTipText = "sdfsdf";
+            checkboxHeader.Size = new Size(18, 18);
+            checkboxHeader.Location = rect.Location;
+            checkboxHeader.CheckedChanged += new EventHandler(checkboxHeader_CheckedChanged);
+            gvColumnInfo.Controls.Add(checkboxHeader);
+        }
+
+        private void checkboxHeader_CheckedChanged(object sender, EventArgs e)
+        {
+
+            CheckBox headerBox = ((CheckBox)gvColumnInfo.Controls.Find("checkboxHeader", true)[0]);
+            int index = 0;
+            for (int i = 0; i < gvColumnInfo.RowCount; i++)
+            {
+                gvColumnInfo.Rows[i].Cells[3].Value = headerBox.Checked;
+            }
+        }
         #endregion
     }
 }
