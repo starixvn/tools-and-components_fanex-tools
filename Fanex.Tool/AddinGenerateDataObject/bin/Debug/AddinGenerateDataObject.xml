@@ -59,7 +59,7 @@
         </member>
         <member name="M:AddinGenerateDataObject.main.#ctor">
             <summary>
-            
+            Ctor
             </summary>
         </member>
         <member name="M:AddinGenerateDataObject.main.IsEncryptedConnection(System.Xml.Linq.XElement)">
@@ -221,11 +221,12 @@
             <param name="element">XElement element</param>
             <returns>bool value, true if connection requires encrypted</returns>
         </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel},System.String)">
+        <member name="M:AddinGenerateDataObject.frmExecute.BindProjectToCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel},System.String)">
             <summary>
             Load data from list project to combobox
             </summary>
             <param name="listProject"></param>
+            <param name="selectedProject"></param>
         </member>
         <member name="F:AddinGenerateDataObject.frmExecute.components">
             <summary>
@@ -336,14 +337,21 @@
         </member>
         <member name="T:AddinGenerateDataObject.MappingDataType">
             <summary>
-            
+            Mapping
             </summary>
         </member>
-        <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeAlias(System.String)">
+        <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeName(System.String)">
             <summary>
             Mapping Sql Data Type to C# Data Type
             </summary>
-            <param name="systemType"></param>
+            <param name="sqlType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.MappingDataType.ReaderTo(System.String)">
+            <summary>
+            Mapping conver to
+            </summary>
+            <param name="type"></param>
             <returns></returns>
         </member>
         <member name="T:Fanex.Common.Cryptography">

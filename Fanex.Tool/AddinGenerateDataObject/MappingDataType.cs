@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.Data.SqlClient;
+﻿// --------------------------------------------------------------------------
+// <copyright file="MappingDataType.cs" company="Nexcel Solutions Vietnam">
+// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------
+// <history>
+//   <change who="Edward.Nguyen" date="2013.7.31">Created</change>
+// </history>
+
 namespace AddinGenerateDataObject
 {
     /// <summary>
-    /// 
+    /// Mapping
     /// </summary>
     public class MappingDataType
     {
         /// <summary>
         /// Mapping Sql Data Type to C# Data Type
         /// </summary>
-        /// <param name="systemType"></param>
+        /// <param name="sqlType"></param>
         /// <returns></returns>
-        public static string GetTypeAlias(string systemType)
+        public static string GetTypeName(string sqlType)
         {
             string alias = "";
 
-            switch (systemType)
+            switch (sqlType)
             {
                 case "AnsiString":
                     alias = "string";
@@ -104,13 +107,18 @@ namespace AddinGenerateDataObject
                     alias = "DateTimeOffset";
                     break;
                 default:
-                    alias = systemType;
+                    alias = sqlType;
                     break;
             }
             return alias;
         }
 
-        public static string GetConvert(string type)
+        /// <summary>
+        /// Mapping conver to
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string ReaderTo(string type)
         {
             string strConvert = "";
 

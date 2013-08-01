@@ -89,7 +89,7 @@ namespace AddinGenerateDataObject
 
         private Dictionary<string, DbSetting> _settingDataSource = new Dictionary<string, DbSetting>();
 
-        private DataSet dataSet = new DataSet();
+        private DataSet dataSetColumnInfo = new DataSet();
 
         #endregion
 
@@ -109,29 +109,27 @@ namespace AddinGenerateDataObject
 
         private void frmExecute_Load(object sender, EventArgs e)
         {
+            // get cache
             string settingKey = (string)this.CacheManager.Get(Constant.NameKey);
             string projectName = (string)this.CacheManager.Get(Constant.ProjectNameKey);
 
             _settingDataSource = (Dictionary<string, DbSetting>)this.CacheManager.Get(Constant.DbSettingCacheKeyName);
-
-            var dbSetting = _settingDataSource[settingKey];
-
             _listProjectModel = (List<ProjectModel>)this.CacheManager.Get(Constant.ProjectKey);
 
-            BindDataToProjectCombo(_listProjectModel, projectName);
+            BindProjectToCombo(_listProjectModel, projectName);
 
+            // setting key
             txtSettingKey.Text = settingKey;
             txtSettingKey.Tag = settingKey;
 
-            //default
+            // stored procedure name
+            var dbSetting = _settingDataSource[settingKey];
             txtClassName.Text = dbSetting.SpName;
             txtNamespace.Text = projectName;
 
-            // disable
+            // form setting
             gvColumnInfo.Enabled = false;
-
             txtMappingPreview.Language = Language.HTML;
-
             cmboMode.SelectedIndex = 0;
         }
 
@@ -140,6 +138,7 @@ namespace AddinGenerateDataObject
             try
             {
                 gvColumnInfo.Rows.Clear();
+
                 string settingKey = txtSettingKey.Tag.ToString();
                 var dbSetting = _settingDataSource[settingKey];
 
@@ -147,6 +146,7 @@ namespace AddinGenerateDataObject
                 DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(dbSetting.SpName);
                 sqlDataBase.DiscoverParameters(dbCommand);
 
+                // get parameter
                 foreach (DataGridViewRow itemRow in gvParameter.Rows)
                 {
                     if (itemRow.Cells[0].Value != null)
@@ -157,14 +157,16 @@ namespace AddinGenerateDataObject
                         sqlDataBase.SetParameterValue(dbCommand, parameter, value);
                     }
                 }
+                
+                this.dataSetColumnInfo = sqlDataBase.ExecuteReader(dbCommand);
 
-                this.dataSet = sqlDataBase.ExecuteDataSet(dbCommand);
                 cmboIndexTable.Items.Clear();
-                for (int i = 0; i < this.dataSet.Tables.Count; i++)
+                for (int i = 0; i < this.dataSetColumnInfo.Tables.Count; i++)
                 {
                     cmboIndexTable.Items.Add(i);
                 }
-                if (dataSet.Tables.Count > 1)
+
+                if (dataSetColumnInfo.Tables.Count > 1)
                 {
                     label5.Visible = true;
                     cmboIndexTable.Visible = true;
@@ -176,7 +178,7 @@ namespace AddinGenerateDataObject
                     cmboIndexTable.Visible = false;
                 }
 
-                var table = dataSet.Tables[0];
+                var table = dataSetColumnInfo.Tables[0];
                 BindingColumnInformation(table, dbSetting);
 
                 // enable
@@ -189,59 +191,18 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private void BindingColumnInformation(DataTable table, DbSetting dbSetting = null)
-        {
-            gvColumnInfo.Rows.Clear();
-
-            if (dbSetting == null)
-            {
-                string settingKey = txtSettingKey.Tag.ToString();
-                dbSetting = _settingDataSource[settingKey];
-            }
-
-            foreach (DataColumn item in table.Columns)
-            {
-                string mappingName = string.Empty;
-                string columnName = item.ColumnName;
-
-                //if (dbSetting.CustomMappingColumns.Contains(columnName))
-                //{
-                //    mappingName = dbSetting.CustomMappingColumns[columnName] as string;
-                //}
-
-                foreach (DictionaryEntry itemMapColumn in dbSetting.CustomMappingColumns)
-                {
-                    if (Equals(itemMapColumn.Key.ToString().Split(';')[0], columnName))
-                    {
-                        mappingName = itemMapColumn.Value as string;
-                    }
-                }
-
-                gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name);
-            }
-
-            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
-            txtMappingPreview.Text = GenerateMappingPreview();
-        }
-
-        private void txtNamespace_TextChanged(object sender, EventArgs e)
-        {
-            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
-            cmboMode.SelectedIndex = 0;
-        }
-
         private void txtClassName_TextChanged(object sender, EventArgs e)
         {
             if (cmboMode.Items.Count > 5)
             {
                 if (cmboMode.SelectedIndex != 5)
                 {
-                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
                     cmboMode.SelectedIndex = 0;
                 }
                 else
                 {
-                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
                 }
             }
         }
@@ -252,14 +213,15 @@ namespace AddinGenerateDataObject
             {
                 if (cmboMode.SelectedIndex != 5)
                 {
-                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
+                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
                     cmboMode.SelectedIndex = 0;
                 }
                 else
                 {
-                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
                 }
-                txtMappingPreview.Text = GenerateMappingPreview();
+
+                txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
             }
         }
 
@@ -286,7 +248,7 @@ namespace AddinGenerateDataObject
                         string className = txtClassName.Text.Trim();
                         string nameSpace = txtNamespace.Text.Trim();
 
-                        string strClassGenerate = GenerateDTOClass(nameSpace, className);
+                        string strClassGenerate = GenerateDTOClass(nameSpace, className, gvColumnInfo);
 
                         SaveClassFile(strClassGenerate, className, folderBrowserDialog1.SelectedPath);
 
@@ -373,83 +335,71 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private void hashTableToolStripMenuItem_Click()
+        private void comboMode_SelectedtIndexChanged(object sender, EventArgs e)
         {
-            SetUnCheckMenuItem();
-            //hashTableToolStripMenuItem.Checked = true;
+            int index = cmboMode.SelectedIndex;
+            string textPreview = string.Empty;
+
             EnableGenerateDTOControl(false);
-            //modeToolStripMenuItem.Text = "Mode : " + hashTableToolStripMenuItem.Text;
 
-            txtPreview.Text = GenerateHashParameter();
+            switch (index)
+            {
+                case 1:
+                    textPreview = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text, gvParameter);
+                    break;
+                case 2:
+                    textPreview = GenerateDynamicParameter(gvParameter);
+                    break;
+                case 3:
+                    textPreview = GenerateHashParameter(gvParameter);
+                    break;
+                case 4:
+                    textPreview = GenerateAddParameter();
+                    break;
+                case 5:
+                    EnableGenerateDTOControl(true);
+                    textPreview = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
+                    break;
+                default:
+                    EnableGenerateDTOControl(true);
+                    textPreview = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
+                    break;
+            }
+
+            txtPreview.Text = textPreview;
         }
 
-        private void dynamicObjectToolStripMenuItem_Click()
+        private void cmboIndexTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SetUnCheckMenuItem();
-            //dynamicObjectToolStripMenuItem.Checked = true;
-            EnableGenerateDTOControl(false);
-            //modeToolStripMenuItem.Text = "Mode : " + dynamicObjectToolStripMenuItem.Text;
-
-            txtPreview.Text = GenerateDynamicParameter();
-        }
-
-        private void addParameterToolStripMenuItem_Click()
-        {
-            SetUnCheckMenuItem();
-            //addParameterToolStripMenuItem.Checked = true;
-            EnableGenerateDTOControl(false);
-            //modeToolStripMenuItem.Text = "Mode : " + addParameterToolStripMenuItem.Text;
-
-            txtPreview.Text = GenerateAddParameter();
-        }
-
-        private void criteriaClassToolStripMenuItem_Click()
-        {
-            SetUnCheckMenuItem();
-            //criteriaClassToolStripMenuItem.Checked = true;
-            EnableGenerateDTOControl(false);
-            //modeToolStripMenuItem.Text = "Mode : " + criteriaClassToolStripMenuItem.Text;
-
-            txtPreview.Text = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text);
-        }
-
-        private void dTOClassToolStripMenuItem_Click()
-        {
-            SetUnCheckMenuItem();
-            //dTOClassToolStripMenuItem.Checked = true;
-            EnableGenerateDTOControl(true);
-            //modeToolStripMenuItem.Text = "Mode : " + dTOClassToolStripMenuItem.Text;
-
-            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text);
-        }
-
-        private void readIDataReaderToolStripMenuItem_Click()
-        {
-            SetUnCheckMenuItem();
-            EnableGenerateDTOControl(true);
-
-            txtPreview.Text = GenerateReadIDataReader(txtClassName.Text);
+            BindingColumnInformation(dataSetColumnInfo.Tables[cmboIndexTable.SelectedIndex]);
         }
 
         #endregion
 
         #region Generate
 
-        private string GenerateCriteriaClass(string nameSpace, string className)
+        private string GenerateHeaderClass(string nameSpace, string className)
+        {
+            StringBuilder strSource = new StringBuilder();
+            strSource.Append("// --------------------------------------------------------------------------\n");
+            strSource.Append("// <copyright file=\"" + className + ".cs\" company=\"Nexcel Solutions Vietnam\">\n");
+            strSource.Append("// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.\n");
+            strSource.Append("// </copyright>\n");
+            strSource.Append("// --------------------------------------------------------------------------\n");
+            strSource.Append("// <history>\n");
+            strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
+            strSource.Append("// </history>\n\n");
+
+            return strSource.ToString();
+        }
+
+        private string GenerateCriteriaClass(string nameSpace, string className, DataGridView gvParameter)
         {
             try
             {
                 StringBuilder strSource = new StringBuilder();
-                strSource.Append("// --------------------------------------------------------------------------\n");
-                strSource.Append("// <copyright file=\"" + className + ".cs\" company=\"Nexcel Solutions Vietnam\">\n");
-                strSource.Append("// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.\n");
-                strSource.Append("// </copyright>\n");
-                strSource.Append("// --------------------------------------------------------------------------\n");
-                strSource.Append("// <history>\n");
-                strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
-                strSource.Append("// </history>\n\n");
+                strSource.Append(this.GenerateHeaderClass(nameSpace, className));
 
-                //strSource.Append("using Fanex.NAP.Framework.Data;\n\n");
                 if (nameSpace != string.Empty)
                 {
                     strSource.Append("namespace " + nameSpace + "\n");
@@ -459,12 +409,13 @@ namespace AddinGenerateDataObject
                 strSource.Append("\tusing Fanex.NAP.Framework.Data;\n\n");
                 strSource.Append("\tpublic class " + className + " : CriteriaBase\n");
                 strSource.Append("\t{\n");
+
                 foreach (DataGridViewRow item in gvParameter.Rows)
                 {
                     if (item.Cells[0].Value != null)
                     {
                         string type = item.Cells[1].Value.ToString();
-                        type = MappingDataType.GetTypeAlias(type);
+                        type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString().TrimStart('@');
                         string mapping = item.Cells[2].Value != null ? item.Cells[2].Value.ToString() : string.Empty;
 
@@ -501,21 +452,13 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private string GenerateDTOClass(string nameSpace, string className)
+        private string GenerateDTOClass(string nameSpace, string className, DataGridView gvColumnInfo)
         {
             try
             {
                 StringBuilder strSource = new StringBuilder();
-                strSource.Append("// --------------------------------------------------------------------------\n");
-                strSource.Append("// <copyright file=\"" + className + ".cs\" company=\"Nexcel Solutions Vietnam\">\n");
-                strSource.Append("// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.\n");
-                strSource.Append("// </copyright>\n");
-                strSource.Append("// --------------------------------------------------------------------------\n");
-                strSource.Append("// <history>\n");
-                strSource.Append("//   <change who=\"" + GetUserName() + "\" date=\"" + DateTime.Now.Year.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Day.ToString() + "\">Created</change>\n");
-                strSource.Append("// </history>\n\n");
+                strSource.Append(this.GenerateHeaderClass(nameSpace, className));
 
-                //strSource.Append("using System;\n\n");
                 if (nameSpace != string.Empty)
                 {
                     strSource.Append("namespace " + nameSpace + "\n");
@@ -533,7 +476,7 @@ namespace AddinGenerateDataObject
                     if (item.Cells[0].Value != null)
                     {
                         string type = item.Cells[2].Value.ToString();
-                        type = MappingDataType.GetTypeAlias(type);
+                        type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString();
                         string mapping = item.Cells[1].Value.ToString();
 
@@ -562,7 +505,7 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private string GenerateHashParameter()
+        private string GenerateHashParameter(DataGridView gvParameter)
         {
             StringBuilder str = new StringBuilder();
             str.Append("var param = new Hashtable();\n");
@@ -579,7 +522,7 @@ namespace AddinGenerateDataObject
             return str.ToString();
         }
 
-        private string GenerateDynamicParameter()
+        private string GenerateDynamicParameter(DataGridView gvParameter)
         {
             StringBuilder str = new StringBuilder();
             str.Append("var param = new\n");
@@ -639,7 +582,7 @@ namespace AddinGenerateDataObject
             return str.ToString();
         }
 
-        private string GenerateMappingPreview()
+        private string GenerateMappingPreview(DataGridView gvColumnInfo)
         {
             try
             {
@@ -655,7 +598,7 @@ namespace AddinGenerateDataObject
                         string mapping = item.Cells[1].Value.ToString();
                         if (!string.IsNullOrWhiteSpace(mapping))
                         {
-                            if (dataSet.Tables.Count > 1)
+                            if (dataSetColumnInfo.Tables.Count > 1)
                             {
                                 strSource.Append(string.Format(_formatMulti, properties, mapping, cmboIndexTable.SelectedIndex) + Environment.NewLine);
                             }
@@ -675,7 +618,7 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private string GenerateReadIDataReader(string className)
+        private string GenerateReadIDataReader(string className, DataGridView gvColumnInfo)
         {
             StringBuilder strSource = new StringBuilder();
 
@@ -697,7 +640,7 @@ namespace AddinGenerateDataObject
                 if (item.Cells[0].Value != null)
                 {
                     string type = item.Cells[2].Value.ToString();
-                    type = MappingDataType.GetTypeAlias(type);
+                    type = MappingDataType.GetTypeName(type);
                     string properties = item.Cells[0].Value.ToString();
                     string mapping = item.Cells[1].Value.ToString();
 
@@ -705,11 +648,11 @@ namespace AddinGenerateDataObject
 
                     if (count == gvColumnInfo.Rows.Count)
                     {
-                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\")\n", properties, MappingDataType.GetConvert(type), properties));
+                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\")\n", properties, MappingDataType.ReaderTo(type), properties));
                     }
                     else
                     {
-                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\"),\n", properties, MappingDataType.GetConvert(type), properties));
+                        strSource.Append(string.Format("\t\t\t\t{0} = reader.{1}(\"{0}\"),\n", properties, MappingDataType.ReaderTo(type), properties));
                     }
                 }
             }
@@ -916,14 +859,16 @@ namespace AddinGenerateDataObject
         /// Load data from list project to combobox
         /// </summary>
         /// <param name="listProject"></param>
-        private void BindDataToProjectCombo(List<ProjectModel> listProject, string selectedProject)
+        /// <param name="selectedProject"></param>
+        private void BindProjectToCombo(List<ProjectModel> listProject, string selectedProject)
         {
             foreach (var item in listProject)
             {
                 cmboProject.Items.Add(item);
+
                 try
                 {
-                    if (string.Compare(item.Name, selectedProject) == 0)
+                    if (Equals(item.Name, selectedProject))
                     {
                         cmboProject.SelectedItem = item;
                     }
@@ -955,6 +900,37 @@ namespace AddinGenerateDataObject
                     gvParameter.Rows.Add(sql.ParameterName, sql.DbType.ToString());
                 }
             }
+        }
+
+        private void BindingColumnInformation(DataTable table, DbSetting dbSetting = null)
+        {
+            gvColumnInfo.Rows.Clear();
+
+            if (dbSetting == null)
+            {
+                string settingKey = txtSettingKey.Tag.ToString();
+                dbSetting = _settingDataSource[settingKey];
+            }
+
+            foreach (DataColumn item in table.Columns)
+            {
+                string mappingName = string.Empty;
+                string columnName = item.ColumnName;
+
+                foreach (DictionaryEntry itemMapColumn in dbSetting.CustomMappingColumns)
+                {
+                    if (Equals(itemMapColumn.Key.ToString(), columnName + ";" + cmboIndexTable.SelectedIndex.ToString())
+                        || Equals(itemMapColumn.Key.ToString(), columnName + ";" + txtClassName.Text))
+                    {
+                        mappingName = itemMapColumn.Value as string;
+                    }
+                }
+
+                gvColumnInfo.Rows.Add(columnName, mappingName, item.DataType.Name);
+            }
+
+            txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
+            txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
         }
 
         #endregion
@@ -1006,15 +982,6 @@ namespace AddinGenerateDataObject
 
         #region Ultil
 
-        private void SetUnCheckMenuItem()
-        {
-            //criteriaClassToolStripMenuItem.Checked = false;
-            //hashTableToolStripMenuItem.Checked = false;
-            //dynamicObjectToolStripMenuItem.Checked = false;
-            //addParameterToolStripMenuItem.Checked = false;
-            //dTOClassToolStripMenuItem.Checked = false;
-        }
-
         private void EnableGenerateDTOControl(bool enable)
         {
             btnExecute.Enabled = enable;
@@ -1034,37 +1001,5 @@ namespace AddinGenerateDataObject
         }
 
         #endregion
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-            int index = cmboMode.SelectedIndex;
-
-            switch (index)
-            {
-                case 1:
-                    criteriaClassToolStripMenuItem_Click();
-                    break;
-                case 2:
-                    dynamicObjectToolStripMenuItem_Click();
-                    break;
-                case 3:
-                    hashTableToolStripMenuItem_Click();
-                    break;
-                case 4:
-                    addParameterToolStripMenuItem_Click();
-                    break;
-                case 5:
-                    readIDataReaderToolStripMenuItem_Click();
-                    break;
-                default:
-                    dTOClassToolStripMenuItem_Click();
-                    break;
-            }
-        }
-
-        private void cmboIndexTable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindingColumnInformation(dataSet.Tables[cmboIndexTable.SelectedIndex]);
-        }
     }
 }

@@ -187,7 +187,7 @@ namespace AddinGenerateDataObject
             this.txtNamespace.Name = "txtNamespace";
             this.txtNamespace.Size = new System.Drawing.Size(290, 25);
             this.txtNamespace.TabIndex = 1;
-            this.txtNamespace.TextChanged += new System.EventHandler(this.txtNamespace_TextChanged);
+            this.txtNamespace.TextChanged += new System.EventHandler(this.txtClassName_TextChanged);
             // 
             // label2
             // 
@@ -372,7 +372,7 @@ namespace AddinGenerateDataObject
             "Read IDataReader"});
             this.cmboMode.Name = "cmboMode";
             this.cmboMode.Size = new System.Drawing.Size(121, 23);
-            this.cmboMode.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_Click);
+            this.cmboMode.SelectedIndexChanged += new System.EventHandler(this.comboMode_SelectedtIndexChanged);
             // 
             // copyToolStripMenuItem
             // 
@@ -506,7 +506,10 @@ namespace AddinGenerateDataObject
             // 
             // cmboIndexTable
             // 
+            this.cmboIndexTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
             this.cmboIndexTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmboIndexTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboIndexTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmboIndexTable.FormattingEnabled = true;
             this.cmboIndexTable.Location = new System.Drawing.Point(107, 3);
             this.cmboIndexTable.Name = "cmboIndexTable";

@@ -21,6 +21,8 @@ namespace AddinGenerateDataObject
 
     public partial class main : UserControl
     {
+        #region Member
+
         /// <summary>
         /// syncRoot to check thread safe when implementing singleton pattern
         /// </summary>
@@ -56,15 +58,21 @@ namespace AddinGenerateDataObject
             }
         }
 
+        private List<ProjectModel> _listProjectModel = new List<ProjectModel>();
+
+        #endregion
+
+        #region Ctor
+
         /// <summary>
-        /// 
+        /// Ctor
         /// </summary>
         public main()
         {
             InitializeComponent();
         }
 
-        private List<ProjectModel> _listProjectModel = new List<ProjectModel>();
+        #endregion
 
         private void main_Load(object sender, EventArgs e)
         {
@@ -349,14 +357,6 @@ namespace AddinGenerateDataObject
             {
                 gvSpName_CellDoubleClick(sender, e);
             }
-            //if (e.ColumnIndex == 3)
-            //{
-            //    string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
-            //    this.CacheManager.Set(Constant.ProjectNameKey, cmboProject.SelectedItem.ToString(), new CacheItemPolicy());
-            //    this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
-            //    Form from = new frmCriteria();
-            //    from.Show();
-            //}
         }
 
         /// <summary>
