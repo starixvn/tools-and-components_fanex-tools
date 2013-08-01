@@ -43,12 +43,6 @@
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\Dependency\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\latest-dependencies\Entlib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\..\..\latest-dependencies\Entlib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -73,12 +67,6 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Fanex\Cryptography.cs" />
     <Compile Include="DbSetting.cs" />
-    <Compile Include="frmCriteria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCriteria.Designer.cs">
-      <DependentUpon>frmCriteria.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmExecute.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +81,11 @@
     </Compile>
     <Compile Include="MappingDataType.cs" />
     <Compile Include="ProjectModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE">
@@ -154,14 +147,15 @@
     <Content Include="AddinGenerateDataObject.AddIn" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmCriteria.resx">
-      <DependentUpon>frmCriteria.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmExecute.resx">
       <DependentUpon>frmExecute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />

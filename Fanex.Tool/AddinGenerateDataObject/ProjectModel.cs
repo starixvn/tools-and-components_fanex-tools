@@ -9,11 +9,6 @@
 
 namespace AddinGenerateDataObject
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -24,5 +19,12 @@ namespace AddinGenerateDataObject
         public string ConfigPath { get; set; }
 
         public string ResourcePath { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

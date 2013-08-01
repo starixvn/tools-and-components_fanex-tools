@@ -21,15 +21,12 @@ namespace AddinGenerateDataObject
 
     public partial class main : UserControl
     {
+        #region Member
+
         /// <summary>
         /// syncRoot to check thread safe when implementing singleton pattern
         /// </summary>
         protected static object syncRoot = new object();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected const string DbSettingCacheKeyName = "GenerateDTOXmlDbSettingProvider:DBSetting";
 
         /// <summary>
         /// cache manager
@@ -61,36 +58,51 @@ namespace AddinGenerateDataObject
             }
         }
 
+        private List<ProjectModel> _listProjectModel = new List<ProjectModel>();
+
+        #endregion
+
+        #region Ctor
+
         /// <summary>
-        /// 
+        /// Ctor
         /// </summary>
         public main()
         {
             InitializeComponent();
         }
 
-        string spNamePath = string.Empty;
-        string configPath = string.Empty;
+        #endregion
 
         private void main_Load(object sender, EventArgs e)
         {
-            spNamePath = (string)CacheManager.Get(Constant.SpNamePathKey);
-            configPath = (string)CacheManager.Get(Constant.ConfigPathKey);
+            _listProjectModel = (List<ProjectModel>)this.CacheManager.Get(Constant.ProjectKey);
+
+            BindDataToProjectCombo(_listProjectModel);
 
             try
             {
-                if (string.IsNullOrWhiteSpace(configPath)
-                 || string.IsNullOrWhiteSpace(spNamePath))
-                {
-                    MessageBox.Show("Browser your Sp Name and Config file !");
-                }
-                else
-                {
-                    AddDataSourceToCache(spNamePath, configPath);
+                ProjectModel project = _listProjectModel.Where(x => x.IsActive).FirstOrDefault();
 
-                    cmboDatabase.SelectedIndex = 0;
-                }
+                if (!ReferenceEquals(project, null))
+                {
+                    if (string.IsNullOrWhiteSpace(project.ConfigPath)
+                     || string.IsNullOrWhiteSpace(project.ResourcePath))
+                    {
+                        MessageBox.Show("Can not find Application config or SP name file !");
+                        cmboDatabase.Items.Clear();
+                        gvSpName.Rows.Clear();
+                    }
+                    else
+                    {
+                        AddDataSourceToCache(project.ResourcePath, project.ConfigPath);
 
+                        if (cmboDatabase.Items.Count > 0)
+                        {
+                            cmboDatabase.SelectedIndex = 0;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -116,19 +128,30 @@ namespace AddinGenerateDataObject
         /// <summary>
         /// Returns true if the given file path is a folder.
         /// </summary>
-        /// <param name="Path">File path</param>
+        /// <param name="path">File path</param>
         /// <returns>True if a folder</returns>
         protected bool IsFolder(string path)
         {
             return (File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory;
         }
 
+
         /// <summary>
         /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
         /// <param name="resourcePath">path to resource file for folder</param>        
-        protected void AddDataSourceToCache(string resourcePath, string connectionPath)
+        /// <param name="connectionPath">path to connection string</param>   
+        protected void AddDataSourceToCache(string resourcePath, string connectionPath, string database = "", string strKey = "", bool isClear = true)
         {
+            lbResourcePath.Text = "Resource Path : " + resourcePath.Replace("\\", "/");
+
+            if (isClear)
+            {
+                cmboDatabase.Items.Clear();
+            }
+
+            gvSpName.Rows.Clear();
+
             lock (syncRoot)
             {
                 string[] listOfResouces;
@@ -176,7 +199,9 @@ namespace AddinGenerateDataObject
                                 {
                                     string dataField = item.Attribute("DataField").Value.Trim();
                                     string objectProperty = item.Attribute("ObjectProperty").Value.Trim();
-                                    customMapping.Add(dataField, objectProperty);
+                                    string obj = item.Attribute("Object") != null ? item.Attribute("Object").Value : string.Empty;
+                                    customMapping.Add(string.Format("{0};{1}", dataField, obj), objectProperty);
+                                    //customMapping.Add(dataField, objectProperty);
                                 }
 
                                 databaseSetting.CustomMappingColumns = customMapping;
@@ -201,50 +226,84 @@ namespace AddinGenerateDataObject
                                         }
                                     }
                                 }
+
+                                if (key.ToLower().Contains(strKey.ToLower()))
+                                {
+                                    if (string.IsNullOrWhiteSpace(database))
+                                    {
+                                        gvSpName.Rows.Add(key, databaseSetting.SpName);
+                                    }
+                                    else
+                                    {
+                                        if (string.Compare(database, databaseSetting.DbName, true) == 0)
+                                        {
+                                            gvSpName.Rows.Add(key, databaseSetting.SpName);
+                                        }
+                                    }
+                                }
+
+                                this.CacheManager.Set(Constant.DbSettingCacheKeyName, settingDataSource, new CacheItemPolicy());
                             }
                         }
                     }
-
-                    // update to cache              
-                    this.CacheManager.Set(DbSettingCacheKeyName, settingDataSource, new CacheItemPolicy());
-                    //_cache.Set<Dictionary<string, DbSetting>>(DbSettingCacheKeyName, settingDataSource, DateTime.MaxValue);
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
             }
+
+            //if (cmboDatabase.Items.Count - 1 > index && index >= 0)
+            //{
+            //    cmboDatabase.SelectedIndex = index;
+            //}
         }
 
         private void cmboDatabase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gvSpName.Rows.Clear();
+            ProjectModel project = (ProjectModel)cmboProject.SelectedItem;
 
-            var settingDataSource = (Dictionary<string, DbSetting>)this.CacheManager.Get(DbSettingCacheKeyName);
-
-            foreach (var item in settingDataSource)
+            if (!ReferenceEquals(project, null))
             {
-                var itemDbSetting = item.Value as DbSetting;
-
-                if (itemDbSetting.DbName == cmboDatabase.Text)
+                if (string.IsNullOrWhiteSpace(project.ConfigPath)
+                 || string.IsNullOrWhiteSpace(project.ResourcePath))
                 {
-                    gvSpName.Rows.Add(item.Key, itemDbSetting.SpName);
+                    MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
+                }
+                else
+                {
+                    AddDataSourceToCache(
+                        resourcePath: project.ResourcePath
+                        , connectionPath: project.ConfigPath
+                        , database: cmboDatabase.SelectedItem.ToString()
+                        , isClear: false);
                 }
             }
         }
 
         private void txtKey_TextChanged(object sender, EventArgs e)
         {
-            // update to cache                   
-            var list = (Dictionary<string, DbSetting>)this.CacheManager.Get(DbSettingCacheKeyName);
+            ProjectModel project = (ProjectModel)cmboProject.SelectedItem;
 
-            gvSpName.Rows.Clear();
-
-            foreach (var item in list)
+            if (!ReferenceEquals(project, null))
             {
-                if (item.Key.ToLower().Contains(txtKey.Text.Trim().ToLower()))
+                if (string.IsNullOrWhiteSpace(project.ConfigPath)
+                 || string.IsNullOrWhiteSpace(project.ResourcePath))
                 {
-                    gvSpName.Rows.Add(item.Key, item.Value.SpName);
+                    MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
+                }
+                else
+                {
+                    AddDataSourceToCache(
+                        resourcePath: project.ResourcePath
+                        , connectionPath: project.ConfigPath
+                        , database: cmboDatabase.Text
+                        , strKey: txtKey.Text
+                        , isClear: false);
                 }
             }
         }
@@ -253,8 +312,8 @@ namespace AddinGenerateDataObject
         {
             string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
 
-            //var settingDataSource = this.CacheManager.Get(DbSettingCacheKeyName) as Dictionary<string, DbSetting>;
             this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
+            this.CacheManager.Set(Constant.ProjectNameKey, cmboProject.SelectedItem.ToString(), new CacheItemPolicy());
             Form from = new frmExecute();
             from.Show();
         }
@@ -262,7 +321,7 @@ namespace AddinGenerateDataObject
         /// <summary>
         /// get resource path point to external config data source
         /// </summary>
-        /// <param name="config">NameValueCollection config</param>
+        /// <param name="resourcePath">NameValueCollection config</param>
         /// <returns>return absolute resource path</returns>
         private string GetResourcePath(string resourcePath)
         {
@@ -298,17 +357,52 @@ namespace AddinGenerateDataObject
             {
                 gvSpName_CellDoubleClick(sender, e);
             }
+        }
 
-            if (e.ColumnIndex == 3)
+        /// <summary>
+        /// Load data from list project to combobox
+        /// </summary>
+        /// <param name="listProject"></param>
+        private void BindDataToProjectCombo(List<ProjectModel> listProject)
+        {
+            foreach (var item in listProject)
             {
-                string settingKey = gvSpName[0, e.RowIndex].Value.ToString();
+                cmboProject.Items.Add(item);
+                if (item.IsActive)
+                {
+                    cmboProject.SelectedItem = item;
+                }
+            }
 
-                //var settingDataSource = this.CacheManager.Get(DbSettingCacheKeyName) as Dictionary<string, DbSetting>;
-                this.CacheManager.Set(Constant.NameKey, settingKey, new CacheItemPolicy());
-                Form from = new frmCriteria();
-                from.Show();
+            if (cmboProject.Items.Count > 0 && cmboProject.SelectedIndex == -1)
+            {
+                cmboProject.SelectedIndex = 0;
             }
         }
 
+        private void cmboProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProjectModel project = (ProjectModel)cmboProject.SelectedItem;
+
+            if (!ReferenceEquals(project, null))
+            {
+                if (string.IsNullOrWhiteSpace(project.ConfigPath)
+                 || string.IsNullOrWhiteSpace(project.ResourcePath))
+                {
+                    MessageBox.Show("Can not find Application config or SP name file !");
+                    cmboDatabase.Items.Clear();
+                    gvSpName.Rows.Clear();
+                }
+                else
+                {
+                    AddDataSourceToCache(project.ResourcePath, project.ConfigPath);
+
+                    if (cmboDatabase.Items.Count > 0)
+                    {
+                        cmboDatabase.SelectedIndex = 0;
+                    }
+                }
+            }
+        }
     }
 }
