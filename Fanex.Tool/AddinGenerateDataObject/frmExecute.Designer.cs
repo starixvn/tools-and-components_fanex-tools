@@ -412,8 +412,9 @@ namespace AddinGenerateDataObject
             // 
             // addToProjectToolStripMenuItem
             // 
+            this.addToProjectToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addToProjectToolStripMenuItem.Image")));
             this.addToProjectToolStripMenuItem.Name = "addToProjectToolStripMenuItem";
-            this.addToProjectToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.addToProjectToolStripMenuItem.Size = new System.Drawing.Size(114, 23);
             this.addToProjectToolStripMenuItem.Text = "Add To Project";
             this.addToProjectToolStripMenuItem.Click += new System.EventHandler(this.addToProjectToolStripMenuItem_Click);
             // 
