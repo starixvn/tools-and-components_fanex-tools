@@ -246,12 +246,11 @@ namespace AddinGenerateDataObject
                         string className = txtClassName.Text.Trim();
                         string nameSpace = txtNamespace.Text.Trim();
 
-                        string strClassGenerate = GenerateDTOClass(nameSpace, className, gvColumnInfo);
+                        //string strClassGenerate = GenerateDTOClass(nameSpace, className, gvColumnInfo);
 
-                        SaveClassFile(strClassGenerate, className, folderBrowserDialog1.SelectedPath);
+                        SaveClassFile(txtPreview.Text, className, folderBrowserDialog1.SelectedPath);
 
                         MessageBox.Show("OK");
-                        this.Close();
                     }
                 }
                 else
@@ -470,7 +469,7 @@ namespace AddinGenerateDataObject
                         type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString();
                         string mapping = item.Cells[1].Value.ToString();
-                        string nullable = Convert.ToBoolean(item.Cells[3].Value) ? "? " : " ";
+                        string nullable = Convert.ToBoolean(item.Cells[3].Value) && !Equals(type, "string") ? "? " : " ";
 
                         properties = string.IsNullOrWhiteSpace(mapping) ? properties : mapping;
 
@@ -999,5 +998,26 @@ namespace AddinGenerateDataObject
         }
 
         #endregion
+
+        private void addToProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProjectModel project = (ProjectModel)cmboProject.SelectedItem;
+            FileInfo fileInfo = new FileInfo(project.ConfigPath);
+            folderBrowserDialog2.RootFolder = Environment.SpecialFolder.MyComputer;
+            folderBrowserDialog2.SelectedPath = fileInfo.DirectoryName;
+
+            var dialog = folderBrowserDialog2.ShowDialog();
+            if (dialog == DialogResult.OK)
+            {
+                string className = txtClassName.Text.Trim();
+                string nameSpace = txtNamespace.Text.Trim();
+
+                
+
+                SaveClassFile(txtPreview.Text, className, folderBrowserDialog2.SelectedPath);
+
+                MessageBox.Show("OK");
+            }
+        }
     }
 }

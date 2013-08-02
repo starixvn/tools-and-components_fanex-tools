@@ -64,6 +64,7 @@ namespace AddinGenerateDataObject
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cmboMode = new System.Windows.Forms.ToolStripComboBox();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewMappingGroup = new System.Windows.Forms.GroupBox();
             this.txtMappingPreview = new FastColoredTextBoxNS.FastColoredTextBox();
@@ -77,6 +78,7 @@ namespace AddinGenerateDataObject
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvColumnInfo)).BeginInit();
@@ -377,6 +379,7 @@ namespace AddinGenerateDataObject
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmboMode,
             this.copyToolStripMenuItem,
+            this.addToProjectToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(4, 22);
             this.menuStrip1.Name = "menuStrip1";
@@ -406,6 +409,13 @@ namespace AddinGenerateDataObject
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(135, 23);
             this.copyToolStripMenuItem.Text = "Copy To Clipboard";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // addToProjectToolStripMenuItem
+            // 
+            this.addToProjectToolStripMenuItem.Name = "addToProjectToolStripMenuItem";
+            this.addToProjectToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.addToProjectToolStripMenuItem.Text = "Add To Project";
+            this.addToProjectToolStripMenuItem.Click += new System.EventHandler(this.addToProjectToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -661,5 +671,7 @@ namespace AddinGenerateDataObject
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripMenuItem addToProjectToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
     }
 }
