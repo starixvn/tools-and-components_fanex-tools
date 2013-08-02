@@ -37,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.gvSpName = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +52,7 @@
             this.cmboProject = new System.Windows.Forms.ToolStripComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbResourcePath = new System.Windows.Forms.Label();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.gvSpName)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -101,7 +103,7 @@
             this.gvSpName.RowTemplate.Height = 25;
             this.gvSpName.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvSpName.ShowEditingIcon = false;
-            this.gvSpName.Size = new System.Drawing.Size(904, 303);
+            this.gvSpName.Size = new System.Drawing.Size(943, 303);
             this.gvSpName.TabIndex = 8;
             this.gvSpName.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellClick);
             this.gvSpName.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSpName_CellDoubleClick);
@@ -153,13 +155,14 @@
             this.cmboDatabase,
             this.toolStripSeparator1,
             this.toolStripLabel3,
-            this.cmboProject});
+            this.cmboProject,
+            this.toolStripButton1});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(904, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(943, 36);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -243,6 +246,16 @@
             this.lbResourcePath.TabIndex = 13;
             this.lbResourcePath.Text = "Resource : ";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 33);
+            this.toolStripButton1.Text = "Reload setting key";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,7 +266,7 @@
             this.Controls.Add(this.gvSpName);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "main";
-            this.Size = new System.Drawing.Size(904, 372);
+            this.Size = new System.Drawing.Size(943, 372);
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvSpName)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -279,6 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewLinkColumn Column3;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
 
     }
 }

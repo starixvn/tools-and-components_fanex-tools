@@ -189,36 +189,38 @@ namespace AddinGenerateDataObject
 
         private void txtClassName_TextChanged(object sender, EventArgs e)
         {
-            if (cmboMode.Items.Count > 5)
-            {
-                if (cmboMode.SelectedIndex != 5)
-                {
-                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
-                    cmboMode.SelectedIndex = 0;
-                }
-                else
-                {
-                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
-                }
-            }
+            //if (cmboMode.Items.Count > 5)
+            //{
+            //    if (cmboMode.SelectedIndex != 5)
+            //    {
+            //        txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
+            //        cmboMode.SelectedIndex = 0;
+            //    }
+            //    else
+            //    {
+            //        txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
+            //    }
+            //}
+            this.comboMode_SelectedtIndexChanged(null, null);
         }
 
         private void gvColumnInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (cmboMode.Items.Count > 5)
-            {
-                if (cmboMode.SelectedIndex != 5)
-                {
-                    txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
-                    cmboMode.SelectedIndex = 0;
-                }
-                else
-                {
-                    txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
-                }
+            //if (cmboMode.Items.Count > 5)
+            //{
+            //    if (cmboMode.SelectedIndex != 5)
+            //    {
+            //        txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
+            //        cmboMode.SelectedIndex = 0;
+            //    }
+            //    else
+            //    {
+            //        txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
+            //    }
 
-                txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
-            }
+            //    txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
+            //}
+            this.comboMode_SelectedtIndexChanged(null, null);
         }
 
         private void txtPreview_TextChanging(object sender, TextChangedEventArgs e)
@@ -336,20 +338,22 @@ namespace AddinGenerateDataObject
             int index = cmboMode.SelectedIndex;
             string textPreview = string.Empty;
 
-            EnableGenerateDTOControl(false);
-
             switch (index)
             {
                 case 1:
+                    EnableGenerateDTOControl(false);
                     textPreview = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text, gvParameter);
                     break;
                 case 2:
+                    EnableGenerateDTOControl(false);
                     textPreview = GenerateDynamicParameter(gvParameter);
                     break;
                 case 3:
+                    EnableGenerateDTOControl(false);
                     textPreview = GenerateHashParameter(gvParameter);
                     break;
                 case 4:
+                    EnableGenerateDTOControl(false);
                     textPreview = GenerateAddParameter();
                     break;
                 case 5:
@@ -413,17 +417,8 @@ namespace AddinGenerateDataObject
                         string type = item.Cells[1].Value.ToString();
                         type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString().TrimStart('@');
-                        string mapping = item.Cells[2].Value != null ? item.Cells[2].Value.ToString() : string.Empty;
 
-                        if (!string.IsNullOrWhiteSpace(mapping))
-                        {
-                            strSource.Append("\t\t[SpParam(SqlParamName=\"" + properties + "\")]\n");
-                            strSource.Append("\t\t public " + type + " " + mapping + " { get; set; }\n\n");
-                        }
-                        else
-                        {
-                            strSource.Append("\t\t public " + type + " " + properties + " { get; set; }\n\n");
-                        }
+                        strSource.Append("\t\t public " + type + " " + properties + " { get; set; }\n\n");
                     }
                 }
 
@@ -1003,31 +998,6 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private void show_chkBox()
-        {
-            Rectangle rect = gvColumnInfo.GetCellDisplayRectangle(3, -1, true);
-            // set checkbox header to center of header cell. +1 pixel to position 
-            rect.Y = 3;
-            rect.X = rect.Location.X + (rect.Width / 4);
-            CheckBox checkboxHeader = new CheckBox();
-            checkboxHeader.Name = "checkboxHeader";
-            //datagridview[0, 0].ToolTipText = "sdfsdf";
-            checkboxHeader.Size = new Size(18, 18);
-            checkboxHeader.Location = rect.Location;
-            checkboxHeader.CheckedChanged += new EventHandler(checkboxHeader_CheckedChanged);
-            gvColumnInfo.Controls.Add(checkboxHeader);
-        }
-
-        private void checkboxHeader_CheckedChanged(object sender, EventArgs e)
-        {
-
-            CheckBox headerBox = ((CheckBox)gvColumnInfo.Controls.Find("checkboxHeader", true)[0]);
-            int index = 0;
-            for (int i = 0; i < gvColumnInfo.RowCount; i++)
-            {
-                gvColumnInfo.Rows[i].Cells[3].Value = headerBox.Checked;
-            }
-        }
         #endregion
     }
 }

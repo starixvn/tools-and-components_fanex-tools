@@ -404,5 +404,12 @@ namespace AddinGenerateDataObject
                 }
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            int selectConnectionIndex = cmboDatabase.SelectedIndex;
+            this.cmboProject_SelectedIndexChanged(null, null);
+            cmboDatabase.SelectedIndex = selectConnectionIndex;
+        }
     }
 }
