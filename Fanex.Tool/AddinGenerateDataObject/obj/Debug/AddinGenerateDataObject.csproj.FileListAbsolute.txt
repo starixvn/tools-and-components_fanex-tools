@@ -12,3 +12,8 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bi
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csprojResolveAssemblyReference.cache
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.GenerateResource.Cache
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.Unity.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Interception.dll

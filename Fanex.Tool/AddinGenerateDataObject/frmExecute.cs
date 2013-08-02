@@ -26,6 +26,7 @@ namespace AddinGenerateDataObject
     using FastColoredTextBoxNS;
     using EnvDTE;
     using EnvDTE80;
+    using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
     /// <summary>
     /// 
@@ -147,16 +148,39 @@ namespace AddinGenerateDataObject
 
                 this.dataSetColumnInfo.Tables.Clear();
 
-                using (SqlConnection conn = new SqlConnection(dbSetting.ConnectionString))
+                try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(dbSetting.SpName, conn);
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
-                    conn.Open();
-                    SqlCommandBuilder.DeriveParameters(sqlCommand);
+                    using (SqlConnection conn = new SqlConnection(dbSetting.ConnectionString))
+                    {
+                        SqlCommand sqlCommand = new SqlCommand(dbSetting.SpName, conn);
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+                        SqlCommandBuilder.DeriveParameters(sqlCommand);
 
-                    SqlDataAdapter ad = new SqlDataAdapter(sqlCommand);
+                        SqlDataAdapter ad = new SqlDataAdapter(sqlCommand);
 
-                    ad.FillSchema(this.dataSetColumnInfo, SchemaType.Mapped);
+                        ad.FillSchema(this.dataSetColumnInfo, SchemaType.Mapped);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    SqlDatabase sqlDataBase = new SqlDatabase(dbSetting.ConnectionString);
+                    DbCommand dbCommand = sqlDataBase.GetStoredProcCommand(dbSetting.SpName);
+                    sqlDataBase.DiscoverParameters(dbCommand);
+
+                    // get parameter
+                    foreach (DataGridViewRow itemRow in gvParameter.Rows)
+                    {
+                        if (itemRow.Cells[0].Value != null)
+                        {
+                            var parameter = itemRow.Cells[0].Value.ToString().Trim();
+                            //var value = itemRow.Cells[2].Value != null ? itemRow.Cells[2].Value.ToString().Trim() : null;
+
+                            sqlDataBase.SetParameterValue(dbCommand, parameter, null);
+                        }
+                    }
+
+                    this.dataSetColumnInfo = sqlDataBase.ExecuteDataSet(dbCommand);
                 }
 
                 cmboIndexTable.Items.Clear();
