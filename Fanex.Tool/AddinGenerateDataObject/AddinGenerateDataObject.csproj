@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ConnectionStringGetter.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="CurrentIde.cs" />
     <Compile Include="Fanex\Cryptography.cs" />
     <Compile Include="DbSetting.cs" />
     <Compile Include="frmExecute.cs">

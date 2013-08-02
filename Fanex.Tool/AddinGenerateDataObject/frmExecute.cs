@@ -24,6 +24,8 @@ namespace AddinGenerateDataObject
     using System.Windows.Forms;
     using System.Xml.Linq;
     using FastColoredTextBoxNS;
+    using EnvDTE;
+    using EnvDTE80;
 
     /// <summary>
     /// 
@@ -128,7 +130,7 @@ namespace AddinGenerateDataObject
 
             // form setting
             gvColumnInfo.Enabled = false;
-            txtMappingPreview.Language = Language.HTML;
+            txtMappingPreview.Language = FastColoredTextBoxNS.Language.HTML;
             cmboMode.SelectedIndex = 0;
 
             //show_chkBox();
@@ -328,7 +330,7 @@ namespace AddinGenerateDataObject
                 gvColumnInfo.Rows.Clear();
                 gvColumnInfo.Enabled = false;
 
-                txtMappingPreview.Language = Language.HTML;
+                txtMappingPreview.Language = FastColoredTextBoxNS.Language.HTML;
             }
         }
 
@@ -417,18 +419,18 @@ namespace AddinGenerateDataObject
                         type = MappingDataType.GetTypeName(type);
                         string properties = item.Cells[0].Value.ToString().TrimStart('@');
 
-                        strSource.Append("\t\t public " + type + " " + properties + " { get; set; }\n\n");
+                        strSource.Append("\t\tpublic " + type + " " + properties + " { get; set; }\n\n");
                     }
                 }
 
-                strSource.Append("\t\t public override string GetSettingKey()\n");
-                strSource.Append("\t\t {\n");
-                strSource.Append("\t\t\t return \"" + txtSettingKey.Text + "\";\n");
-                strSource.Append("\t\t }\n\n");
-                strSource.Append("\t\t public override bool IsValid()\n");
-                strSource.Append("\t\t {\n");
-                strSource.Append("\t\t\t throw new NotImplementedException();\n");
-                strSource.Append("\t\t }");
+                strSource.Append("\t\tpublic override string GetSettingKey()\n");
+                strSource.Append("\t\t{\n");
+                strSource.Append("\t\t\treturn \"" + txtSettingKey.Text + "\";\n");
+                strSource.Append("\t\t}\n\n");
+                strSource.Append("\t\tpublic override bool IsValid()\n");
+                strSource.Append("\t\t{\n");
+                strSource.Append("\t\t\tthrow new NotImplementedException();\n");
+                strSource.Append("\t\t}");
                 strSource.Append("\n\t}\n");
                 if (nameSpace != string.Empty)
                 {
@@ -475,11 +477,11 @@ namespace AddinGenerateDataObject
 
                         if (count == gvColumnInfo.Rows.Count)
                         {
-                            strSource.Append("\t\t public " + type + nullable + properties + " { get; set; }");
+                            strSource.Append("\t\tpublic " + type + nullable + properties + " { get; set; }");
                         }
                         else
                         {
-                            strSource.Append("\t\t public " + type + nullable + properties + " { get; set; }\n\n");
+                            strSource.Append("\t\tpublic " + type + nullable + properties + " { get; set; }\n\n");
                         }
                     }
                 }
@@ -934,13 +936,21 @@ namespace AddinGenerateDataObject
 
         #region IO
 
-        void SaveClassFile(string strSource, string nameClass, string filePath)
+        string SaveClassFile(string strSource, string nameClass, string filePath)
         {
-            FileStream fileStream = new FileStream(filePath + "\\" + nameClass + ".cs", FileMode.OpenOrCreate);
+            string path = filePath + "\\" + nameClass + ".cs";
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fileStream);
             writer.WriteLine(strSource.ToString());
             writer.Close();
             fileStream.Close();
+
+            return path;
         }
 
         private void CSharpSyntaxHighlight(TextChangedEventArgs e)
@@ -1012,12 +1022,64 @@ namespace AddinGenerateDataObject
                 string className = txtClassName.Text.Trim();
                 string nameSpace = txtNamespace.Text.Trim();
 
-                
+                var dte = CurrentIde.GetCurrent();
+                var list = CurrentIde.GetAllProject(dte);
 
-                SaveClassFile(txtPreview.Text, className, folderBrowserDialog2.SelectedPath);
-
-                MessageBox.Show("OK");
+                try
+                {
+                    var selectedProject = GetSelectedProject(list, dte, folderBrowserDialog2.SelectedPath, className);
+                    MessageBox.Show("OK");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can't add file to project ! (Pleas using Add existing file)");
+                }
             }
+        }
+
+        private ProjectItems GetSelectedProject(List<Project> projects, DTE2 dte, string selectedPath, string className)
+        {
+            var solutionPathRoot = string.Empty;
+            var strNamespace = string.Empty;
+
+            FileInfo fileSolution = new FileInfo(dte.Solution.FullName);
+
+            selectedPath = selectedPath.Replace(fileSolution.DirectoryName, string.Empty).TrimStart('\\');
+
+            foreach (var item in projects)
+            {
+                string uniqueName = item.UniqueName.Replace(item.Name + ".csproj", string.Empty);
+                if (selectedPath.Contains(uniqueName))
+                {
+                    selectedPath = selectedPath.Replace(uniqueName, string.Empty);
+
+                    string[] projectItems = selectedPath.Split('\\');
+
+                    ProjectItems objProjectItems = item.ProjectItems;
+
+                    for (int i = 0; i < projectItems.Length; i++)
+                    {
+                        foreach (ProjectItem tempProjectItem in objProjectItems)
+                        {
+                            if (Equals(tempProjectItem.Name, projectItems[0]))
+                            {
+                                objProjectItems = tempProjectItem.ProjectItems;
+                            }
+                        }
+                    }
+
+                    strNamespace = item.Name + "." + selectedPath.Replace('\\', '.');
+                    txtNamespace.Text = strNamespace;
+
+                    string path = SaveClassFile(txtPreview.Text, className, folderBrowserDialog2.SelectedPath);
+
+                    objProjectItems.AddFromFileCopy(path);
+
+                    return objProjectItems;
+                }
+            }
+
+            return null;
         }
     }
 }
