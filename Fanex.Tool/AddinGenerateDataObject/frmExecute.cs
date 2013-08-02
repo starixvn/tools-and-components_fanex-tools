@@ -191,37 +191,11 @@ namespace AddinGenerateDataObject
 
         private void txtClassName_TextChanged(object sender, EventArgs e)
         {
-            //if (cmboMode.Items.Count > 5)
-            //{
-            //    if (cmboMode.SelectedIndex != 5)
-            //    {
-            //        txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
-            //        cmboMode.SelectedIndex = 0;
-            //    }
-            //    else
-            //    {
-            //        txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
-            //    }
-            //}
             this.comboMode_SelectedtIndexChanged(null, null);
         }
 
         private void gvColumnInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (cmboMode.Items.Count > 5)
-            //{
-            //    if (cmboMode.SelectedIndex != 5)
-            //    {
-            //        txtPreview.Text = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
-            //        cmboMode.SelectedIndex = 0;
-            //    }
-            //    else
-            //    {
-            //        txtPreview.Text = GenerateReadIDataReader(txtClassName.Text, gvColumnInfo);
-            //    }
-
-            //    txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
-            //}
             this.comboMode_SelectedtIndexChanged(null, null);
         }
 
@@ -1024,20 +998,12 @@ namespace AddinGenerateDataObject
 
                 var dte = CurrentIde.GetCurrent();
                 var list = CurrentIde.GetAllProject(dte);
-
-                try
-                {
-                    var selectedProject = GetSelectedProject(list, dte, folderBrowserDialog2.SelectedPath, className);
-                    MessageBox.Show("OK");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can't add file to project ! (Pleas using Add existing file)");
-                }
+                var selectedProject = string.Empty;
+                selectedProject = GetSelectedProject(list, dte, folderBrowserDialog2.SelectedPath, className);
             }
         }
 
-        private ProjectItems GetSelectedProject(List<Project> projects, DTE2 dte, string selectedPath, string className)
+        private string GetSelectedProject(List<Project> projects, DTE2 dte, string selectedPath, string className)
         {
             var solutionPathRoot = string.Empty;
             var strNamespace = string.Empty;
@@ -1048,7 +1014,7 @@ namespace AddinGenerateDataObject
 
             foreach (var item in projects)
             {
-                string uniqueName = item.UniqueName.Replace(item.Name + ".csproj", string.Empty);
+                string uniqueName = item.UniqueName.Replace(item.Name + ".csproj", string.Empty).Trim('\\');
                 if (selectedPath.Contains(uniqueName))
                 {
                     selectedPath = selectedPath.Replace(uniqueName, string.Empty);
@@ -1068,14 +1034,29 @@ namespace AddinGenerateDataObject
                         }
                     }
 
-                    strNamespace = item.Name + "." + selectedPath.Replace('\\', '.');
-                    txtNamespace.Text = strNamespace;
+                    strNamespace = item.Name + "." + selectedPath.Replace('\\', '.').TrimEnd('.');
+                    txtNamespace.Text = strNamespace.Replace("..", ".");
+                    string path = string.Empty;
+                    try
+                    {
+                        path = SaveClassFile(txtPreview.Text, className, folderBrowserDialog2.SelectedPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
 
-                    string path = SaveClassFile(txtPreview.Text, className, folderBrowserDialog2.SelectedPath);
+                    if (path.Replace(className + ".cs", string.Empty).Contains(item.FullName.Replace(item.Name + ".csproj", string.Empty)))
+                    {
+                        objProjectItems.AddFromFileCopy(path);
+                        MessageBox.Show("Finish ! Check your file : " + path);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Can't add file to project ! (Pleas using Add existing file : " + path + ")");
+                    }
 
-                    objProjectItems.AddFromFileCopy(path);
-
-                    return objProjectItems;
+                    return path;
                 }
             }
 
