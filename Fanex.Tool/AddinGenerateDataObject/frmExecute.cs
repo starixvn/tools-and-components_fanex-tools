@@ -342,6 +342,7 @@ namespace AddinGenerateDataObject
                 case 1:
                     EnableGenerateDTOControl(false);
                     textPreview = GenerateCriteriaClass(txtNamespace.Text, txtClassName.Text, gvParameter);
+                    txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
                     break;
                 case 2:
                     EnableGenerateDTOControl(false);
@@ -362,6 +363,7 @@ namespace AddinGenerateDataObject
                 default:
                     EnableGenerateDTOControl(true);
                     textPreview = GenerateDTOClass(txtNamespace.Text, txtClassName.Text, gvColumnInfo);
+                    txtMappingPreview.Text = GenerateMappingPreview(gvColumnInfo);
                     break;
             }
 
