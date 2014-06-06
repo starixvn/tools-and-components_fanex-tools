@@ -4,356 +4,6 @@
         <name>AddinGenerateDataObject</name>
     </assembly>
     <members>
-        <member name="T:AddinGenerateDataObject.ProjectModel">
-            <summary>
-            TODO: Update summary.
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.Properties.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:AddinGenerateDataObject.Properties.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:AddinGenerateDataObject.Properties.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.main">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.main.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.main.syncRoot">
-            <summary>
-            syncRoot to check thread safe when implementing singleton pattern
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.main.cacheManager">
-            <summary>
-            cache manager
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.#ctor">
-            <summary>
-            Ctor
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.IsEncryptedConnection(System.Xml.Linq.XElement)">
-            <summary>
-            check whether connection was encrypted or not
-            </summary>
-            <param name="element">XElement element</param>
-            <returns>bool value, true if connection requires encrypted</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.IsFolder(System.String)">
-            <summary>
-            Returns true if the given file path is a folder.
-            </summary>
-            <param name="path">File path</param>
-            <returns>True if a folder</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.AddDataSourceToCache(System.String,System.String,System.String,System.String,System.Boolean)">
-            <summary>
-            Get all db setting configuration from the data source and than add to cache
-            </summary>
-            <param name="resourcePath">path to resource file for folder</param>        
-            <param name="connectionPath">path to connection string</param>   
-        </member>
-        <member name="M:AddinGenerateDataObject.main.GetResourcePath(System.String)">
-            <summary>
-            get resource path point to external config data source
-            </summary>
-            <param name="resourcePath">NameValueCollection config</param>
-            <returns>return absolute resource path</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.main.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
-            <summary>
-            Load data from list project to combobox
-            </summary>
-            <param name="listProject"></param>
-        </member>
-        <member name="P:AddinGenerateDataObject.main.CacheManager">
-            <summary>
-            Gets the memory cache instance
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.DbSetting">
-            <summary>
-            TODO: Update summary.
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.DbSetting.IsValid">
-            <summary>
-            Determines whether this instance is valid.
-            </summary>
-            <returns>
-              <c>true</c> if this instance is valid; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="P:AddinGenerateDataObject.DbSetting.SpName">
-            <summary>
-            Gets or sets the name of the sp.
-            </summary>
-            <value>
-            The name of the sp.
-            </value>
-        </member>
-        <member name="P:AddinGenerateDataObject.DbSetting.DbName">
-            <summary>
-            Gets or sets the name of the db.
-            </summary>
-            <value>
-            The name of the db.
-            </value>
-        </member>
-        <member name="P:AddinGenerateDataObject.DbSetting.CustomMappingColumns">
-            <summary>
-            Gets or sets the custom mapping columns.
-            </summary>
-            <value>
-            The custom mapping columns.
-            </value>
-        </member>
-        <member name="P:AddinGenerateDataObject.DbSetting.ConnectionString">
-            <summary>
-            Gets or sets the connection string.
-            </summary>
-            <value>
-            The connection string.
-            </value>
-        </member>
-        <member name="P:AddinGenerateDataObject.DbSetting.ExecuteTimeOut">
-            <summary>
-            Get or set execute time out  (seconds)
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.ConnectionStringGetter">
-            <summary>
-            TODO: Update summary.
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.ConnectionStringGetter.CacheKeyFormat">
-            <summary>
-            Cache key of connection string
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.ConnectionStringGetter.connDictionary">
-            <summary>
-            contain connection string key by key
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.ConnectionStringGetter.GetConnectionString(System.String,System.String,System.Boolean)">
-            <summary>
-            Gets the connection string.
-            </summary>
-            <param name="connectionStringName">Name of the db.</param>
-            <param name="isEncryptedConnection">if set to <c>true</c> [is encrypted connection].</param>
-            <returns>plain connection string</returns>
-        </member>
-        <member name="T:AddinGenerateDataObject.frmExecute">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmExecute.cacheManager">
-            <summary>
-            cache manager
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmExecute.syncRoot">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.UpperCaseFirstCharacter(System.String)">
-            <summary>
-            Uppercase the first letter of a word
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.GetResourcePath(System.String)">
-            <summary>
-            get resource path point to external config data source
-            </summary>
-            <param name="resourcePath">NameValueCollection config</param>
-            <returns>return absolute resource path</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.IsFolder(System.String)">
-            <summary>
-            Returns true if the given file path is a folder.
-            </summary>
-            <param name="path">File path</param>
-            <returns>True if a folder</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.IsEncryptedConnection(System.Xml.Linq.XElement)">
-            <summary>
-            check whether connection was encrypted or not
-            </summary>
-            <param name="element">XElement element</param>
-            <returns>bool value, true if connection requires encrypted</returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.BindProjectToCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel},System.String)">
-            <summary>
-            Load data from list project to combobox
-            </summary>
-            <param name="listProject"></param>
-            <param name="selectedProject"></param>
-        </member>
-        <member name="F:AddinGenerateDataObject.frmExecute.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:AddinGenerateDataObject.frmExecute.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:AddinGenerateDataObject.frmExecute.CacheManager">
-            <summary>
-            Gets the memory cache instance
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.Connect">
-            <summary>The object for implementing an Add-in.</summary>
-            <seealso class='IDTExtensibility2' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.#ctor">
-            <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.OnConnection(System.Object,Extensibility.ext_ConnectMode,System.Object,System.Array@)">
-            <summary>Implements the OnConnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being loaded.</summary>
-            <param term='application'>Root object of the host application.</param>
-            <param term='connectMode'>Describes how the Add-in is being loaded.</param>
-            <param term='addInInst'>Object representing this Add-in.</param>
-            <seealso class='IDTExtensibility2' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.OnDisconnection(Extensibility.ext_DisconnectMode,System.Array@)">
-            <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
-            <param term='disconnectMode'>Describes how the Add-in is being unloaded.</param>
-            <param term='custom'>Array of parameters that are host application specific.</param>
-            <seealso class='IDTExtensibility2' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.OnAddInsUpdate(System.Array@)">
-            <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
-            <param term='custom'>Array of parameters that are host application specific.</param>
-            <seealso class='IDTExtensibility2' />		
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.OnStartupComplete(System.Array@)">
-            <summary>Implements the OnStartupComplete method of the IDTExtensibility2 interface. Receives notification that the host application has completed loading.</summary>
-            <param term='custom'>Array of parameters that are host application specific.</param>
-            <seealso class='IDTExtensibility2' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.OnBeginShutdown(System.Array@)">
-            <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>
-            <param term='custom'>Array of parameters that are host application specific.</param>
-            <seealso class='IDTExtensibility2' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.QueryStatus(System.String,EnvDTE.vsCommandStatusTextWanted,EnvDTE.vsCommandStatus@,System.Object@)">
-            <summary>Implements the QueryStatus method of the IDTCommandTarget interface. This is called when the command's availability is updated</summary>
-            <param term='commandName'>The name of the command to determine state for.</param>
-            <param term='neededText'>Text that is needed for the command.</param>
-            <param term='status'>The state of the command in the user interface.</param>
-            <param term='commandText'>Text requested by the neededText parameter.</param>
-            <seealso class='Exec' />
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.Exec(System.String,EnvDTE.vsCommandExecOption,System.Object@,System.Object@,System.Boolean@)">
-            <summary>Implements the Exec method of the IDTCommandTarget interface. This is called when the command is invoked.</summary>
-            <param term='commandName'>The name of the command to execute.</param>
-            <param term='executeOption'>Describes how the command should be run.</param>
-            <param term='varIn'>Parameters passed from the caller to the command handler.</param>
-            <param term='varOut'>Parameters passed from the command handler to the caller.</param>
-            <param term='handled'>Informs the caller if the command was handled or not.</param>
-            <seealso class='Exec' />
-        </member>
-        <member name="F:AddinGenerateDataObject.Connect.syncRoot">
-            <summary>
-            syncRoot to check thread safe when implementing singleton pattern
-            </summary>
-        </member>
-        <member name="F:AddinGenerateDataObject.Connect.cacheManager">
-            <summary>
-            cache manager
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.CreateToolWindow">
-            <summary>
-            Create tool window for generate DTO
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.GetConfigurationPath(EnvDTE.Project,System.String@,System.String@)">
-            <summary>
-            Get Application Config and Resource path from Project
-            </summary>
-            <param name="project"></param>
-            <param name="fileConfigPath"></param>
-            <param name="spNamePath"></param>
-        </member>
-        <member name="M:AddinGenerateDataObject.Connect.GetProjectConfiguration">
-            <summary>
-            Get all project configuration of current solution
-            </summary>
-        </member>
-        <member name="P:AddinGenerateDataObject.Connect.CacheManager">
-            <summary>
-            Gets the memory cache instance
-            </summary>
-        </member>
-        <member name="T:AddinGenerateDataObject.MappingDataType">
-            <summary>
-            Mapping
-            </summary>
-        </member>
-        <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeName(System.String)">
-            <summary>
-            Mapping Sql Data Type to C# Data Type
-            </summary>
-            <param name="sqlType"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AddinGenerateDataObject.MappingDataType.ReaderTo(System.String)">
-            <summary>
-            Mapping conver to
-            </summary>
-            <param name="type"></param>
-            <returns></returns>
-        </member>
         <member name="T:Fanex.Common.Cryptography">
             <summary>
             test
@@ -444,10 +94,360 @@
             
             </summary>
         </member>
+        <member name="T:AddinGenerateDataObject.main">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.main.syncRoot">
+            <summary>
+            syncRoot to check thread safe when implementing singleton pattern
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.main.cacheManager">
+            <summary>
+            cache manager
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.#ctor">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.IsEncryptedConnection(System.Xml.Linq.XElement)">
+            <summary>
+            check whether connection was encrypted or not
+            </summary>
+            <param name="element">XElement element</param>
+            <returns>bool value, true if connection requires encrypted</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.IsFolder(System.String)">
+            <summary>
+            Returns true if the given file path is a folder.
+            </summary>
+            <param name="path">File path</param>
+            <returns>True if a folder</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.AddDataSourceToCache(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Get all db setting configuration from the data source and than add to cache
+            </summary>
+            <param name="resourcePath">path to resource file for folder</param>        
+            <param name="connectionPath">path to connection string</param>   
+        </member>
+        <member name="M:AddinGenerateDataObject.main.GetResourcePath(System.String)">
+            <summary>
+            get resource path point to external config data source
+            </summary>
+            <param name="resourcePath">NameValueCollection config</param>
+            <returns>return absolute resource path</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
+            <summary>
+            Load data from list project to combobox
+            </summary>
+            <param name="listProject"></param>
+        </member>
+        <member name="F:AddinGenerateDataObject.main.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.main.CacheManager">
+            <summary>
+            Gets the memory cache instance
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.frmExecute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmExecute.cacheManager">
+            <summary>
+            cache manager
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmExecute.syncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.UpperCaseFirstCharacter(System.String)">
+            <summary>
+            Uppercase the first letter of a word
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.GetResourcePath(System.String)">
+            <summary>
+            get resource path point to external config data source
+            </summary>
+            <param name="resourcePath">NameValueCollection config</param>
+            <returns>return absolute resource path</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.IsFolder(System.String)">
+            <summary>
+            Returns true if the given file path is a folder.
+            </summary>
+            <param name="path">File path</param>
+            <returns>True if a folder</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.IsEncryptedConnection(System.Xml.Linq.XElement)">
+            <summary>
+            check whether connection was encrypted or not
+            </summary>
+            <param name="element">XElement element</param>
+            <returns>bool value, true if connection requires encrypted</returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.BindProjectToCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel},System.String)">
+            <summary>
+            Load data from list project to combobox
+            </summary>
+            <param name="listProject"></param>
+            <param name="selectedProject"></param>
+        </member>
+        <member name="F:AddinGenerateDataObject.frmExecute.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AddinGenerateDataObject.frmExecute.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.frmExecute.CacheManager">
+            <summary>
+            Gets the memory cache instance
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.ConnectionStringGetter">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.ConnectionStringGetter.CacheKeyFormat">
+            <summary>
+            Cache key of connection string
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.ConnectionStringGetter.connDictionary">
+            <summary>
+            contain connection string key by key
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.ConnectionStringGetter.GetConnectionString(System.String,System.String,System.Boolean)">
+            <summary>
+            Gets the connection string.
+            </summary>
+            <param name="connectionStringName">Name of the db.</param>
+            <param name="isEncryptedConnection">if set to <c>true</c> [is encrypted connection].</param>
+            <returns>plain connection string</returns>
+        </member>
+        <member name="T:AddinGenerateDataObject.Connect">
+            <summary>The object for implementing an Add-in.</summary>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.#ctor">
+            <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.OnConnection(System.Object,Extensibility.ext_ConnectMode,System.Object,System.Array@)">
+            <summary>Implements the OnConnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being loaded.</summary>
+            <param term='application'>Root object of the host application.</param>
+            <param term='connectMode'>Describes how the Add-in is being loaded.</param>
+            <param term='addInInst'>Object representing this Add-in.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.OnDisconnection(Extensibility.ext_DisconnectMode,System.Array@)">
+            <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
+            <param term='disconnectMode'>Describes how the Add-in is being unloaded.</param>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.OnAddInsUpdate(System.Array@)">
+            <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />		
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.OnStartupComplete(System.Array@)">
+            <summary>Implements the OnStartupComplete method of the IDTExtensibility2 interface. Receives notification that the host application has completed loading.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.OnBeginShutdown(System.Array@)">
+            <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.QueryStatus(System.String,EnvDTE.vsCommandStatusTextWanted,EnvDTE.vsCommandStatus@,System.Object@)">
+            <summary>Implements the QueryStatus method of the IDTCommandTarget interface. This is called when the command's availability is updated</summary>
+            <param term='commandName'>The name of the command to determine state for.</param>
+            <param term='neededText'>Text that is needed for the command.</param>
+            <param term='status'>The state of the command in the user interface.</param>
+            <param term='commandText'>Text requested by the neededText parameter.</param>
+            <seealso class='Exec' />
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.Exec(System.String,EnvDTE.vsCommandExecOption,System.Object@,System.Object@,System.Boolean@)">
+            <summary>Implements the Exec method of the IDTCommandTarget interface. This is called when the command is invoked.</summary>
+            <param term='commandName'>The name of the command to execute.</param>
+            <param term='executeOption'>Describes how the command should be run.</param>
+            <param term='varIn'>Parameters passed from the caller to the command handler.</param>
+            <param term='varOut'>Parameters passed from the command handler to the caller.</param>
+            <param term='handled'>Informs the caller if the command was handled or not.</param>
+            <seealso class='Exec' />
+        </member>
+        <member name="F:AddinGenerateDataObject.Connect.syncRoot">
+            <summary>
+            syncRoot to check thread safe when implementing singleton pattern
+            </summary>
+        </member>
+        <member name="F:AddinGenerateDataObject.Connect.cacheManager">
+            <summary>
+            cache manager
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.CreateToolWindow">
+            <summary>
+            Create tool window for generate DTO
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.GetConfigurationPath(EnvDTE.Project,System.String@,System.String@)">
+            <summary>
+            Get Application Config and Resource path from Project
+            </summary>
+            <param name="project"></param>
+            <param name="fileConfigPath"></param>
+            <param name="spNamePath"></param>
+        </member>
+        <member name="M:AddinGenerateDataObject.Connect.GetProjectConfiguration">
+            <summary>
+            Get all project configuration of current solution
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.Connect.CacheManager">
+            <summary>
+            Gets the memory cache instance
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AddinGenerateDataObject.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.ProjectModel">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.DbSetting">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.DbSetting.IsValid">
+            <summary>
+            Determines whether this instance is valid.
+            </summary>
+            <returns>
+              <c>true</c> if this instance is valid; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:AddinGenerateDataObject.DbSetting.SpName">
+            <summary>
+            Gets or sets the name of the sp.
+            </summary>
+            <value>
+            The name of the sp.
+            </value>
+        </member>
+        <member name="P:AddinGenerateDataObject.DbSetting.DbName">
+            <summary>
+            Gets or sets the name of the db.
+            </summary>
+            <value>
+            The name of the db.
+            </value>
+        </member>
+        <member name="P:AddinGenerateDataObject.DbSetting.CustomMappingColumns">
+            <summary>
+            Gets or sets the custom mapping columns.
+            </summary>
+            <value>
+            The custom mapping columns.
+            </value>
+        </member>
+        <member name="P:AddinGenerateDataObject.DbSetting.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>
+            The connection string.
+            </value>
+        </member>
+        <member name="P:AddinGenerateDataObject.DbSetting.ExecuteTimeOut">
+            <summary>
+            Get or set execute time out  (seconds)
+            </summary>
+        </member>
         <member name="T:AddinGenerateDataObject.CurrentIde">
             <summary>
             TODO: Update summary.
             </summary>
+        </member>
+        <member name="T:AddinGenerateDataObject.MappingDataType">
+            <summary>
+            Mapping
+            </summary>
+        </member>
+        <member name="M:AddinGenerateDataObject.MappingDataType.GetTypeName(System.String)">
+            <summary>
+            Mapping Sql Data Type to C# Data Type
+            </summary>
+            <param name="sqlType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AddinGenerateDataObject.MappingDataType.ReaderTo(System.String)">
+            <summary>
+            Mapping conver to
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

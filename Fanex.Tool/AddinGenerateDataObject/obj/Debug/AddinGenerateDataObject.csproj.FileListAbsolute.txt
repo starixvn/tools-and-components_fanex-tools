@@ -1,4 +1,6 @@
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.dll
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.pdb
+D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
@@ -7,7 +9,6 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bi
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Interception.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.pdb
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.xml
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csprojResolveAssemblyReference.cache
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.ResolveComReference.cache
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.frmExecute.resources
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.main.resources
@@ -15,5 +16,20 @@ D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\ob
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.GenerateResource.Cache
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.dll
 D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.pdb
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.pdb
-D:\GitScm\tools-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.pdb
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\AddinGenerateDataObject.xml
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\FastColoredTextBox.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.Unity.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csprojResolveAssemblyReference.cache
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.ResolveComReference.cache
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.frmExecute.resources
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.main.resources
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.Properties.Resources.resources
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.csproj.GenerateResource.Cache
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\obj\Debug\AddinGenerateDataObject.pdb
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\GitLab\tool-and-components\fanex-tools\Fanex.Tool\AddinGenerateDataObject\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll

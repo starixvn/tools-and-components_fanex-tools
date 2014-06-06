@@ -393,7 +393,7 @@ namespace AddinGenerateDataObject
             this.cmboMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboMode.Items.AddRange(new object[] {
             "DTO Class",
-            "Creteria Class",
+            "Criteria Class",
             "Dynamic Object",
             "Hash Table",
             "Add Parameter",
