@@ -18,6 +18,8 @@ namespace AddinGenerateDataObject
     using System.Runtime.Caching;
     using System.Windows.Forms;
     using System.Xml.Linq;
+    using EnvDTE;
+    using EnvDTE80;
 
     public partial class main : UserControl
     {
@@ -32,6 +34,8 @@ namespace AddinGenerateDataObject
         /// cache manager
         /// </summary>
         private static volatile ObjectCache cacheManager;
+
+        public static DTE2 VisualStudioObject;
 
         /// <summary>
         /// Gets the memory cache instance
@@ -58,9 +62,9 @@ namespace AddinGenerateDataObject
             }
         }
 
-        private List<ProjectModel> _listProjectModel = new List<ProjectModel>();
+        private IList<ProjectModel> _listProjectModel = new List<ProjectModel>();
 
-        #endregion
+        #endregion Member
 
         #region Ctor
 
@@ -72,16 +76,136 @@ namespace AddinGenerateDataObject
             InitializeComponent();
         }
 
-        #endregion
+        #endregion Ctor
+
+        /// <summary>
+        /// Get Application Config and Resource path from Project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="fileConfigPath"></param>
+        /// <param name="spNamePath"></param>
+        private void GetConfigurationPath(Project project, ref string fileConfigPath, ref string spNamePath)
+        {
+            try
+            {
+                fileConfigPath = string.Empty;
+                spNamePath = string.Empty;
+
+                var projectFile = project.FullName;
+
+                if (!string.IsNullOrWhiteSpace(projectFile))
+                {
+                    string foler = Path.GetDirectoryName(projectFile);
+
+                    string[] filesPath = Directory.GetFiles(foler, "*.config");
+
+                    // Get config path
+                    foreach (var item in filesPath)
+                    {
+                        if (item.ToLower().Contains("app.config")
+                            || item.ToLower().Contains("web.config"))
+                        {
+                            fileConfigPath = item;
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(fileConfigPath))
+                    {
+                        // Get resource path
+                        XDocument document = XDocument.Load(fileConfigPath);
+
+                        var configurationDocument = document.Descendants("configuration");
+                        foreach (var itemConfig in configurationDocument)
+                        {
+                            var fanexProvider = itemConfig.Descendants("Fanex.Data.DbSettingProvider");
+                            foreach (var itemFanexProvider in fanexProvider)
+                            {
+                                var provider = itemFanexProvider.Descendants("providers");
+                                foreach (var itemProvider in provider)
+                                {
+                                    var itemAdd = itemProvider.Descendants("add");
+                                    foreach (var item in itemAdd)
+                                    {
+                                        spNamePath = foler + "\\" + item.Attribute("resourcePath").Value.Replace("~", string.Empty);
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // Get connection string config path with configSource
+                            var connectionConfig = itemConfig.Descendants("connectionStrings");
+                            foreach (var itemConection in connectionConfig)
+                            {
+                                var configSource = itemConection.Attribute("configSource");
+                                if (configSource != null)
+                                {
+                                    string configSourcePath = configSource.Value;
+                                    fileConfigPath = foler + "\\" + configSourcePath;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        /// <summary>
+        /// Get all project configuration of current solution
+        /// </summary>
+        private IList<ProjectModel> GetProjectConfiguration()
+        {
+            if (VisualStudioObject != null)
+            {
+                var listProject = new List<ProjectModel>();
+                string configPath = string.Empty;
+                string spNamePath = string.Empty;
+
+                var projects = CurrentIde.GetAllProject(VisualStudioObject);
+
+                for (int i = 0; i < projects.Count; i++)
+                {
+                    Project project = projects[i];
+
+                    if (!ReferenceEquals(project, null))
+                    {
+                        this.GetConfigurationPath(project, ref configPath, ref spNamePath);
+
+                        if (!string.IsNullOrWhiteSpace(configPath)
+                            && !string.IsNullOrWhiteSpace(spNamePath))
+                        {
+                            listProject.Add(new ProjectModel
+                            {
+                                Name = project.Name,
+                                ConfigPath = configPath,
+                                ResourcePath = spNamePath,
+                                IsActive = VisualStudioObject.ActiveDocument != null 
+                                ? VisualStudioObject.ActiveDocument.ActiveWindow.Project.Name == project.Name
+                                : false
+                            });
+                        }
+                    }
+                }
+
+                this.CacheManager.Set(Constant.ProjectKey, listProject, new CacheItemPolicy());
+
+                return listProject;
+            }
+
+            throw new Exception("Visual Studio Object is null!");
+        }
 
         private void main_Load(object sender, EventArgs e)
         {
-            _listProjectModel = (List<ProjectModel>)this.CacheManager.Get(Constant.ProjectKey);
-
-            BindDataToProjectCombo(_listProjectModel);
-
             try
             {
+                _listProjectModel = GetProjectConfiguration();
+
+                BindDataToProjectCombo(_listProjectModel);
+
                 ProjectModel project = _listProjectModel.Where(x => x.IsActive).FirstOrDefault();
 
                 if (!ReferenceEquals(project, null))
@@ -106,7 +230,7 @@ namespace AddinGenerateDataObject
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -124,7 +248,6 @@ namespace AddinGenerateDataObject
             return !isPlaintConnection;
         }
 
-
         /// <summary>
         /// Returns true if the given file path is a folder.
         /// </summary>
@@ -135,12 +258,11 @@ namespace AddinGenerateDataObject
             return (File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory;
         }
 
-
         /// <summary>
         /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
-        /// <param name="resourcePath">path to resource file for folder</param>        
-        /// <param name="connectionPath">path to connection string</param>   
+        /// <param name="resourcePath">path to resource file for folder</param>
+        /// <param name="connectionPath">path to connection string</param>
         protected void AddDataSourceToCache(string resourcePath, string connectionPath, string database = "", string strKey = "", bool isClear = true)
         {
             lbResourcePath.Text = "Resource Path : " + resourcePath.Replace("\\", "/");
@@ -363,8 +485,9 @@ namespace AddinGenerateDataObject
         /// Load data from list project to combobox
         /// </summary>
         /// <param name="listProject"></param>
-        private void BindDataToProjectCombo(List<ProjectModel> listProject)
+        private void BindDataToProjectCombo(IList<ProjectModel> listProject)
         {
+            cmboProject.Items.Clear();
             foreach (var item in listProject)
             {
                 cmboProject.Items.Add(item);
@@ -407,6 +530,7 @@ namespace AddinGenerateDataObject
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            main_Load(null, null);
             int selectConnectionIndex = cmboDatabase.SelectedIndex;
             this.cmboProject_SelectedIndexChanged(null, null);
             cmboDatabase.SelectedIndex = selectConnectionIndex;

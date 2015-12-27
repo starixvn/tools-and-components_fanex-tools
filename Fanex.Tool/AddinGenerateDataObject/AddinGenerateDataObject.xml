@@ -304,6 +304,19 @@
             Ctor
             </summary>
         </member>
+        <member name="M:AddinGenerateDataObject.main.GetConfigurationPath(EnvDTE.Project,System.String@,System.String@)">
+            <summary>
+            Get Application Config and Resource path from Project
+            </summary>
+            <param name="project"></param>
+            <param name="fileConfigPath"></param>
+            <param name="spNamePath"></param>
+        </member>
+        <member name="M:AddinGenerateDataObject.main.GetProjectConfiguration">
+            <summary>
+            Get all project configuration of current solution
+            </summary>
+        </member>
         <member name="M:AddinGenerateDataObject.main.IsEncryptedConnection(System.Xml.Linq.XElement)">
             <summary>
             check whether connection was encrypted or not
@@ -322,8 +335,8 @@
             <summary>
             Get all db setting configuration from the data source and than add to cache
             </summary>
-            <param name="resourcePath">path to resource file for folder</param>        
-            <param name="connectionPath">path to connection string</param>   
+            <param name="resourcePath">path to resource file for folder</param>
+            <param name="connectionPath">path to connection string</param>
         </member>
         <member name="M:AddinGenerateDataObject.main.GetResourcePath(System.String)">
             <summary>
@@ -332,7 +345,7 @@
             <param name="resourcePath">NameValueCollection config</param>
             <returns>return absolute resource path</returns>
         </member>
-        <member name="M:AddinGenerateDataObject.main.BindDataToProjectCombo(System.Collections.Generic.List{AddinGenerateDataObject.ProjectModel})">
+        <member name="M:AddinGenerateDataObject.main.BindDataToProjectCombo(System.Collections.Generic.IList{AddinGenerateDataObject.ProjectModel})">
             <summary>
             Load data from list project to combobox
             </summary>

@@ -17,6 +17,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 using EnvDTE80;
 using EnvDTE;
+using AddinGenerateDataObject;
 
 namespace Fanex.Data.Generator
 {
@@ -70,8 +71,8 @@ namespace Fanex.Data.Generator
         /// </summary>
         protected override void Initialize()
         {
-            DTE2 dte = (DTE2)GetService(typeof(DTE));
-            DataObjectsGeneratorCommand.Initialize(this, dte);
+            main.VisualStudioObject = (DTE2)GetService(typeof(DTE));
+            DataObjectsGeneratorCommand.Initialize(this);
             base.Initialize();
         }
 
