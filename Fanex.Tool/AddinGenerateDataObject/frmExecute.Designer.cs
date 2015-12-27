@@ -111,7 +111,7 @@ namespace AddinGenerateDataObject
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(429, 145);
+            this.groupBox1.Size = new System.Drawing.Size(429, 122);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -226,7 +226,7 @@ namespace AddinGenerateDataObject
             this.gvParameter.ReadOnly = true;
             this.gvParameter.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvParameter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvParameter.Size = new System.Drawing.Size(425, 301);
+            this.gvParameter.Size = new System.Drawing.Size(425, 252);
             this.gvParameter.TabIndex = 3;
             // 
             // Column1
@@ -269,7 +269,7 @@ namespace AddinGenerateDataObject
             this.btnExecute.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExecute.Image = ((System.Drawing.Image)(resources.GetObject("btnExecute.Image")));
             this.btnExecute.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExecute.Location = new System.Drawing.Point(4, 488);
+            this.btnExecute.Location = new System.Drawing.Point(4, 416);
             this.btnExecute.Margin = new System.Windows.Forms.Padding(4);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(137, 33);
@@ -349,7 +349,7 @@ namespace AddinGenerateDataObject
             this.groupPreview.Name = "groupPreview";
             this.groupPreview.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.groupPreview, 3);
-            this.groupPreview.Size = new System.Drawing.Size(573, 521);
+            this.groupPreview.Size = new System.Drawing.Size(573, 449);
             this.groupPreview.TabIndex = 7;
             this.groupPreview.TabStop = false;
             // 
@@ -367,7 +367,7 @@ namespace AddinGenerateDataObject
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.Paddings = new System.Windows.Forms.Padding(0);
             this.txtPreview.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtPreview.Size = new System.Drawing.Size(565, 468);
+            this.txtPreview.Size = new System.Drawing.Size(565, 396);
             this.txtPreview.TabIndex = 6;
             this.txtPreview.Text = "fastColoredTextBox1";
             this.txtPreview.Zoom = 100;
@@ -432,7 +432,7 @@ namespace AddinGenerateDataObject
             this.previewMappingGroup.Controls.Add(this.menuStrip2);
             this.previewMappingGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewMappingGroup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previewMappingGroup.Location = new System.Drawing.Point(441, 533);
+            this.previewMappingGroup.Location = new System.Drawing.Point(441, 461);
             this.previewMappingGroup.Margin = new System.Windows.Forms.Padding(4);
             this.previewMappingGroup.Name = "previewMappingGroup";
             this.previewMappingGroup.Padding = new System.Windows.Forms.Padding(4);
@@ -500,16 +500,16 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 854);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 782);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // groupBoxParameter
             // 
             this.groupBoxParameter.Controls.Add(this.gvParameter);
             this.groupBoxParameter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxParameter.Location = new System.Drawing.Point(3, 156);
+            this.groupBoxParameter.Location = new System.Drawing.Point(3, 133);
             this.groupBoxParameter.Name = "groupBoxParameter";
-            this.groupBoxParameter.Size = new System.Drawing.Size(431, 325);
+            this.groupBoxParameter.Size = new System.Drawing.Size(431, 276);
             this.groupBoxParameter.TabIndex = 7;
             this.groupBoxParameter.TabStop = false;
             this.groupBoxParameter.Text = "Parameter Infomation";
@@ -518,7 +518,7 @@ namespace AddinGenerateDataObject
             // 
             this.groupColumInfo.Controls.Add(this.tableLayoutPanel2);
             this.groupColumInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupColumInfo.Location = new System.Drawing.Point(3, 532);
+            this.groupColumInfo.Location = new System.Drawing.Point(3, 460);
             this.groupColumInfo.Name = "groupColumInfo";
             this.groupColumInfo.Size = new System.Drawing.Size(431, 298);
             this.groupColumInfo.TabIndex = 7;
@@ -574,7 +574,7 @@ namespace AddinGenerateDataObject
             this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 833);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 761);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.statusStrip1.Size = new System.Drawing.Size(1018, 21);
@@ -595,7 +595,7 @@ namespace AddinGenerateDataObject
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(225)))), ((int)(((byte)(231)))));
-            this.ClientSize = new System.Drawing.Size(1018, 854);
+            this.ClientSize = new System.Drawing.Size(1018, 782);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

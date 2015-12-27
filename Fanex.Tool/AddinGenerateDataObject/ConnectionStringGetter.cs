@@ -33,6 +33,7 @@ namespace AddinGenerateDataObject
         /// <summary>
         /// Gets the connection string.
         /// </summary>
+        /// <param name="path">Name of the db.</param>
         /// <param name="connectionStringName">Name of the db.</param>
         /// <param name="isEncryptedConnection">if set to <c>true</c> [is encrypted connection].</param>
         /// <returns>plain connection string</returns>
